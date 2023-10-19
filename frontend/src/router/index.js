@@ -3,7 +3,7 @@ import LoginView from "@/views/LoginView.vue";
 import RegistrationView from "@/views/RegistrationView.vue";
 import HomepageView from "@/views/HomepageView.vue";
 import ResourceGuidesView from "@/views/ResourceGuidesView.vue";
-import DiscussionsView from "@/views/DiscussionsView.vue";
+import CommunitiesView from "@/views/CommunitiesView.vue";
 import EventsView from "@/views/EventsView.vue";
 import ContactView from "@/views/ContactView.vue";
 
@@ -35,9 +35,9 @@ const routes = [
       },
 
       { 
-        path: "/discussions",
-        name: "Discussions",
-        component: DiscussionsView,
+        path: "/communities",
+        name: "Communities",
+        component: CommunitiesView,
       },
 
 

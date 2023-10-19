@@ -11,7 +11,7 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a href="/home" :class="getClass('/home')">Home</a>
                 <a href="/resourceguides" :class="getClass('/resourceguides')">Resources & Guides</a>
-                <a href="/discussions" :class="getClass('/discussions')">Discussions</a>
+                <a href="/communities" :class="getClass('/communities')">Communities</a>
                 <a href="/events" :class="getClass('/events')">Events</a>
                 <a href="/contact" :class="getClass('/contact')">Contact</a>
               </div>
@@ -74,7 +74,7 @@
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
           <DisclosureButton as="a" href="/home" :class="getClassResponsive('/home')">Home</DisclosureButton>
           <DisclosureButton as="a" href="/resourceguides" :class="getClassResponsive('/resourceguides')">Resources & Guides</DisclosureButton>
-          <DisclosureButton as="a" href="/discussions" :class="getClassResponsive('/discussions')">Discussions</DisclosureButton>
+          <DisclosureButton as="a" href="/communities" :class="getClassResponsive('/discussions')">Discussions</DisclosureButton>
           <DisclosureButton as="a" href="/events" :class="getClassResponsive('/events')">Events</DisclosureButton>
           <DisclosureButton as="a" href="/contact" :class="getClassResponsive('/contact')">Contact</DisclosureButton>
         </div>
