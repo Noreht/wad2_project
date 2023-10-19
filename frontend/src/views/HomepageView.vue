@@ -13,7 +13,7 @@
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
 
       <div
-        class="rounded-lg border-4 border-orange-900 mt-5"
+        class="rounded-3xl border-4 border-orange-900 mt-5"
         :style="{
           backgroundImage: 'url(\'./Compost-hands.jpg\')',
           backgroundRepeat: 'no-repeat',
@@ -21,7 +21,7 @@
           backgroundPosition: 'center center',
         }"
       >
-        <div class="rounded-lg px-6 py-10 sm:py-10 lg:px-8" :style="{ backgroundColor: 'rgba(255, 255, 255, 0.7)' }">
+        <div class="rounded-3xl px-6 py-10 sm:py-10 lg:px-8" :style="{ backgroundColor: 'rgba(255, 255, 255, 0.7)' }">
           <h1
             class="drop-shadow-md text-6xl font-bold tracking-tight text-gray-900 sm:text-8xl"
           >
@@ -70,29 +70,30 @@
       </div>
 
       <div
-        class="lg:flex border-4 border-slate-500 lg:grid md:grid-cols-3 md:gap-5"
+        class="lg:flex items-stretch md:grid-cols-3 md:gap-5"
       >
         <ImpactCard
           :feature="'Individual'"
           :content="'I’m just looking to try out composting within my household and learning more about the movement!'"
-          :date="'23rd March, 2021'"
-          :image="'ImpactCards/Individual.svg'"
-          :hoverImage="'ImpactCards/Individual.svg'"
+          :date="'See More'"
+          :image="'ImpactCards/Individual.jpg'"
+          :hoverImage="'ImpactCards/Individual.jpg'"
         />
         <ImpactCard
           :feature="'Community'"
-          :content="'I want to join the larger composting community to promote the movement in Singapore!'"
-          :date="'23rd March, 2021'"
-          :image="'ImpactCards/Community.svg'"
-          :hoverImage="'ImpactCards/Community.svg'"
+          :content="'I want to join the larger composting community to promote the movement!'"
+          :date="'See More'"
+          :image="'ImpactCards/Community.jpg'"
+          :hoverImage="'ImpactCards/Community.jpg'"
         />
         <ImpactCard
           :feature="'Contributor'"
           :content="'I don’t have the time to contribute actively, but I have food waste to donate to the movement!'"
-          :date="'23rd March, 2021'"
-          :image="'ImpactCards/Contributor.svg'"
-          :hoverImage="'ImpactCards/Contributor.svg'"
+          :date="'See More'"
+          :image="'ImpactCards/Contributor.jpg'"
+          :hoverImage="'ImpactCards/Contributor.jpg'"
         />
+        
       </div>
 
       <div>
