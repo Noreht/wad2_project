@@ -1,24 +1,37 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import Navbar from "@/components/Navbar.vue";
+import DonateScrapsButton from "@/components/DonateScrapsButton.vue";
+export default {
+  name: "App",
+
+  components: {
+    Navbar,
+    DonateScrapsButton
+  },
+
+  computed: {
+    isLoginPage() {
+      return this.$route.path === '/login';
+    },
+
+    isRegistrationPage() {
+      return this.$route.path === '/registration';
+    }
+
+  }
+
+};
+
 </script>
 
 <template>
 
 <div>
-  <HelloWorld msg="Vite + Vue" />
-  <p class="text-3xl text-red-600">HELLO</p>
-  <!-- Anything that is in public will be in root folder -->
-  <img src="/ThreadsIcon.svg" alt="Threads logo" class="animate__animated animate__fadeIn from-right"/> 
-
-  <!-- <HelloWorld></HelloWorld> -->
-  <div class="animate-pulse flex space-x-4">
-    <p>hello</p>
-  </div>
-
-  <div class="animate-bounce w-6 h-6 ...">
-    <p>byebeybey</p>
-    <p>hello</p>
-  </div>
+  <template v-if="!isLoginPage">
+    <Navbar/>
+    <DonateScrapsButton/>
+  </template>
+  <router-view />
 </div>
 
 </template>
