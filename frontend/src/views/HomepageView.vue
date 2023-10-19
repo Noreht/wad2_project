@@ -11,6 +11,8 @@
 <div class="grid grid-cols-12 gap-4">
   <div class="col-span-2 bg-blue-200 p-4"></div>
   <div class="col-span-8 bg-green-200 p-4">
+    <!-- ADD THE COMPONENTS AND STYLING HERE -->
+
     <div class="rounded-lg border-4 border-slate-500 px-6 py-24 sm:py-32 lg:px-8 mt-5">
       Black Gold
       52 communities
@@ -40,7 +42,7 @@
         :feature="'Contributor'"
         :content="'I don’t have the time to contribute actively, but I have food waste to donate to the movement!'"
         :date="'23rd March, 2021'"
-        :image="'ImpactCards/Contributor.png'"
+        :image="'ImpactCards/Contributor.svg'"
         :hoverImage="'ImpactCards/Contributor.svg'"
       />
       
@@ -66,7 +68,7 @@
   </div>
 
   <div class="col-span-2 bg-blue-200 p-4"></div>
-  
+
 </div>
   
 </template>
