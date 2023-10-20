@@ -1,5 +1,5 @@
 <template>
-    <section class="p-5 md:p-0 grid xl:grid-cols-1 gap-5 lg:items-stretch md:items-end mb-2">
+    <section class="p-5 md:p-0 grid xl:grid-cols-1 gap-5 lg:items-stretch md:items-end mb-2 bg-white">
       <article
         class="transform duration-300 hover:-translate-y-1 cursor-pointer hover:shadow-2xl group border-4 border-black rounded-3xl"
       >
