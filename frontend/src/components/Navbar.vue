@@ -19,7 +19,7 @@
           </div>
           <div class="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
             <a href="" target="_blank" rel="noopener noreferrer"
-                class="bg-amber-400 text-white text-xl font-medium rounded-md px-4 py-2 flex items-center justify-center hover:bg-yellow-600 transition duration-300 ease-in-out shadow-lg">
+                class="bg-amber-400 text-white text-xl font-medium rounded-md px-4 py-2 flex items-center justify-center hover:bg-yellow-600 transition duration-300 ease-in-out shadow-lg min-w-[215px]">
                 <span class="text-3xl mr-1">☕</span>
                     Buy us a coffee
             </a>
@@ -112,9 +112,9 @@
 
   function getClass(path) {
     if (window.location.pathname === path) {
-      return "rounded-md bg-amber-400 px-3 py-2 text-xl font-medium text-white"
+      return "rounded-md bg-amber-400 px-3 py-2 lg:text-base font-medium text-white "
     } else {
-      return "rounded-md px-3 py-2 text-xl font-medium text-trueGray-900 hover:bg-amber-300 hover:text-white duration-200 ease-in-out"
+      return "min-w-[50px] rounded-md px-3 py-2 lg:text-base font-medium text-trueGray-900 hover:bg-amber-300 hover:text-white duration-200 ease-in-out"
     }
   }
 
