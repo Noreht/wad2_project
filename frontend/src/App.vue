@@ -1,12 +1,13 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import DonateScrapsButton from "@/components/DonateScrapsButton.vue";
+
 export default {
   name: "App",
 
   components: {
     Navbar,
-    DonateScrapsButton
+    DonateScrapsButton,
   },
 
   computed: {
