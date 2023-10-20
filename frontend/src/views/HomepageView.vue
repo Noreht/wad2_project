@@ -8,7 +8,7 @@
 </div> -->
 
   <div
-    class="grid grid-cols-12 gap-4 bg-gradient-to-br from-green-300 to-white"
+    class="grid grid-cols-12 bg-gradient-to-t from-green-300 to-orange-50"
   >
     <div class="col-span-2 p-4"></div>
     <div class="col-span-8 p-4 align-center">
@@ -104,30 +104,29 @@
             class="pointer-events-none inset-x-0 bottom-0 sm:flex justify-center sm:px-6 sm:pb-5 lg:px-8"
           >
             <div
-              class="sm:flex items-center justify-center gap-x-6 bg-amber-100 px-24 py-8 sm:rounded-xl sm:py-4 sm:pl-5 sm:pr-4.5 border-black border-4"
+              class="min-w-[80%] sm:flex items-center justify-center gap-x-6 bg-amber-100 px-[20px] py-auto rounded-xl sm:py-4 sm:pl-5  border-black border-4"
             >
               <div
-                class="text-2xl leading-6 text-black text-center justify-center items-center"
+                class="flex text-2xl text-black text-center justify-center items-center"
               >
                 <svg
                   viewBox="0 0 2 2"
-                  class="mx-2 inline h-2 w-2 fill-current"
+                  class="inline h-2 w-2 fill-current mt-auto mb-auto"
                   aria-hidden="true"
                 >
                   <circle cx="1" cy="1" r="1" />
                 </svg>
-                <strong class="font-bold text-4xl">Our Street Cred</strong>
+                <p class="mx-[20px] font-bold xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-sm text-sm min-w-[200px]">Our Street Cred</p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
     </div>
 
     <div class="col-span-2 p-4"></div>
-    
-  </div><Foot/>
+  </div>
+  <Foot />
 </template>
 
 <script>

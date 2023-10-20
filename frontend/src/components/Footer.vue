@@ -1,56 +1,68 @@
 <template>
-  <footer class="bg-yellow-900 text-white py-8">
+  <footer class="bg-yellow-900 text-white py-8 ">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-        <div>
-          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-          <ul class="space-y-1">
-            <li><a href="/home">Home</a></li>
-            <li><a href="/communities">Communities</a></li>
-            <li><a href="/resourceguides">Resources and Guides</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold mb-4">Social Media</h3>
-          <ul class="space-y-1">
-            <li>
-              <a href="#" class="flex items-center"
-                ><img
-                  src="facebook-icon.png"
-                  alt="Facebook"
-                  class="h-6 w-6 mr-2"
-                />
-                Facebook</a
-              >
-            </li>
-            <li>
-              <a href="#" class="flex items-center"
-                ><img
-                  src="twitter-icon.png"
-                  alt="Twitter"
-                  class="h-6 w-6 mr-2"
-                />
-                Twitter</a
-              >
-            </li>
-            <li>
-              <a href="#" class="flex items-center"
-                ><img
-                  src="instagram-icon.png"
-                  alt="Instagram"
-                  class="h-6 w-6 mr-2"
-                />
-                Instagram</a
-              >
-            </li>
-          </ul>
-        </div>
-        
-      </div><div class='text-center w-[100%] bottom-0 mt-[50px]'>
-          <p>Ccb 2023</p>
-          <p>All rights reserved.</p>
-        </div>
+      <div class="flex justify-center">
+        <ul class="space-y-1 md:space-x-[50px] xs:space-x-[20px] flex justify-center">
+          <li>
+            <a href="#" class="grid mt-1"
+              ><img
+                src="/SocialMediaPics/icons8-facebook.svg"
+                alt="Facebook"
+                class="h-6 w-6 m-auto"
+              />
+              <!-- <div>Facebook</div> -->
+              </a
+            >
+          </li>
+          <li>
+            <a href="#" class="grid items-center"
+              ><img
+                src="/SocialMediaPics/icons8-twitterx.svg"
+                alt="TwitterX"
+                class="h-6 w-6 m-auto"
+              />
+              <!-- <div>TwitterX</div> -->
+              </a
+            >
+          </li>
+          <li>
+            <a href="#" class="grid items-center"
+              ><img
+                src="/SocialMediaPics/icons8-instagram.svg"
+                alt="Instagram"
+                class="h-6 w-6 m-auto"
+              />
+              <!-- <div>Instagram</div> -->
+              </a
+            >
+          </li>
+          <li>
+            <a href="#" class="grid items-center"
+              ><img
+                src="/SocialMediaPics/icons8-youtube.svg"
+                alt="Youtube"
+                class="h-6 w-6 m-auto"
+              />
+              <!-- <div>YouTube</div> -->
+              </a
+            >
+          </li>
+          <li>
+            <a href="#" class="grid items-center"
+              ><img
+                src="/SocialMediaPics/icons8-tiktok.svg"
+                alt="TikTok"
+                class="h-6 w-6 m-auto"
+              />
+              <!-- <div>TikTok</div> -->
+              </a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="text-center w-[100%] bottom-0 mt-[10px] -mb-[15px] text-xs">
+        <p>© 2023. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 </template>
