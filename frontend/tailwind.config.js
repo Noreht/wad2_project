@@ -1,5 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  theme: {
+    extend: {
+      boxShadow: {
+        '2xl': '0 25px 5px 12px rgba(0, 0, 0, 0.5)',
+      },
+    },
+  },
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}","./node_modules/flowbite/**/*.js"],
   theme: {

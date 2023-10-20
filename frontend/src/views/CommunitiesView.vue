@@ -11,12 +11,18 @@
         <div class="col-span-2 bg-blue-200 p-4"></div>
     
     </div>
+    <Foot/>
     
     </template>
     
     
     
     <script>
-    
+    import Foot from "@/components/Footer.vue";
+
+    export default {
+        name: "Communities",
+        components: {  Foot },
+        };
     
     </script>

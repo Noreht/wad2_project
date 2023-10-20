@@ -58,6 +58,7 @@
     <div class="col-span-2 p-4 bg-gradient-to-br from-amber-400 to-yellow-100"></div>
 
 </div>
+<Foot/>
 
 </template>
 
@@ -66,11 +67,12 @@
 <script>
 import ResourceGuidesCard from "@/components/ResourceGuidesCard.vue";
 import ResourceGuidesSummary from "@/components/ResourceGuidesSummary.vue";
+import Foot from "@/components/Footer.vue";
 
 
 export default {
     name: "ResourceGuidesView",
-    components: { ResourceGuidesCard, ResourceGuidesSummary},
+    components: { ResourceGuidesCard, ResourceGuidesSummary, Foot},
 };
 
 

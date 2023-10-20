@@ -1,7 +1,7 @@
 <template>
-  <section class="p-5 md:p-0 grid xl:grid-cols-1 gap-5 lg:items-stretch md:items-end mb-2">
+  <section class="mb-3 lg:w-1/3 h-auto">
     <article
-      class="transform duration-300 hover:-translate-y-1 cursor-pointer hover:shadow-2xl group border-4 border-black rounded-3xl"
+      class="transform duration-300 hover:-translate-y-1 cursor-pointer hover:shadow-2xl group border-4 border-black rounded-3xl hover:scale-105"
     >
       <div
         class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100"
@@ -28,7 +28,9 @@
           {{ feature }}
         </li>
       </ul>
-      <p class="mt-6 text-2xl lg:text-base leading-7 text-black text-center px-6 lg:px-3 max-h-[90px] min-h-[50px]">
+      <p
+        class="mt-6 text-base lg:text-base leading-7 text-black text-center px-6 lg:px-3 max-h-[90px] min-h-[90px] sm:base"
+      >
         {{ content }}
       </p>
       <p class="text-gray-400 mt-5 mx-3 mb-2 font-semibold">{{ date }}</p>

@@ -12,27 +12,22 @@ export default {
 
   computed: {
     isLoginPage() {
-      return this.$route.path === '/login';
+      return this.$route.path === "/login";
     },
 
     isRegistrationPage() {
-      return this.$route.path === '/registration';
-    }
-
-  }
-
+      return this.$route.path === "/registration";
+    },
+  },
 };
-
 </script>
 
 <template>
-
-<div>
-  <template v-if="!isLoginPage && !isRegistrationPage">
-    <Navbar/>
-    <DonateScrapsButton/>
-  </template>
-  <router-view />
-</div>
-
+  <div>
+    <template v-if="!isLoginPage && !isRegistrationPage">
+      <Navbar />
+      <DonateScrapsButton />
+    </template>
+    <router-view />
+  </div>
 </template>
