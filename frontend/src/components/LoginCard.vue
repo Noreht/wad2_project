@@ -10,7 +10,6 @@
           <div>
             <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
             <div class="mt-1">
-              <!-- <input id="email" name="email" type="email" autocomplete="email" required="" class="block w-full border-0 py-1.5 text-gray-900 shadow-sm border-b-4 border-gray-500 placeholder:text-gray-400 focus:border-b-8 focus:border-gray-600 focus:ring-0 sm:text-sm sm:leading-6" /> -->
               <input id="email" name="email" type="email" autocomplete="email" required="" class="block w-full border-0 py-1.5 text-gray-900 shadow-sm border-b-4 border-gray-500 placeholder:text-gray-400 focus:border-b-8 focus:border-gray-600 focus:ring-0 sm:text-sm sm:leading-6 transition-all duration-200 ease-in-out" />
 
             </div>
@@ -72,7 +71,7 @@
 
             <p class="mt-8 text-center text-sm text-gray-500">
               Not a member yet?
-              <a href="#" class="font-semibold leading-6 text-amber-600 hover:text-amber-500">Sign up now!</a>
+              <a href="/registration" class="font-semibold leading-6 text-amber-600 hover:text-amber-500">Sign up now!</a>
             </p>
         </div>
       </div>
