@@ -4,10 +4,10 @@
         <div class="relative flex h-16 items-center justify-between">
           <div class="flex items-center px-2 lg:px-0">
             <div class="flex-shrink-0">
-              <img class="h-8 w-auto" src="BlackGoldIcon.svg" alt="Icon" />
+              <img class="h-12 w-auto mt-3" src="BlackGoldIcon.svg" alt="Icon" />
             </div>
             <div class="hidden lg:ml-6 lg:block">
-              <div class="flex space-x-4">
+              <div class="flex space-x-4 ">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a href="/home" :class="getClass('/home')">Home</a>
                 <a href="/resourceguides" :class="getClass('/resourceguides')">Resources & Guides</a>
@@ -19,8 +19,8 @@
           </div>
           <div class="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
             <a href="" target="_blank" rel="noopener noreferrer"
-                class="bg-yellow-500 text-white font-medium rounded-md px-4 py-2 flex items-center justify-center hover:bg-yellow-600 transition duration-300 ease-in-out shadow-lg">
-                <span class="text-lg mr-2">☕</span>
+                class="bg-amber-400 text-white text-xl font-medium rounded-md px-4 py-2 flex items-center justify-center hover:bg-yellow-600 transition duration-300 ease-in-out shadow-lg min-w-[215px]">
+                <span class="text-3xl mr-1">☕</span>
                     Buy us a coffee
             </a>
           </div>
@@ -112,9 +112,9 @@
 
   function getClass(path) {
     if (window.location.pathname === path) {
-      return "rounded-md bg-amber-400 px-3 py-2 text-sm font-medium text-white"
+      return "rounded-md bg-amber-400 px-3 py-2 lg:text-base font-medium text-white "
     } else {
-      return "rounded-md px-3 py-2 text-sm font-medium text-trueGray-900 hover:bg-amber-300 hover:text-white duration-200 ease-in-out"
+      return "min-w-[50px] rounded-md px-3 py-2 lg:text-base font-medium text-trueGray-900 hover:bg-amber-300 hover:text-white duration-200 ease-in-out"
     }
   }
 

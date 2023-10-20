@@ -16,19 +16,20 @@
         <div class="col-span-2 bg-blue-200 p-4"></div>
     
     </div>
+    <Foot/>
     
     </template>
     
     
     
-    <script>
+<script>
     import CommunityList from "@/components/CommunityList.vue";
     import CommunityHeader from "@/components/CommunityHeader.vue";
 
     export default {
     name: "CommunitiesView",
     components: { CommunityList, CommunityHeader },
-  };
-    
-    
-    </script>
+    };
+
+
+</script>

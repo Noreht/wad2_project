@@ -175,7 +175,7 @@ methods: {
 <style>
 .carousel {
 width: 100%;
-/* overflow: hidden; */
+overflow: hidden;
 /* align-items:center; */
 margin:auto;
 }

@@ -34,8 +34,9 @@
         <div class="col-span-2 bg-blue-200 p-4"></div>
     
     </div>
+    <Foot/>
     
-    </template>
+</template>
     
     
     
@@ -47,10 +48,11 @@
     import EventCategoryHeader from "@/components/EventCategoryHeader.vue";
     import EventCard from "@/components/EventCard.vue";
     import EventCardBar from "@/components/EventCardBar.vue";
+    import Foot from "@/components/Footer.vue";
 
     export default {
         name: "EventsView",
-        components: { EventCarousel, EventJumbotron, EventMap, EventByLocation, EventCategoryHeader, EventCard, EventCardBar },
+        components: { EventCarousel, EventJumbotron, EventMap, EventByLocation, EventCategoryHeader, EventCard, EventCardBar, Foot },
     };
 
 </script>
