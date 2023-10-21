@@ -23,8 +23,3 @@ dist-ssr
 *.sln
 *.sw?
 @/components/EventSwiper.vue
-
-#env files
-.env
-.env.local
-.env.production

@@ -11,11 +11,6 @@ import ContactView from "@/views/ContactView.vue";
 const routes = [
 
       {
-        path: "/",
-        redirect: "/home", // Redirect the root path to the /home route
-      },
-
-      {
         path: "/login",
         name: "Login",
         component: LoginView,
@@ -64,6 +59,5 @@ const router = createRouter({
     history: createWebHistory(),
     routes: routes,
   });
-
-
+  
   export default router;

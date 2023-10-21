@@ -16,45 +16,14 @@
   
   <script>
   import RegistrationCard from "@/components/RegistrationCard.vue";
-  import { useStore } from "vuex";
-  import { useRouter } from "vue-router";
-  import { auth } from "@/utils/firebase";
-  import { computed } from "vue";
-
-
-
+  // import LoginImageCard from "@/components/LoginImageCard.vue";
+  import 'flowbite/dist/flowbite.min.js';
   export default {
     name: "RegistrationView",
-
-
-    setup() {
-      const store = useStore();
-      const router = useRouter();
-
-      const user = computed(() => {
-        return store.getters.user;
-      });
-
-      auth.onAuthStateChanged((user) => {
-        store.dispatch("fetchUser", user);
-      });
-
-      if (user.value !== undefined && user.value.loggedIn) {
-        console.log(user.value);
-        router.push("/");
-      }
-
-      return { user, router };
-    },
-
-
     components: {
       RegistrationCard,
+      // LoginImageCard
     }
-
-
-
-
 
   };
   
