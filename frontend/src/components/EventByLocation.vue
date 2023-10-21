@@ -11,7 +11,7 @@
             <div class="border-b border-black bg-blue-300 px-4 py-5 sm:px-6 flex align-middle rounded-tr-sm ">
                 <h3 class="text-base font-semibold leading-6 text-black">Nearby Events</h3>
             </div>
-            <ul role="list" class="space-y-3 pt-2">
+            <ul role="list" class="space-y-3 pt-2 px-2">
 
                 <li class="overflow-hidden bg-white px-4 py-2 shadow sm:rounded-md sm:px-6 grid grid-cols-8"> 
                     <div class="col-span-7">
