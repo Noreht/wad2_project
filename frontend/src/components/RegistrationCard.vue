@@ -6,12 +6,13 @@
         <img class=" h-20 w-auto" src="BlackGoldIcon.svg" alt="BlackGold Icon" />
           <h1 class="mt-6 text-left text-5xl font-bold leading-9 tracking-tight text-gray-900">Register an account</h1>
           <h2 class="mt-6 text-left text-2xl leading-9 tracking-tight text-gray-900"></h2>
-          <form class="space-y-6 mt-5" action="#" method="POST">
+          <div class="space-y-6 mt-5">
             <div>
                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                     <div class="mt-1">
                         <input id="email" name="email" type="email" v-model="email" autocomplete="email" required="" class="block w-full border-0 py-1.5 text-gray-900 shadow-sm border-b-4 placeholder:text-gray-400 focus:border-b-8 focus:border-gray-600 focus:ring-0 sm:text-sm sm:leading-6 transition-all duration-200 ease-in-out" />
                     </div>
+                    <p v-if="!validEmail" class="text-red-500 text-sm mt-2">Email is invalid.</p>
             </div>
 
             <div>
@@ -76,21 +77,17 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-
-                
+                    </div>                
               </div>
   
             </div>
   
             <div>
-              <!-- <button type="submit" v-if="!passwordsMatch && (this.password !== '' && this.confirmPassword !== '')" disabled class="flex w-full justify-center rounded-md bg-amber-400 px-3 py-1.5 text-lg font-semibold leading-6 text-gray-800 shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign Up</button> -->
-              <button type="submit" v-if="!passwordsMatch || this.password === '' || this.confirmPassword === '' || this.email === '' || this.fullname === '' || !acceptTandC" disabled class="flex w-full justify-center rounded-md bg-gray-400 px-3 py-1.5 text-lg font-semibold leading-6 text-gray-600 opacity-50 cursor-not-allowed shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign Up</button>
-
-              <button type="submit" v-else="passwordsMatch" @click="submitForm" class="flex w-full justify-center rounded-md bg-amber-400 px-3 py-1.5 text-lg font-semibold leading-6 text-gray-800 shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign Up</button>
+              <button type="submit" v-if=" !validEmail || !passwordsMatch || this.password === '' || this.confirmPassword === '' || this.email === '' || this.fullname === '' || !acceptTandC" disabled class="flex w-full justify-center rounded-md bg-gray-400 px-3 py-1.5 text-lg font-semibold leading-6 text-gray-600 opacity-50 cursor-not-allowed shadow-sm hover:bg-gray-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign Up</button>
+              <button type="submit" v-else="passwordsMatch" @click="register" class="flex w-full justify-center rounded-md bg-amber-400 px-3 py-1.5 text-lg font-semibold leading-6 text-gray-800 shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign Up</button>
+            
             </div>
-          </form>
+          </div>
   
 
           <div>
@@ -130,10 +127,19 @@
   <script>
   
   import 'flowbite/dist/flowbite.min.js';
+  import { useStore } from "vuex";
+  import { useRouter } from "vue-router";
+  import { getFirebaseErrorMessage } from "@/utils/firebase";
 
   export default {
     name: "RegistrationCard",
   
+
+    setup() {
+      const store = useStore();
+      const router = useRouter();
+      return { store, router };
+    },
 
     data() {
     return {
@@ -146,21 +152,46 @@
     },
 
     computed: {
-    passwordsMatch() {
+      passwordsMatch() {
+        return this.password === this.confirmPassword;
+        },
 
-      return this.password === this.confirmPassword;
+
+      validEmail() {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (this.email === "") {
+            return true;
         }
 
+        return emailRegex.test(this.email);
+        },
     },
 
+
     methods: {
-        submitForm() {
-        this.$router.push('/login');
-        console.log('Form submitted!');
-        }
+      
+      async register() {
+        try {
+          await this.store.dispatch("register", {
+            email: this.email,
+            password: this.password,
+            fullname: this.fullname,
+        });
+        this.router.push("/login");
+        this.$toast.success("Account created successfully!");
+
+        } catch (err) {
+          this.registerError = getFirebaseErrorMessage(err);
+          this.$toast.error(this.registerError);
+          }
+        },
+
+
+
+      }
     }
 
-}
   
   
   </script>
