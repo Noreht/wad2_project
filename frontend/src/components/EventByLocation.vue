@@ -4,7 +4,7 @@
         <div class="bg-blue-500 col-span-1 aspect-square flex min-w-48 md:w-72 ">
             <!-- <div class="flex justify-center relative aspect-square" > -->
                 <!-- Event Map is ahead of header rn-->
-                <EventMap />
+                <EventMap class="z-1"/>
             <!-- </div> -->
         </div>
         <div class="bg-red-100 col-span-4">

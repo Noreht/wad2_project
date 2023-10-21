@@ -23,7 +23,7 @@ mounted() {
     //use a mix of renderers
     var customPane = this.map.createPane("customPane");
     var canvasRenderer = L.canvas({ pane: "customPane" });
-    customPane.style.zIndex = 399; // put just behind the standard overlay pane which is at 400
+    customPane.style.zIndex = 5;
     L.marker([1.3612, 103.8863]).addTo(this.map);
 
     L.marker([1.3868, 103.8914]).addTo(this.map);
@@ -41,5 +41,6 @@ onBeforeUnmount() {
     #mapContainer {
         height: 100%;
         width: 100%;
+        z-index:5;
     }
 </style>
