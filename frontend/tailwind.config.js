@@ -1,14 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  theme: {
-    extend: {
-      boxShadow: {
-        '2xl': '0 25px 5px 12px rgba(0, 0, 0, 0.5)',
-      },
-    },
-  },
   darkMode: "class",
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}","./node_modules/flowbite/**/*.js"],
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js",
+  ],
   theme: {
     screens: {
       xs: "375px",
@@ -18,9 +15,7 @@ module.exports = {
       xl: "1280px",
       "2xl": "1280px",
     },
-    animation: {
-      shake: "shake 0.82s cubic-bezier(.36,.07,.19,.97) both",
-    },
+
     keyframes: {
       shake: {
         "10%, 90%": {
@@ -36,11 +31,36 @@ module.exports = {
           transform: "translate3d(4px, 0, 0)",
         },
       },
+      typing: {
+        "0%": {
+          width: "0%",
+          visibility: "hidden",
+          cursor: "text",
+        },
+        "100%": {
+          width: "100%",
+          cursor: "text",
+        },
+      },
+      blink: {
+        "50%": {
+          borderColor: "transparent",
+        },
+        "100%": {
+          borderColor: "black",
+        },
+      },
+    },
+    animation: {
+      shake: "shake 0.82s cubic-bezier(.36,.07,.19,.97) both",
+      typing: "typing 2s steps(20) infinite alternate, blink .7s infinite",
+    },
+    extend: {
+      boxShadow: {
+        xl: "10px 10px 5px 2px rgba(0, 0, 0, 0.3)",
+        "2xl": "10px 10px 5px 2px rgba(0, 0, 0, 0.3)",
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('flowbite/plugin')
-  ],
-
+  plugins: [require("@tailwindcss/forms"), require("flowbite/plugin")],
 };

@@ -7,15 +7,13 @@
     </div>
 </div> -->
 
-  <div
-    class="grid grid-cols-12 bg-gradient-to-t from-green-300 to-orange-50"
-  >
+  <div class="grid grid-cols-12">
     <div class="col-span-2 p-4"></div>
-    <div class="col-span-8 p-4 align-center">
+    <div class="col-span-8 align-center z-10">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
 
       <div
-        class="rounded-3xl border-4 border-orange-900 mt-5 min-w-[200px] shadow-2xl hover:-translate-y-1"
+        class="rounded-3xl border-4 border-orange-800 mt-5 min-w-[200px] shadow-2xl hover:-translate-y-1"
         :style="{
           backgroundImage: 'url(\'./Compost-hands.jpg\')',
           backgroundRepeat: 'no-repeat',
@@ -27,11 +25,25 @@
           class="rounded-3xl px-6 py-10 sm:py-10 lg:px-8"
           :style="{ backgroundColor: 'rgba(255, 255, 255, 0.7)' }"
         >
-          <h1
-            class="drop-shadow-md text-6xl font-bold tracking-tight text-gray-900 sm:text-8xl"
+          <!-- <h1
+            class="drop-shadow-xl text-6xl font-bold tracking-tight text-gray-900 sm:text-8xl animate-typing overflow-hidden lg:min-w-[300px] max-h-[90px]"
           >
-            Black <span class="text-amber-400">Gold</span>
+            Black
+            <span class="text-amber-400 animate-typing overflow-hidden"
+              >Gold</span
+            >
+          </h1> -->
+          <h1
+            class="drop-shadow-xl text-6xl font-bold tracking-tight text-gray-900 sm:text-8xl lg:min-w-[300px] max-h-[90px] min-h-[90px] typewriter"
+          >
+            <span
+              v-for="(char, index) in typewriterText"
+              :key="index"
+              :class="{ 'text-amber-400': index >= typewriterText.length - 4 }"
+              >{{ char }}</span
+            >
           </h1>
+
           <br />
           <h3
             class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
@@ -104,7 +116,7 @@
             class="pointer-events-none inset-x-0 bottom-0 sm:flex justify-center sm:px-6 sm:pb-5 lg:px-8"
           >
             <div
-              class="min-w-[80%] sm:flex items-center justify-center gap-x-6 bg-amber-100 px-[20px] py-auto rounded-xl sm:py-4 sm:pl-5  border-black border-4"
+              class="min-w-[80%] sm:flex items-center justify-center gap-x-6 bg-amber-100 px-[20px] py-auto rounded-xl sm:py-4 sm:pl-5 border-black border-4"
             >
               <div
                 class="flex text-2xl text-black text-center justify-center items-center"
@@ -116,9 +128,95 @@
                 >
                   <circle cx="1" cy="1" r="1" />
                 </svg>
-                <p class="mx-[20px] font-bold xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-sm text-sm min-w-[200px]">Our Street Cred</p>
+                <p
+                  class="mx-[20px] font-bold xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl xs:text-sm text-sm min-w-[200px]"
+                >
+                  Our Street Cred
+                </p>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=" grid place-items-center "
+      >
+        <div class="w-6/12 mx-auto rounded border">
+          <div class="bg-white p-10 shadow-sm">
+            <!-- ... your other content ... -->
+            <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">FAQ</h1>
+            <!-- Accordion Wrapper -->
+            <div class="transition hover:bg-indigo-50">
+              <!-- header -->
+              <div
+                class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16"
+                @click="toggleAccordion('howCanItBeDefined')"
+              >
+                <i
+                  class="fas"
+                  :class="{
+                    'fa-plus': !accordionStatus.howCanItBeDefined,
+                    'fa-minus': accordionStatus.howCanItBeDefined,
+                  }"
+                ></i>
+                <h3>How can it be defined?</h3>
+              </div>
+              <!-- Content -->
+              <div
+                class="accordion-content px-5 pt-0 overflow-hidden"
+                :style="{
+                  maxHeight: accordionStatus.howCanItBeDefined ? 'none' : '0',
+                }"
+              >
+                <p class="leading-6 font-light pl-9 text-justify">
+                  Our asked sex point her she seems. New plenty she horses
+                  parish design you. Stuff sight equal of my woody. Him children
+                  bringing goodness suitable she entirely put far daughter.
+                </p>
+                <button
+                  class="rounded-full bg-indigo-600 text-white font-medium font-lg px-6 py-2 my-5 ml-9"
+                >
+                  Learn more
+                </button>
+              </div>
+            </div>
+            <div class="transition hover:bg-indigo-50">
+              <!-- header -->
+              <div
+                class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16"
+                @click="toggleAccordion('howCanItBeDefined')"
+              >
+                <i
+                  class="fas"
+                  :class="{
+                    'fa-plus': !accordionStatus.howCanItBeDefined,
+                    'fa-minus': accordionStatus.howCanItBeDefined,
+                  }"
+                ></i>
+                <h3>How can it be defined?</h3>
+              </div>
+              <!-- Content -->
+              <div
+                class="accordion-content px-5 pt-0 overflow-hidden"
+                :style="{
+                  maxHeight: accordionStatus.howCanItBeDefined ? 'none' : '0',
+                }"
+              >
+                <p class="leading-6 font-light pl-9 text-justify">
+                  Our asked sex point her she seems. New plenty she horses
+                  parish design you. Stuff sight equal of my woody. Him children
+                  bringing goodness suitable she entirely put far daughter.
+                </p>
+                <button
+                  class="rounded-full bg-indigo-600 text-white font-medium font-lg px-6 py-2 my-5 ml-9"
+                >
+                  Learn more
+                </button>
+              </div>
+            </div>
+            
+
+            <!-- ... your other accordions ... -->
           </div>
         </div>
       </div>
@@ -133,8 +231,79 @@
 import ImpactCard from "@/components/ImpactCard.vue";
 import Foot from "@/components/Footer.vue";
 
+const words = ["Black Gold"];
+const typeSpeed = 300; // Adjust the speed as needed (in milliseconds)
+
 export default {
   name: "HomepageView",
+  components: { ImpactCard, Foot },
+  data() {
+    return {
+      typewriterText: "",
+      isGoldVisible: false,
+      loopTyping: true,
+      accordionStatus: {
+        whatIsTerm: false,
+        whenToUseAccordion: false,
+        howCanItBeDefined: false,
+        chamberReached: false,
+      },
+    };
+  },
+  methods: {
+    toggleAccordion(accordionName) {
+      this.accordionStatus[accordionName] = !this.accordionStatus[accordionName];
+    },
+    async type() {
+      while (this.loopTyping) {
+        for (const word of words) {
+          let isDeleting = false;
+          let j = 0;
+
+          while (j >= 0 && j < word.length) {
+            this.typewriterText = word.substring(0, j + 1);
+            if (word[j] === "G") {
+              this.isGoldVisible = true;
+            } else {
+              this.isGoldVisible = false;
+            }
+            if (isDeleting) {
+              await this.delay(typeSpeed / 2);
+            } else {
+              await this.delay(typeSpeed);
+            }
+            j = isDeleting ? j - 1 : j + 1;
+          }
+
+          // Add a pause after typing the full word
+          if (j === word.length) {
+            await this.delay(typeSpeed * 2);
+          }
+
+          // Clear the word with a delay
+          while (j >= 0) {
+            this.typewriterText = word.substring(0, j);
+            if (word[j] === "G") {
+              this.isGoldVisible = true;
+            } else {
+              this.isGoldVisible = false;
+            }
+            await this.delay(typeSpeed / 2);
+            j--;
+          }
+        }
+      }
+    },
+    delay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    },
+  },
+  mounted() {
+    this.type();
+  },
+  beforeDestroy() {
+    this.loopTyping = false; // Stop the looping when the component is destroyed
+  },
   components: { ImpactCard, Foot },
 };
 </script>
