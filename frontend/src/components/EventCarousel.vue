@@ -1,7 +1,7 @@
 <template>
-     <section class="bg-transparent dark:bg-gray-900 border-2 border-black rounded-xl ">
+     <section class="bg-transparent dark:bg-gray-900 rounded-3xl border-4 border-orange-800  ">
         <div class="w-full mb-5 pl-4">
-            <h1 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-6xl dark:text-white inline">
+            <h1 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-black md:text-3xl lg:text-6xl dark:text-white inline">
                 Hot
             </h1>
 
@@ -205,8 +205,3 @@ margin-top: 10px;
 }
 </style>
 
-<!-- {Header: "Head 1", Organiser: "Org 1", Date: "11 Oct, 12pm", Desc: "lorem ispum dolor"},
-
-{Header: "Head 2", Organiser: "Org 2", Date: "11 Oct, 12pm", Desc: "lorem ispum dolor 2"},
-
-{Header: "Head 3", Organiser: "Org 3", Date: "11 Oct, 12pm", Desc: "lorem ispum dolor 3"}, -->

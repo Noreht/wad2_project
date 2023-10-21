@@ -25,9 +25,9 @@
       <TabPanels>
         
             <TabPanel> 
-                <div class="flex justify-center space-x-10 pt-5"> 
+                <div class="flex justify-center space-x-5 pt-5"> 
                 <!-- Card 1 -->
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 inline-block">
+                    <div class="max-w-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 inline-block">
                         <div>
                             <!-- Any idea how to make the circle be superimposed on top of the image?-->
                             <img class="rounded-t-lg h-48 w-full" src="https://images.unsplash.com/photo-1522093007474-d86e9bf7ba6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80" alt="" />
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                     <!-- Card 2 -->
-                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 inline-block">
+                    <div class="max-w-lg bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 inline-block">
                         <div>
                             <!-- Any idea how to make the circle be superimposed on top of the image?-->
                             <img class="rounded-t-lg h-48 w-full" src="https://images.unsplash.com/photo-1522093007474-d86e9bf7ba6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=80" alt="" />
@@ -74,6 +74,7 @@
                             </a>
                         </div>
                     </div>
+                    
                 </div>
             </TabPanel>
             <TabPanel>
