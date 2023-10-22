@@ -70,7 +70,7 @@
           </p>
           <br />
           <a
-            href="#"
+            href="/login"
             class="xs:text-base rounded-md bg-amber-400 px-3.5 py-2.5 text-3xl font-semibold transition duration-300 ease-in-out text-black drop-shadow-lg hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
           >
             Join now!
@@ -138,13 +138,15 @@
           </div>
         </div>
       </div>
-      <div
-        class=" grid place-items-center "
-      >
+      <div class="grid place-items-center">
         <div class="w-6/12 mx-auto rounded border">
           <div class="bg-white p-10 shadow-sm">
             <!-- ... your other content ... -->
-            <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">FAQ</h1>
+            <h1
+              class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
+            >
+              FAQ
+            </h1>
             <!-- Accordion Wrapper -->
             <div class="transition hover:bg-indigo-50">
               <!-- header -->
@@ -214,7 +216,6 @@
                 </button>
               </div>
             </div>
-            
 
             <!-- ... your other accordions ... -->
           </div>
@@ -232,7 +233,7 @@ import ImpactCard from "@/components/ImpactCard.vue";
 import Foot from "@/components/Footer.vue";
 
 const words = ["Black Gold"];
-const typeSpeed = 300; // Adjust the speed as needed (in milliseconds)
+const typeSpeed = 200; // Adjust the speed as needed (in milliseconds)
 
 export default {
   name: "HomepageView",
@@ -252,7 +253,8 @@ export default {
   },
   methods: {
     toggleAccordion(accordionName) {
-      this.accordionStatus[accordionName] = !this.accordionStatus[accordionName];
+      this.accordionStatus[accordionName] =
+        !this.accordionStatus[accordionName];
     },
     async type() {
       while (this.loopTyping) {
