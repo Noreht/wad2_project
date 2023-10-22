@@ -231,6 +231,10 @@
 <script>
 import ImpactCard from "@/components/ImpactCard.vue";
 import Foot from "@/components/Footer.vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { computed, ref } from "vue";
+import { auth } from "@/utils/firebase";
 
 const words = ["Black Gold"];
 const typeSpeed = 200; // Adjust the speed as needed (in milliseconds)
@@ -238,6 +242,26 @@ const typeSpeed = 200; // Adjust the speed as needed (in milliseconds)
 export default {
   name: "HomepageView",
   components: { ImpactCard, Foot },
+
+  // SETUP included here to check with the user if they are logged in (variable is loggedIn)
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+    const checkingAuthentication = ref(true);
+
+    const user = computed(() => {
+      return store.getters.user;
+    });
+
+    auth.onAuthStateChanged((user) => {
+      store.dispatch("fetchUser", user);
+      checkingAuthentication.value = false;
+    });
+
+    return { user, router };
+  },  
+
+
   data() {
     return {
       typewriterText: "",

@@ -2,6 +2,7 @@ import {
     emailRegister,
     emailSignIn,
     signOutUser,
+    updateUserProfile,
   } from "@/utils/firebase";
   import { createStore } from "vuex";
   
@@ -31,20 +32,20 @@ import {
         if (response) {
             console.log(response);
           context.commit("setUser", response.user);
-        //   updateUserProfile({ displayName: fullname });
+          updateUserProfile({ displayName: fullname });
         } else {
           throw new Error("Unable to register user");
         }
       },
-    //   async logIn(context, { email, password }) {
-    //     const response = await emailSignIn(email, password);
-    //     console.log(response);
-    //     if (response) {
-    //       context.commit("setUser", response.user);
-    //     } else {
-    //       throw new Error("login failed");
-    //     }
-    //   },
+
+      async logIn(context, { email, password }) {
+        const response = await emailSignIn(email, password);
+        if (response) {
+          context.commit("setUser", response.user);
+        } else {
+          throw new Error("login failed");
+        }
+      },
 
     //   async googleLogIn(context) {
     //     const response = await googleSignIn();

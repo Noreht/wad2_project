@@ -2,7 +2,9 @@ import { auth } from "./firebaseInit";
 import { 
     createUserWithEmailAndPassword, 
     signInWithEmailAndPassword, 
-    signOut } from "firebase/auth";
+    signOut,
+    updateProfile
+} from "firebase/auth";
 import AUTH_ERROR_CODES_MAP from "./firebaseAuthErrorCodes";
 
 // Sign out
@@ -24,7 +26,9 @@ export const emailSignIn = async (email, password) => {
 
 
 
-
+export const updateUserProfile = (updatedUserObj) => {
+  return updateProfile(auth.currentUser, updatedUserObj);
+};
 
 
 
