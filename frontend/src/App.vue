@@ -24,10 +24,8 @@ export default {
 
 <template>
   <div>
-    <template v-if="!isLoginPage && !isRegistrationPage">
-      <Navbar />
-      <DonateScrapsButton />
-    </template>
+      <Navbar v-if="!isLoginPage && !isRegistrationPage"/>
+      <DonateScrapsButton v-if="!isLoginPage && !isRegistrationPage"/>
     <router-view />
   </div>
 </template>
