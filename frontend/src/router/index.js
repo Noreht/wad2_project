@@ -6,7 +6,6 @@ import ResourceGuidesView from "@/views/ResourceGuidesView.vue";
 import CommunitiesView from "@/views/CommunitiesView.vue";
 import EventsView from "@/views/EventsView.vue";
 import ContactView from "@/views/ContactView.vue";
-import BasicCompost from "@/views/BasicCompostView.vue";
 
 
 const routes = [
@@ -52,12 +51,6 @@ const routes = [
         path: "/contact",
         name: "Contact",
         component: ContactView,
-      },
-
-      { 
-        path: "/basiccompost",
-        name: "BasicCompost",
-        component: BasicCompost,
       },
 
 ];
