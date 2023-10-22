@@ -1,6 +1,6 @@
 <template>
   <a
-    href="https://donate.stripe.com/test_9AQ8xf7Mwe7Qh2M6op"
+    href="#"
     class="button z-20 rounded-full fixed right-5 bottom-5 scroll-behavior: smooth text-xl"
     type="button "
   >
