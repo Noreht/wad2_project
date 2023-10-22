@@ -1,10 +1,12 @@
-<template><Guides
+<template>
+<Guides
     :title="'How to make a Basic Compost'"
     :requireditems="itemList"
     :requiredimage="imageurl"
     :thesteps = "steps"
     :tips = "tip"
 />
+<Foot />
 </template>
 
 

@@ -3,21 +3,21 @@
     <div class="col-span-2 p-4"></div>
     <div class="col-span-8 p-4 place-content-center">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
-      <h1 class="text-center text-5xl font-semibold">Resources and Guides</h1>
-      <h3 class="text-center leading-10">
+      <h1 class="text-center text-5xl sm:text-6xl font-semibold">Resources and Guides</h1>
+      <h3 class=" py-4 text-center text-lg sm:text-xl font-semibold leading-10">
         Explore and kick start your journey today!
       </h3>
       <ResourceGuidesSummary
         :header="'What is Composting?'"
-        :body="'Composting is a controlled, aerobic (oxygen-required) process that converts organic materials into a nutrient-rich soil amendment or mulch through natural decomposition. The end product is compost – a dark, crumbly, earthy-smelling material. Microorganisms feed on the materials added to the compost pile during the composting process. They use carbon and nitrogen to grow and reproduce, water to digest materials, and oxygen to breathe. You can compost at home using food scraps from your kitchen and dry leaves and woody material from your yard.'"
+        :body="'Composting is an aerobic process that transforms organic materials into nutrient-rich, earthy-smelling compost through natural decomposition. Microorganisms use carbon, nitrogen, water, and oxygen to break down kitchen scraps and yard waste, allowing you to compost at home!'"
       />
-      <div id="beginner">
+      <div id="beginner" class="">
         <h3 class="text-2xl font-semibold mt-8">Starter's Haven</h3>
         <h3 class="text-lg font-normal mb-3">For precious beginners</h3>
-        <div class="overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6">
+        <div class="border-4 border-black rounded-3xl p-4 bg-green-300 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6">
           <ResourceGuidesCard
             :title="'Make a Basic Compost?'"
-            :image="'ResourceGuidesCards/createcompostbin.png'"
+            :image="'ResourceGuidesCards/compostbin1.png'"
           />
           <ResourceGuidesCard
             :title="'Build a Composting Bin?'"
@@ -37,24 +37,25 @@
           />
           <ResourceGuidesCard
             :title="'Process Food Waste before using?'"
-            :image="'ResourceGuidesCards/process.png'"
+            :image="'ResourceGuidesCards/food.png'"
           />
         </div>
+      </div>
 
-        <div id="intermediate">
+      <div id="intermediate" class="">
           <h3 class="text-2xl font-semibold mt-8">Next-Level Navigators</h3>
           <h3 class="text-lg font-normal mb-3">For experienced composters</h3>
-          <div class="overflow-x-auto overflow-hidden flex">
+          <div class="border-4 p-4 rounded-3xl border-black bg-green-400 overflow-x-auto overflow-hidden flex">
             <ResourceGuidesCard :title="'Build a Tumbling Composter?'" />
             <ResourceGuidesCard :title="'Apply Mulch to Compost?'" />
             <ResourceGuidesCard :title="'Make a Worm Compost System?'" />
             <ResourceGuidesCard :title="'Upscale your Compost Bin'" />
           </div>
-        </div>
       </div>
     </div>
-    <div class="col-span-2 p-4"></div>
-  </div>
+    </div>
+    <div class="col-span-2 px-4"></div>
+
   <Foot />
 </template>
 

@@ -1,9 +1,9 @@
 <template >
-    <div class=" me-3 w-[70%] max-w-[200px] min-w-[140px] flex-none rounded-2xl border-4 border-black">
+    <div class=" me-3 w-[70%] max-w-[200px] min-w-[140px] flex-none rounded-2xl border-4 border-green-900">
 
     <!-- <img class="rounded-2" src={{image}} alt="Sunset in the mountains"> -->
     <div
-        class=" h-[150px] border-black rounded-t-xl border-b-4"
+        class=" h-[150px] border-green-900 rounded-t-xl border-b-4"
         :style="{
           backgroundImage: `url(${image})`,
           backgroundRepeat: 'no-repeat',
