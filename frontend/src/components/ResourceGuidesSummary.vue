@@ -22,4 +22,5 @@ export default {
       body: String,
 
     }
-  };</script>
+  };
+</script>
