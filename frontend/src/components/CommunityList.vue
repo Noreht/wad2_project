@@ -3,7 +3,7 @@
       <li v-for="community in communities" :key="community.id" class="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap">
         <div>
           <p class="pl-5 text-sm font-semibold leading-6 text-gray-900">
-            <a  @click="$emit('toggleModal', true)" class="hover:underline">{{ community.title }}</a>
+            <a  @click="$emit('toggleModal', {Title: community.title })" class="hover:underline">{{ community.title }}</a>
           </p>
           <div class="pl-5 mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
             <p>
@@ -53,8 +53,7 @@
     
     function toggleModal() {
         console.log("open modal child initiated")
-        emit("openModal", true)
-        
+        emit("openModal", true)   
     }
 
     

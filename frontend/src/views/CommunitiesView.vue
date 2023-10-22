@@ -12,8 +12,8 @@
             </div>
             <div class="bg-white">
                 <CommunityModal :showing="showModal" @close="showModal= false">
-                    <h2 class="text-xl font-bold text-black">Punggol Warriors Community</h2>
-                    <p class="mb-6">FUIYOHHHH</p>
+                    <h2 class="text-xl font-bold text-black"> {{ modalTitle }}</h2>
+                    <p class="mb-6"> Desc </p>
                         <button
                         class="bg-amber-400 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg"
                         @click="showModal = false"
@@ -39,6 +39,8 @@
     import CommunityHeader from "@/components/CommunityHeader.vue";
     import CommunityModal from "@/components/CommunityModal.vue";
 
+    
+
 
     export default {
         name: "CommunitiesView",
@@ -47,11 +49,21 @@
             return {showModal: false};
         },
         methods: {
-            updateParent(status) {
+            updateParent(input) {
                 console.log("open modal parent initiated")
-                this.showModal = status;
+                //console.log("Input:", input)
+                let args = Object.values(input);
+                //console.log("Args:", Object.values(args))
+                let modalTitle = args[0];
+                console.log("Modal Title:", modalTitle)
+                this.showModal = true;
+                return this.modalTitle = modalTitle;
             }
+
+
         },
+
+        
         }
 
         
