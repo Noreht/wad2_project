@@ -102,6 +102,8 @@ export default {
     const user = computed(() => store.getters.user);
 
     return {
+      store,
+      router,
       email,
       password,
       loginError,
@@ -111,29 +113,32 @@ export default {
   methods: {
     async Login() {
       console.log("logging in");
-      try {
-        await this.$store.dispatch("logIn", {
+        try {
+          await this.store.dispatch("logIn", {
           email: this.email,
           password: this.password,
-        });
-        console.log("logged in");
-
-        // Wait for the user state to update
-        await onMounted(() => {
-          auth.onAuthStateChanged((authUser) => {
-            this.$store.dispatch("fetchUser", authUser);
           });
-        });
+          console.log("logged in");
 
-        let displayName = this.user.data.displayName;
+          // Wait for the user state to update
+          auth.onAuthStateChanged((authUser) => {
+          // Use the store's commit function to update the state
+            this.store.dispatch("fetchUser", authUser);
 
-        this.$router.push("/");
-        this.$toast.success("Welcome, " + displayName + "!");
-      } catch (err) {
-        this.loginError = getFirebaseErrorMessage(err);
-        this.$toast.error(this.loginError);
-      }
-    },
+
+            console.log(this.store.state.user); // Verify that loggedIn is set to true
+            let displayName = this.store.getters.user.data.displayName;
+
+            this.router.push("/");
+            this.$toast.success("Welcome, " + displayName + "!");
+          });
+       } catch (err) {
+          console.log(err);
+          this.loginError = getFirebaseErrorMessage(err); 
+          this.$toast.error(this.loginError);
+        }
+  },
+
   },
 };
 

@@ -37,7 +37,6 @@
           />
         </div>
 
-        <!-- Reset transition properties for the first slide -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
           <LoginImageCard
             :feature="'Get Dirty'"

@@ -8,6 +8,9 @@ import EventsView from "@/views/EventsView.vue";
 import ContactView from "@/views/ContactView.vue";
 import BasicCompost from "@/views/BasicCompostView.vue";
 
+import store from "@/store";
+import { inject } from "vue";
+import { getCurrentUser, isLoggedIn } from "../utils/firebase";
 
 const routes = [
 
@@ -44,6 +47,8 @@ const routes = [
         path: "/communities",
         name: "Communities",
         component: CommunitiesView,
+        meta:{requiresAuth:true},
+        
       },
 
 
@@ -71,5 +76,28 @@ const router = createRouter({
     routes: routes,
   });
 
+
+
+    router.beforeEach( async (to, from, next) => {
+    // const store = inject()
+    // const loggedIn = store.state.user.loggedIn;
+    const loggedIn = await isLoggedIn();
+    
+    console.log(loggedIn)
+    if (to.meta.requiresAuth && !loggedIn) {
+      // You should call the getter to check if the user is authenticated
+      console.log(store.getters.user)
+        // This r goute requires auth, and the user is not logged in
+        // Redirect to the login page with the original path as a query parameter
+      next({
+        path: "/login",
+        query: { redirect: to.fullPath },
+      });
+      } else {
+        // Continue with the navigation
+        next();
+      }
+  });
+  
 
   export default router;
