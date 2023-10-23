@@ -1,5 +1,5 @@
 <template >
-    <div class=" me-3 w-[70%] max-w-[200px] min-w-[140px] flex-none rounded-2xl border-4 border-green-900">
+    <div class=" me-3 w-[70%] max-w-[200px] min-w-[200px] flex-none rounded-2xl border-4 border-green-900">
 
     <!-- <img class="rounded-2" src={{image}} alt="Sunset in the mountains"> -->
     <div
@@ -12,9 +12,9 @@
         }"
       ></div>
         
-    <div class="px-3 py-2 bg-[rgb(0,0,0,)] rounded-b-xl">
+    <div class="h-[92px] bg-green-500 px-3 py-2 bg-[rgb(0,0,0,)] rounded-b-xl">
         <div class="font-bold text-sm mb-2">How to:</div>
-        <p class="text-gray-700 text-base">
+        <p class="text-gray-900 text-base">
             {{title}}
         </p>
     </div>
