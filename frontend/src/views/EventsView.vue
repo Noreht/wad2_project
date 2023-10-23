@@ -12,7 +12,8 @@
                 <h1 class="pt-4 mb-4 text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
                     Find your closest communities 
                 </h1>
-                <EventByLocation />
+                <!-- <EventByLocation /> -->
+                <EventMap />
             </div>
             <!-- <div>
                 <EventSwiper />
