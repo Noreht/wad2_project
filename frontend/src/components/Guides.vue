@@ -6,22 +6,17 @@
       <h1 class="text-center text-5xl sm:text-6xl font-semibold">
         {{ title }}
       </h1>
+      <br>
       <a
         href="/resourceguides"
         class="mt-6 xs:text-base rounded-md bg-amber-400 px-3.5 py-2.5 text-3xl font-semibold transition duration-300 ease-in-out text-black drop-shadow-lg hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
       >
         Back
       </a>
-      <!-- <a
-              href="#"
-              class="  xs:text-base rounded-md bg-amber-400 px-3.5 py-2.5 text-3xl font-semibold transition duration-300 ease-in-out text-black drop-shadow-lg hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-            >
-              Back
-          </a> -->
       <div
-        class="rounded-3xl border-4 border-orange-800 mt-5 min-w-[200px] shadow-2xl"
+        class="rounded-3xl border-4 border-orange-800 mt-8 min-w-[200px] shadow-2xl"
       >
-        <div class="md:grid grid-cols-2 grid-rows-3">
+        <div class="min-[1280px]:max-h-96 lg:grid grid-cols-2 grid-rows-3">
           <div class="col-span-2">
             <h2 class="mt-4 pl-8 text-4xl sm:text-5xl font-semibold">
               Do it together!
@@ -31,26 +26,26 @@
             </h3>
           </div>
 
-          <div class="row-span-4">
-            <div class="md:grid md:grid-cols-2">
+          <div class="row-span-2">
+            <div class="md:grid grid-cols-2">
               <div v-for="chunk in manipulateList" class="mb-4 mt-4 space-y-5">
                 <div
                   v-for="item in chunk"
-                  class="pl-8 relative flex items-start"
+                  class="pl-8 relative flex items-center"
                 >
-                  <div class="flex h-6 items-center">
+                  <div class="md:my-2 flex h-6">
                     <input
                       :id="item"
                       aria-describedby="comments-description"
                       name="comments"
                       type="checkbox"
-                      class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      class="min-[1280px]:h-6 min-[1280px]:w-6 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                   </div>
-                  <div class="ml-3 sm:text-xl leading-6">
+                  <div class=" md:my-2 ml-3 sm:text-xl leading-6">
                     <label
                       :for="item"
-                      class="sm:text-xl font-normal text-gray-500"
+                      class=" min-[1280px]:text-2xl sm:text-xl font-normal text-gray-500"
                       >{{ item }}</label
                     >
                   </div>
@@ -62,7 +57,7 @@
             <img class="w-[100%]" :src="requiredimage" />
           </div>
         </div>
-        <div v-for="step in thesteps" class="mx-5 mb-4">
+        <div v-for="step in thesteps" class="my-8 mx-5 mb-4">
           <StepCards
             :header="step['name']"
             :body="step['text']"

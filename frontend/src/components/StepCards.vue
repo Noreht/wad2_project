@@ -1,6 +1,6 @@
 
 <template>
-    <div class=" my-10 py-5 bg-[rgb(255,255,255,0.3)] rounded-2xl border-2 border-amber-700">
+    <div class=" py-5 bg-[rgb(255,255,255,0.3)] rounded-2xl border-2 border-amber-700">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div class="min-[1030px]:grid grid-cols-4 mx-auto lg:mx-0">
             <h2 class="col-span-3 text-2xl sm:text-3xl text-black py-5 leading-10 font-semibold tracking-normal">{{ header }}</h2>
