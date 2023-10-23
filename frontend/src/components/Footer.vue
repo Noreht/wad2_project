@@ -19,7 +19,10 @@
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/blackgoldsoil?lang=en" class="grid items-center" target="blank"
+            <a
+              href="https://twitter.com/blackgoldsoil?lang=en"
+              class="grid items-center"
+              target="blank"
               ><img
                 src="/SocialMediaPics/icons8-twitterx.svg"
                 alt="TwitterX"
@@ -42,7 +45,10 @@
             </a>
           </li>
           <li>
-            <a href="https://www.youtube.com/watch?v=t44o4tsgo_k" class="grid items-center" target="blank"
+            <a
+              href="https://www.youtube.com/watch?v=t44o4tsgo_k"
+              class="grid items-center"
+              target="blank"
               ><img
                 src="/SocialMediaPics/icons8-youtube.svg"
                 alt="Youtube"
@@ -52,7 +58,10 @@
             </a>
           </li>
           <li>
-            <a href="https://www.tiktok.com/discover/longevity-of-black-gold-project" class="grid items-center" terget="blank"
+            <a
+              href="https://www.tiktok.com/discover/longevity-of-black-gold-project"
+              class="grid items-center"
+              target="blank"
               ><img
                 src="/SocialMediaPics/icons8-tiktok.svg"
                 alt="TikTok"
