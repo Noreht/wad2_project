@@ -3,6 +3,7 @@ import {
     emailSignIn,
     signOutUser,
     updateUserProfile,
+    isLoggedIn,
   } from "@/utils/firebase";
   import { createStore } from "vuex";
   
@@ -42,6 +43,7 @@ import {
         const response = await emailSignIn(email, password);
         if (response) {
           context.commit("setUser", response.user);
+          context.commit("setLoggedIn", true);
         } else {
           throw new Error("login failed");
         }
@@ -73,6 +75,8 @@ import {
           context.commit("setUser", null);
         }
       },
+
+
     },
   });
   

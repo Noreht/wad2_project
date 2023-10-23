@@ -1,11 +1,13 @@
 import { auth } from "./firebaseInit";
 import { 
     createUserWithEmailAndPassword, 
+    getAuth, 
     signInWithEmailAndPassword, 
     signOut,
     updateProfile
 } from "firebase/auth";
 import AUTH_ERROR_CODES_MAP from "./firebaseAuthErrorCodes";
+import { onAuthStateChanged } from 'firebase/auth';
 
 // Sign out
 export const signOutUser = async () => {
@@ -31,10 +33,19 @@ export const updateUserProfile = (updatedUserObj) => {
 };
 
 
+// 
+export const isLoggedIn = () => {
+  return new Promise((resolve) => {
+    onAuthStateChanged(auth, (user) => {
+      resolve(!!user); // Resolve with true if a user is logged in, otherwise false
+    });
+  });
+};
 
 
-
-
+export const getCurrentUser = () => {
+  return auth.currentUser;
+};
 
 
 // Error handling

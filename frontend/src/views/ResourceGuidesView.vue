@@ -3,8 +3,10 @@
     <div class="col-span-2 p-4"></div>
     <div class="col-span-8 p-4 place-content-center">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
-      <h1 class="text-center text-5xl sm:text-6xl font-semibold">Resources and Guides</h1>
-      <h3 class=" py-4 text-center text-lg sm:text-xl font-semibold leading-10">
+      <h1 class="text-center text-5xl sm:text-6xl font-semibold">
+        Resources and Guides
+      </h1>
+      <h3 class="py-4 text-center text-lg sm:text-xl font-semibold leading-10">
         Explore and kick start your journey today!
       </h3>
       <ResourceGuidesSummary
@@ -34,26 +36,32 @@
           <ResourceGuidesCard
             :title="'Make a Basic Compost?'"
             :image="'ResourceGuidesCards/compostbin1.png'"
+            :url1="'/basiccompost'"
           />
           <ResourceGuidesCard
             :title="'Build a Composting Bin?'"
             :image="'ResourceGuidesCards/compostbin.png'"
+            :url1="''"
           />
           <ResourceGuidesCard
             :title="'Keep your Compost Warm?'"
             :image="'ResourceGuidesCards/warm.png'"
+            :url1="''"
           />
           <ResourceGuidesCard
             :title="'Speed up Composting Process?'"
             :image="'ResourceGuidesCards/time.png'"
+            :url1="''"
           />
           <ResourceGuidesCard
             :title="'Keep your Compost from Smelling?'"
             :image="'ResourceGuidesCards/odor.png'"
+            :url1="''"
           />
           <ResourceGuidesCard
             :title="'Process Food Waste before using?'"
             :image="'ResourceGuidesCards/food.png'"
+            :url1="''"
           />
         </div>
       </div>
@@ -84,8 +92,8 @@
           </div>
       </div>
     </div>
-    </div>
-    <div class="col-span-2 px-4"></div>
+  </div>
+  <div class="col-span-2 px-4"></div>
 
   <Foot />
 </template>

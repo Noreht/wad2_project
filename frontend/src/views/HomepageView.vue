@@ -243,24 +243,10 @@ export default {
   name: "HomepageView",
   components: { ImpactCard, Foot },
 
-  // SETUP included here to check with the user if they are logged in (variable is loggedIn)
   setup() {
     const store = useStore();
-    const router = useRouter();
-    const checkingAuthentication = ref(true);
-
-    const user = computed(() => {
-      return store.getters.user;
-    });
-
-    auth.onAuthStateChanged((user) => {
-      store.dispatch("fetchUser", user);
-      checkingAuthentication.value = false;
-    });
-
-    return { user, router };
-  },  
-
+    console.log(store.state.user)
+  },
 
   data() {
     return {
