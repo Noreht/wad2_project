@@ -1,5 +1,5 @@
 <template>
-  <section class="mb-3 lg:w-1/3 h-auto ">
+  <section class="mb-3 lg:w-1/3 h-auto flex-shrink-0">
     <article
       class="transform duration-300 hover:-translate-y-1 cursor-pointer hover:shadow-2xl group border-4 border-black rounded-3xl hover:scale-105"
     >

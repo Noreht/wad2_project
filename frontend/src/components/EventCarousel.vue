@@ -11,7 +11,7 @@
         </div>
         <div class="carousel">
             <div class="inner" ref="inner" :style="innerStyles">
-                <div class="jumbo" v-for="jumbo in EventJumbotron" :key="jumbo">
+                <div class="jumbo w-5/6" v-for="jumbo in EventJumbotron" :key="jumbo">
                     <div class="w-full pl-4 pb-1 h-72">
                         <div class="h-64 sm:p-2 bg-amber-400 rounded-xl shadow-xl dark:bg-gray-800 grid grid-cols-2 relative">
                             <div class="">
@@ -174,34 +174,58 @@ methods: {
   
 <style>
 .carousel {
-width: 100%;
-overflow: hidden;
-/* align-items:center; */
-margin:auto;
+    width: 950px;
+    overflow: hidden;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .inner {
-transition: transform 0.2s;
-white-space: nowrap;
-
+    transition: transform 0.2s;
+    white-space: nowrap;
+    display:flex;
 }
 
 .jumbo {
-width: 900px;
-margin-right: 30px;
-display: inline-flex;
-
-height: 300px;
-color: white;
-border-radius: 5px;
-/* align-items: center;
-justify-content: center; */
+    /* width: 100%; */
+    margin-right: 30px;
+    display: flex;
+    height: 300px;
+    color: white;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
 }  */
 
 
 button {
-margin-right: 5px;
-margin-top: 10px;
+    margin-right: 5px;
+    margin-top: 10px;
 }
+
+@media screen and (min-width:768px) {
+    .jumbo {
+        width:900px;
+    }
+}
+
+/* @media screen and (min-width:992px) {
+    .jumbo {
+        width:1000px;
+    }
+}
+
+@media screen and (min-width:576px) {
+    .jumbo {
+        width:800px;
+    }
+}
+
+@media screen and (min-width:576px) {
+    .jumbo {
+        width:800px;
+    }
+} */
 </style>
 
