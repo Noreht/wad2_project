@@ -7,6 +7,7 @@ import CommunitiesView from "@/views/CommunitiesView.vue";
 import EventsView from "@/views/EventsView.vue";
 import ContactView from "@/views/ContactView.vue";
 import BasicCompost from "@/views/BasicCompostView.vue";
+import CommunityPage from "@/views/CommunityPage.vue";
 
 import store from "@/store";
 import { inject } from "vue";
@@ -67,6 +68,12 @@ const routes = [
         path: "/basiccompost",
         name: "BasicCompost",
         component: BasicCompost,
+      },
+
+      { 
+        path: "/communitypage",
+        name: "CommunityPage",
+        component: CommunityPage,
       }
 
 ];
