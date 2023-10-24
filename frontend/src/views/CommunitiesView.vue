@@ -38,13 +38,14 @@
     import CommunityList from "@/components/CommunityList.vue";
     import CommunityHeader from "@/components/CommunityHeader.vue";
     import CommunityModal from "@/components/CommunityModal.vue";
+   
 
     
 
 
     export default {
         name: "CommunitiesView",
-        components: { CommunityList, CommunityHeader, CommunityModal },
+        components: { CommunityList, CommunityHeader, CommunityModal},
         data() {
             return {showModal: false};
         },

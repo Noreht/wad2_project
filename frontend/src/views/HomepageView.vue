@@ -133,10 +133,15 @@
                 >
                   Our Street Cred
                 </p>
+                
               </div>
+              
             </div>
           </div>
         </div>
+      </div>
+      <div>
+                <TwitterFeed />
       </div>
       <div class="grid place-items-center">
         <div class="w-6/12 mx-auto rounded border">
@@ -231,6 +236,7 @@
 <script>
 import ImpactCard from "@/components/ImpactCard.vue";
 import Foot from "@/components/Footer.vue";
+import TwitterFeed from "../components/TwitterFeed.vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import { computed, ref } from "vue";
@@ -241,7 +247,7 @@ const typeSpeed = 200; // Adjust the speed as needed (in milliseconds)
 
 export default {
   name: "HomepageView",
-  components: { ImpactCard, Foot },
+  components: { ImpactCard, Foot, TwitterFeed },
 
   setup() {
     const store = useStore();
@@ -316,6 +322,6 @@ export default {
   beforeDestroy() {
     this.loopTyping = false; // Stop the looping when the component is destroyed
   },
-  components: { ImpactCard, Foot },
+  components: { ImpactCard, Foot, TwitterFeed },
 };
 </script>
