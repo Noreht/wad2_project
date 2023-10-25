@@ -44,18 +44,11 @@
           </DisclosureButton>
         </div>
         <div class="hidden lg:ml-4 lg:block">
-          <div class="flex items-center">
-            <button
-              type="button"
-              class="relative flex-shrink-0 rounded-full bg-gray-500 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-            >
-              <span class="absolute -inset-1.5" />
-              <span class="sr-only">View notifications</span>
-              <BellIcon class="h-6 w-6" aria-hidden="true" />
-            </button>
 
-            <!-- Profile dropdown -->
-            <Menu as="div" class="relative ml-4 flex-shrink-0">
+          <div class="hidden lg:ml-4 lg:block" v-if="checkPageLoggedIn !== null">
+          <div class="flex items-center">
+            <!-- Profile dropdown if logged in -->
+            <Menu as="div" v-if="checkPageLoggedIn" class="relative ml-4 flex-shrink-0">
               <div>
                 <MenuButton
                   class="relative flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -107,12 +100,38 @@
                         active ? 'bg-gray-100' : '',
                         'block px-4 py-2 text-sm text-gray-700',
                       ]"
-                      >Log In</a
+                      >Sign Out</a
                     >
                   </MenuItem>
                 </MenuItems>
               </transition>
             </Menu>
+            <!-- End of Profile Dropdown if logged in-->
+
+
+
+
+            <!-- Profile dropdown if not logged in -->
+            <Menu as="div" v-else="" class="relative ml-4 flex-shrink-0">
+              <div>
+                <div class="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
+                  <a
+                    href="/login"
+                    rel="noopener noreferrer"
+                    class="bg-orange-400 text-white text-xl font-medium rounded-md px-4 py-2 flex items-center justify-center hover:bg-yellow-600 transition duration-300 ease-in-out shadow-lg min-w-[100px]"
+                  >
+                  Log In
+                  </a>
+                </div>
+              </div>
+
+            </Menu>
+            <!-- End of Profile dropdown if not logged in -->
+          </div>
+
+
+
+
           </div>
         </div>
       </div>
@@ -152,7 +171,11 @@
           >Contact</DisclosureButton
         >
       </div>
-      <div class="border-t border-gray-700 pb-3 pt-4">
+
+
+
+      <!-- Responsive If Logged in Start-->
+      <div v-if="checkPageLoggedIn" class="border-t border-gray-700 pb-3 pt-4">
         <div class="flex items-center px-5">
           <div class="flex-shrink-0">
             <img
@@ -165,14 +188,6 @@
             <div class="text-base font-medium text-white">Tom Cook</div>
             <div class="text-sm font-medium text-gray-400">tom@example.com</div>
           </div>
-          <button
-            type="button"
-            class="relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-          >
-            <span class="absolute -inset-1.5" />
-            <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
         </div>
         <div class="mt-3 space-y-1 px-2">
           <DisclosureButton
@@ -195,6 +210,33 @@
           >
         </div>
       </div>
+      <!-- Responsive If Logged in End-->
+
+      <!-- Responsive If NOT Logged in Start-->
+
+      <div v-else="" class="border-t border-gray-700 ">
+        <div class="mt-3 space-y-1 px-2">
+          <DisclosureButton
+            as="a"
+            href="/login"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+            >Log In</DisclosureButton
+          >
+          <DisclosureButton
+            as="a"
+            href="/registration"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+            >Sign Up</DisclosureButton
+          >
+        </div>
+      </div>
+
+
+
+      <!-- Responsive If NOT Logged in End-->
+
+
+
     </DisclosurePanel>
   </Disclosure>
 </template>
@@ -211,7 +253,19 @@ import {
 } from "@headlessui/vue";
 import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+import { isLoggedIn } from "../utils/firebase";
+
+
+const checkPageLoggedIn = ref(null);
+
+onMounted(async () => {
+  const loggedIn = await isLoggedIn();
+  checkPageLoggedIn.value = loggedIn;
+}
+
+)
 
 function getClass(path) {
   if (window.location.pathname === path) {
@@ -229,9 +283,14 @@ function getClassResponsive(path) {
   }
 }
 
-//   If is the selected path
-//   rounded-md bg-amber-400 px-3 py-2 text-sm font-medium text-white
+// Check if the page is logged in
+// async function checkPageLoggedIn() {
+//   const loggedIn = await isLoggedIn();
+//   console.log(loggedIn);
+//   return loggedIn;
+// }
 
-// If is not the selected path
-// rounded-md px-3 py-2 text-sm font-medium text-trueGray-900 hover:bg-amber-300 hover:text-white
+// 
+
+
 </script>

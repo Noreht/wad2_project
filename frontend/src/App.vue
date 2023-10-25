@@ -1,6 +1,7 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import DonateScrapsButton from "@/components/DonateScrapsButton.vue";
+import { useStore } from "vuex";
 
 export default {
   name: "App",

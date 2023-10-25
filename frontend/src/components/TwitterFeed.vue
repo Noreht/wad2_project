@@ -17,7 +17,7 @@
 
 
 <script setup>
-import Tweet from "vue-tweet";
+// import Tweet from "vue-tweet";
 </script>
 
 
