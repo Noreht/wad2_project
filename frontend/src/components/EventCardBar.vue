@@ -1,4 +1,5 @@
 <template>
+   
     <TabGroup>
       <TabList>
         <div class="flex justify-center space-x-5"> 
@@ -111,17 +112,30 @@
     import { CheckCircleIcon } from '@heroicons/vue/20/solid'
     import  ImpactCard  from '@/components/ImpactCard.vue'
     // import { eventCard } from '@/components/EventCard.vue'
-  
+    import { getAllEvents } from "@/utils/firebase";
+
+    
     export default {
-      components: {
-        TabGroup,
-        TabList,
-        Tab,
-        TabPanels,
-        TabPanel,
-        CheckCircleIcon,
-        // eventCard,
-        ImpactCard,
-      },
+
+        async setup() {
+            console.log("Setup Initiated")
+            const eventList = await getAllEvents();
+            return {
+                eventList,
+            };
+            
+        },
+        components: {
+            TabGroup,
+            TabList,
+            Tab,
+            TabPanels,
+            TabPanel,
+            CheckCircleIcon,
+            // eventCard,
+            ImpactCard,
+        },
     }
+
+  
   </script>

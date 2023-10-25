@@ -22,9 +22,11 @@
 
                 <EventCategoryHeader />
             </div>
-            <div>
-                <EventCardBar />
-            </div>
+            <Suspense>
+                <div>
+                    <EventCardBar />
+                </div>
+            </Suspense>
     
     
         </div>
@@ -45,6 +47,7 @@
     import EventCategoryHeader from "@/components/EventCategoryHeader.vue";
     import EventCardBar from "@/components/EventCardBar.vue";
     import Foot from "@/components/Footer.vue";
+    
 
     export default {
         name: "EventsView",
