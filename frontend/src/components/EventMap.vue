@@ -1,6 +1,6 @@
 <template>
     <div class="map-container w-full rounded-3xl border-4 border-orange-800 relative">
-        <div class='sidebar absolute w-1/3 overflow-hidden border border-r-2 rounded-l-3xl'>
+        <div class='sidebar absolute w-1/3 flex flex-col overflow-hidden border border-r-2 rounded-l-3xl'>
                 <div class='heading border-b border-black bg-blue-300 px-4 py-3 sm:px-6 flex align-middle rounded-tr-sm sticky'>
                     <h1 class="font-bold text-lg text-black">Our Events</h1>
                 </div>
@@ -89,10 +89,6 @@
     .sidebar {
         width:33%;
         height:100%;
-    }
-
-    li.active {
-        background-color: #FFBF00;
     }
 
 </style>

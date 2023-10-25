@@ -62,7 +62,7 @@
                     />
                    
                     <ImpactCard
-                        :feature="'New Farm Creation (Pioneer)'"
+                        :feature="'New Farm (Pioneer)'"
                         :content="'Join us in the launch of our new farm!'"
                         :date="'15 Oct'"
                         :image="'ImpactCards/Contributor.jpg'"
@@ -84,7 +84,7 @@
             <TabPanel>
                 <div class="overflow-x-scroll overflow-hidden flex flex-row flex-shrink-0 gap-2 first:pl-6 last:pr-6 ">
                     <ImpactCard
-                        :feature="'Sengkang Pri Sch volunteering'"
+                        :feature="'Sengkang Pri Sch'"
                         :content="'Student Engagement activity'"
                         :date="'21 Oct'"
                         :image="'ImpactCards/Contributor.jpg'"

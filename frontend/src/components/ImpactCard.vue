@@ -24,7 +24,7 @@
         </a>
       </div>
       <ul class="mt-5 font-bold text-black text-center">
-        <li class="inline pb-1 border-b-4 border-green-700 text-3xl">
+        <li class="inline pb-1 border-b-4 border-green-700 text-3xl min-h-max">
           {{ feature }}
         </li>
       </ul>

@@ -18,6 +18,7 @@
 
 <script>
     import UserCommunityPage from "@/components/UserCommunityPage.vue";
+    
 
     export default {
         name: "CommunityPage",

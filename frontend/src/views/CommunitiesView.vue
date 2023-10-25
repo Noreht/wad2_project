@@ -30,7 +30,7 @@
     </div>
     <Foot/>
     
-    </template>
+</template>
     
     
     

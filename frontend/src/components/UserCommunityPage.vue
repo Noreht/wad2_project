@@ -1,4 +1,7 @@
 <template>
+    <div>
+            <CommunityInformationBar />
+    </div>
     
       <div class="flex">
         <div 
@@ -23,6 +26,7 @@
           volunteers
         </div>
       </div>
+      
       <div v-if="activeTab === 'updates'" >
         <div class="columns-2">
             <div class="w-full bg-amber-400">
@@ -99,13 +103,23 @@
   </template>
   
 <script >
+
+    import CommunityInformationBar from './CommunityInformationBar.vue';
+
+
     export default {
+        components: {
+            CommunityInformationBar
+        },
         data() {
-        return {
-            activeTab: 'feed'
-        };
+            return {
+                activeTab: 'feed',
+                
+            }
+            
         }
-    };
+  
+};
 
 
 </script>
