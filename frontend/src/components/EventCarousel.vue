@@ -9,9 +9,9 @@
                 Events
             </h1>
         </div>
-        <div class="carousel">
-            <div class="inner" ref="inner" :style="innerStyles">
-                <div class="jumbo w-5/6" v-for="jumbo in EventJumbotron" :key="jumbo">
+        <div class="carousel w-full h-80 flex relative content-center">
+            <div class="inner relative w-full h-full content-center" ref="inner" :style="innerStyles">
+                <div class="jumbo absolute w-11/12 ml-3 " v-for="jumbo in EventJumbotron" :key="jumbo">
                     <div class="w-full pl-4 pb-1 h-72">
                         <div class="h-64 sm:p-2 bg-amber-400 rounded-xl shadow-xl dark:bg-gray-800 grid grid-cols-2 relative">
                             <div class="">
@@ -107,6 +107,7 @@ methods: {
     setStep () {
     const innerWidth = this.$refs.inner.scrollWidth
     const totalJumbotrons = this.EventJumbotron.length
+    // this.step = `${innerWidth }px`
     this.step = `${innerWidth / totalJumbotrons}px`
     },
 
@@ -141,6 +142,7 @@ methods: {
     },
 
     moveLeft () {
+   
     this.innerStyles = {
         transform: `translateX(-${this.step})
                     translateX(-${this.step})`
@@ -148,6 +150,7 @@ methods: {
     },
 
     moveRight () {
+  
     this.innerStyles = {
         transform: `translateX(${this.step})
                     translateX(-${this.step})`
@@ -165,7 +168,7 @@ methods: {
     resetTranslate () {
     this.innerStyles = {
         transition: 'none',
-        transform: `translateX(-${this.step})`
+        transform: `translateX(0)`
     }
     }
 }
@@ -174,7 +177,7 @@ methods: {
   
 <style>
 .carousel {
-    width: 950px;
+    /* width: 950px; */
     overflow: hidden;
     display:flex;
     align-items: center;
@@ -189,7 +192,7 @@ methods: {
 
 .jumbo {
     /* width: 100%; */
-    margin-right: 30px;
+    /* margin-right: 30px; */
     display: flex;
     height: 300px;
     color: white;
@@ -204,11 +207,7 @@ button {
     margin-top: 10px;
 }
 
-@media screen and (min-width:768px) {
-    .jumbo {
-        width:900px;
-    }
-}
+
 
 /* @media screen and (min-width:992px) {
     .jumbo {
