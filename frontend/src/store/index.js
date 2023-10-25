@@ -59,10 +59,10 @@ import {
     //     }
     //   },
 
-    //   async logOut(context) {
-    //     await signOutUser();
-    //     context.commit("setUser", null);
-    //   },
+      async logOut(context) {
+        await signOutUser();
+        context.commit("setUser", null);
+      },
 
       async fetchUser(context, user) {
         context.commit("setLoggedIn", user !== null);

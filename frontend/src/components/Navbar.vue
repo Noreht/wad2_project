@@ -95,10 +95,10 @@
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
                     <a
-                      href="/login"
+                      @click.prevent="signOut" 
                       :class="[
-                        active ? 'bg-gray-100' : '',
-                        'block px-4 py-2 text-sm text-gray-700',
+                        active ? 'bg-gray-100 cursor-pointer' : 'cursor-pointer',
+                        'block px-4 py-2 text-sm text-gray-700', 
                       ]"
                       >Sign Out</a
                     >
@@ -256,9 +256,19 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import { isLoggedIn } from "../utils/firebase";
+import { useRouter } from "vue-router";
 
 
+const store = useStore();
+const router = useRouter();
 const checkPageLoggedIn = ref(null);
+
+
+const signOut = async () => {
+      await store.dispatch("logOut");
+      router.push("/login");
+    };
+
 
 onMounted(async () => {
   const loggedIn = await isLoggedIn();
