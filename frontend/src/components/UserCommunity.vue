@@ -73,53 +73,32 @@
                     :postAuthor="item.postAuthor"
                     @item-clicked="handleItemClicked"
                     @update:selected="updateSelected" />
-            
-                <!-- <CommunityFeedItem 
-                :topic = "'Assistance Required'"
-                :postAge = "'3 days ago'"
-                :postDesc ="'As stated above. We are requiring volunteers to help fix our farm roof or water risks flooding everything! Sign up on Events or leave comments for more info.'"
-                :postAuthor ="'Jese Leos'"
-                @item-selected="handleItemSelected"
-                />
-
-                <CommunityFeedItem 
-                :topic = "'Dying Over Here'"
-                :postAge = "'5 days ago'"
-                :postDesc ="'Volunteers, please be more active! Our community is not a one man show!'"
-                :postAuthor ="'Jese Leos'"
-                @item-selected="handleItemSelected"
-                />
-
-                <CommunityFeedItem 
-                :topic = "'Milestone reached!'"
-                :postAge = "'13 days ago'"
-                :postDesc ="'We are now 500 days old!'"
-                :postAuthor ="'Jese Leos'"
-                @item-selected="handleItemSelected"
-                /> -->
-
                 
             </div>
         </div>
     </div> 
-      <div v-if="activeTab === 'events'" class="events-container">
-        <!-- Events content  -->
-      </div>
-      <div v-if="activeTab === 'volunteers'" class="volunteers-container">
-        <!-- Community User content -->
-      </div>
+    <div v-if="activeTab === 'events'" class="events-container">
+      <!-- Events content  -->
+      <Suspense>
+        <CommunityEvents />
+      </Suspense>
+    </div>
+    <div v-if="activeTab === 'volunteers'" class="volunteers-container">
+      <!-- Community User content -->
+    </div>
     
   </template>
   
 <script >
 
     import CommunityInformationBar from './CommunityInformationBar.vue';
-    import CommunityFeedItem from "./CommunityFeedItem.vue"
+    import CommunityFeedItem from "./CommunityFeedItem.vue";
+    import CommunityEvents from "./CommunityEvents.vue";
 
 
     export default {
         components: {
-            CommunityInformationBar, CommunityFeedItem
+            CommunityInformationBar, CommunityFeedItem, CommunityEvents
         },
         data() {
             return {
