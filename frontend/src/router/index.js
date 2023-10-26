@@ -94,8 +94,6 @@ const router = createRouter({
     if (to.meta.requiresAuth && !loggedIn) {
       // You should call the getter to check if the user is authenticated
       console.log(store.getters.user)
-        // This r goute requires auth, and the user is not logged in
-        // Redirect to the login page with the original path as a query parameter
       next({
         path: "/login",
         query: { redirect: to.fullPath },
