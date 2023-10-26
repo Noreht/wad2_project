@@ -1,64 +1,29 @@
 <template>
-  <div class="grid grid-cols-12 bg-gradient-to-t from-indigo-500 to-orange-50">
+  <div class="grid grid-cols-12 bg-gradient-to-t from-amber-100  to-orange-50 py-5">
     <div class="col-span-2"></div>
     <div class="col-span-8">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
-      <div class="relative isolate bg-[rgb(255,255,255,0.3)]">
+      <div class="relative isolate py-10">
         <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
           <div
-            class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-48"
+            class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 xs:py-0 lg:py-48"
           >
             <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
               <div
                 class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-1/2"
               >
-                <!-- <svg
-                  class="absolute inset-0 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
-                  aria-hidden="true"
-                >
-                  <defs>
-                    <pattern
-                      id="83fd4e5a-9d52-42fc-97b6-718e5d7ee527"
-                      width="200"
-                      height="200"
-                      x="100%"
-                      y="-1"
-                      patternUnits="userSpaceOnUse"
-                    >
-                      <path d="M130 200V.5M.5 .5H200" fill="none" />
-                    </pattern>
-                  </defs>
-                  <rect
-                    width="100%"
-                    height="100%"
-                    stroke-width="0"
-                    fill="white"
-                  />
-                  <svg x="100%" y="-1" class="overflow-visible fill-gray-50">
-                    <path d="M-470.5 0h201v201h-201Z" stroke-width="0" />
-                  </svg>
-                  <rect
-                    width="100%"
-                    height="100%"
-                    stroke-width="0"
-                    fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)"
-                  />
-                </svg> -->
+
               </div>
-              <h2 class="text-3xl font-bold tracking-tight text-gray-900">
+              <h2 class="text-7xl font-bold tracking-tight text-gray-900">
                 Get in touch.
               </h2>
-              <p class="mt-6 text-lg leading-8 text-gray-600">
+              <p class="mt-6 text-lg lead ing-8 text-gray-600">
                 Have a question, problem or an idea? Let us know.
               </p>
               <dl class="space-y-4 text-base leading-7 text-gray-600">
                 <div class="flex">
                   <dt class="flex-none">
                     <span class="sr-only">Email</span>
-                    <EnvelopeIcon
-                      class="h-7 w-6 text-gray-400"
-                      aria-hidden="true"
-                    />
                   </dt>
                   <dd>
                     <a
@@ -71,103 +36,77 @@
               </dl>
             </div>
           </div>
-          <form
-            action="#"
-            method="POST"
-            class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
-          >
-            <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
-              <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-                <div>
-                  <label
-                    for="first-name"
-                    class="block text-sm font-semibold leading-6 text-gray-900"
-                    >First name</label
-                  >
-                  <div class="mt-2.5">
-                    <input
-                      type="text"
-                      name="first-name"
-                      id="first-name"
-                      autocomplete="given-name"
-                      class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    for="last-name"
-                    class="block text-sm font-semibold leading-6 text-gray-900"
-                    >Last name</label
-                  >
-                  <div class="mt-2.5">
-                    <input
-                      type="text"
-                      name="last-name"
-                      id="last-name"
-                      autocomplete="family-name"
-                      class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-                <div class="sm:col-span-2">
-                  <label
-                    for="email"
-                    class="block text-sm font-semibold leading-6 text-gray-900"
-                    >Email</label
-                  >
-                  <div class="mt-2.5">
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      autocomplete="email"
-                      class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-                <div class="sm:col-span-2">
-                  <label
-                    for="phone-number"
-                    class="block text-sm font-semibold leading-6 text-gray-900"
-                    >Phone number</label
-                  >
-                  <div class="mt-2.5">
-                    <input
-                      type="tel"
-                      name="phone-number"
-                      id="phone-number"
-                      autocomplete="tel"
-                      class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-                <div class="sm:col-span-2">
-                  <label
-                    for="message"
-                    class="block text-sm font-semibold leading-6 text-gray-900"
-                    >Message</label
-                  >
-                  <div class="mt-2.5">
-                    <textarea
-                      name="message"
-                      id="message"
-                      rows="4"
-                      class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="mt-8 flex justify-end">
-                <button
-                  type="submit"
-                  class="rounded-md bg-amber-400 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Send message
-                </button>
-              </div>
-            </div>
-          </form>
+
+
+          <div class="flex min-h-full flex-1 flex-col justify-center sm:px-6 lg:px-8">
+
+<div class="sm:mx-auto sm:w-full sm:max-w-xxl mt-10">
+  <div class="bg-white px-6 py-2 shadow-xl sm:rounded-lg sm:px-12 border-4 border-black rounded-3xl">
+    <div class="space-y-6 mt-5">
+
+
+
+      <div class="lg:flex lg:space-x-6">
+  <div class="lg:w-1/2">
+    <label for="firstName" class="block text-sm font-medium leading-6 text-gray-900">First Name</label>
+    <div class="mt-1">
+      <input id="firstName" name="firstName" v-model="firstName" required="" class="block w-full border-0 py-1.5 text-gray-900 shadow-sm border-b-4 border-gray-500 placeholder:text-gray-400 focus:border-b-8 focus:border-gray-600 focus:ring-0 sm:text-sm sm:leading-6 transition-all duration-200 ease-in-out" />
+    </div>
+  </div>
+
+  <div class="lg:w-1/2 mt-6 lg:mt-0">
+    <label for="lastName" class="block text-sm font-medium leading-6 text-gray-900">Last Name</label>
+    <div class="mt-1">
+      <input id="lastName" name="lastName" v-model="lastName" required="" class="block w-full border-0 py-1.5 text-gray-900 shadow-sm border-b-4 border-gray-500 placeholder:text-gray-400 focus:border-b-8 focus:border-gray-600 focus:ring-0 sm:text-sm sm:leading-6 transition-all duration-200 ease-in-out" />
+    </div>
+  </div>
+</div>
+
+
+
+
+      <div>
+        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+        <div class="mt-1">
+          <input id="email" name="email" type="email" v-model="email" autocomplete="email" required="" class="block w-full border-0 py-1.5 text-gray-900 shadow-sm border-b-4 border-gray-500 placeholder:text-gray-400 focus:border-b-8 focus:border-gray-600 focus:ring-0 sm:text-sm sm:leading-6 transition-all duration-200 ease-in-out" />
+
+        </div>
+      </div>
+
+      <div>
+    <label for="subject" class="block text-sm font-medium leading-6 text-gray-900">Subject</label>
+    <div class="mt-1">
+      <input id="subject" name="subject" v-model="subject" required="" class="block w-full border-0 py-1.5 text-gray-900 shadow-sm border-b-4 border-gray-500 placeholder:text-gray-400 focus:border-b-8 focus:border-gray-600 focus:ring-0 sm:text-sm sm:leading-6 transition-all duration-200 ease-in-out" />
+    </div>
+  </div>
+
+
+      <div>
+  <label for="message" class="block text-sm font-medium leading-6 text-gray-900">Your Message</label>
+  <div class="mt-1">
+    <textarea id="message" name="message" v-model="message" rows="4" required="" class="block w-full border-0 py-1.5 text-gray-900 shadow-sm border-b-4 border-gray-500 placeholder:text-gray-400 focus:border-b-8 focus:border-gray-600 focus:ring-0 sm:text-sm sm:leading-6 transition-all duration-200 ease-in-out"></textarea>
+  </div>
+</div>
+
+
+      <div>
+        <button type="submit" @click="sendEmail" class="flex w-full justify-center rounded-md bg-amber-400 px-3 py-1.5 text-lg font-semibold leading-6 text-gray-800 shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="relative mt-10">
+        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+          <div class="w-full border-t border-gray-200" />
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
         </div>
       </div>
     </div>
@@ -178,9 +117,41 @@
 
 <script>
 import Foot from "@/components/Footer.vue";
+import { Email } from "@/assets/smtp/smtp.js"
 
 export default {
   name: "Communities",
   components: { Foot },
+
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: "",
+      subject: "",
+    };
+  },
+  
+  methods: {
+    sendEmail() {
+      // send message to email
+      
+      // Email.send({
+      //   SecureToken: "YOUR_SMTP_SERVER_SECURITY_TOKEN",
+      //   To: "broooyannn@gmail.com",
+      //   From: this.email,
+      //   FirstName: this.firstName,
+      //   LastName: this.lastName,
+      //   Subject: this.subject,
+      //   Body: this.message,
+      // }).then(() => alert("Thank you for your message! We will get back to you soon."));
+
+      this.$toast.success("Thank you for your message! We will get back to you soon" + "!");
+      
+    },
+  },
+
+
 };
 </script>
