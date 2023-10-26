@@ -132,8 +132,8 @@
         },
         methods: {
             handleItemClicked(clickedItem) {
-                console.log("handleItemClicked start")
-                console.log("Clicked Item: " + clickedItem)
+                //console.log("handleItemClicked start")
+                //console.log("Clicked Item: " + clickedItem)
                 this.items.forEach((item) => {
                     if (item.topic == clickedItem) {
                     item.selected = true;
@@ -147,7 +147,7 @@
                 ;
             },
             updateSelected(selectedItem) {
-                console.log("SelectedItem Start")
+                //console.log("SelectedItem Start")
                 
                 this.items.forEach((item) => {
                     item.selected = item === selectedItem;

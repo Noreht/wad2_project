@@ -25,58 +25,32 @@
       </TabList>
       <TabPanels>
             <TabPanel> 
-                <div class="overflow-x-scroll overflow-hidden flex flex-row flex-shrink-0 gap-2 pt-5 first:pl-6 last:pr-6 ">
-                    <ImpactCard
-                        :feature="'Family Volunteering'"
-                        :content="'Unique fun day out with the family'"
-                        :date="'21 Oct'"
+                <div class="overflow-x-scroll overflow-hidden flex flex-row flex-shrink-0 gap-2 pt-5 first:pl-6 last:pr-6 " >
+                    <template v-for="(event,index) in eventList">
+                        <ImpactCard 
+                        v-if="event.EventType == 'Ad-hoc Volunteering'"
+                        :feature="event.EventName"
+                        :content="event.EventDescription"
+                        :date ="'12 Nov'"
                         :image="'ImpactCards/Contributor.jpg'"
                         :hoverImage="'ImpactCards/Contributor.jpg'"
-                    />
-                    
-                    <ImpactCard
-                        :feature="'Farm Tour'"
-                        :content="'See how composting is like first hand!'"
-                        :date="'15 Oct'"
-                        :image="'ImpactCards/Contributor.jpg'"
-                        :hoverImage="'ImpactCards/Contributor.jpg'"
-                    />
+                        />
+                    </template>
                     
                 </div>
             </TabPanel>
             <TabPanel>
                 <div class="overflow-x-scroll overflow-hidden flex flex-row flex-shrink-0 gap-2 first:pl-6 last:pr-6 ">
-                    <ImpactCard
-                        :feature="'Composting Workshop'"
-                        :content="'Learn key composting fundamentals'"
-                        :date="'12 Oct'"
+                    <template v-for="(event,index) in eventList">
+                        <ImpactCard 
+                        v-if="event.EventType == 'Workshops'"
+                        :feature="event.EventName"
+                        :content="event.EventDescription"
+                        :date ="'12 Nov'"
                         :image="'ImpactCards/Contributor.jpg'"
                         :hoverImage="'ImpactCards/Contributor.jpg'"
-                    />
-                    
-                    <ImpactCard
-                        :feature="'Roof Repair'"
-                        :content="'Make the community a safe place to work in!'"
-                        :date="'15 Oct'"
-                        :image="'ImpactCards/Contributor.jpg'"
-                        :hoverImage="'ImpactCards/Contributor.jpg'"
-                    />
-                   
-                    <ImpactCard
-                        :feature="'New Farm (Pioneer)'"
-                        :content="'Join us in the launch of our new farm!'"
-                        :date="'15 Oct'"
-                        :image="'ImpactCards/Contributor.jpg'"
-                        :hoverImage="'ImpactCards/Contributor.jpg'"
-                    />
-                    
-                    <ImpactCard
-                        :feature="'Roof Repair'"
-                        :content="'Make the community a safe place to work in!'"
-                        :date="'15 Oct'"
-                        :image="'ImpactCards/Contributor.jpg'"
-                        :hoverImage="'ImpactCards/Contributor.jpg'"
-                    />
+                        />
+                    </template>
                    
 
                 </div>
@@ -84,21 +58,16 @@
             </TabPanel>
             <TabPanel>
                 <div class="overflow-x-scroll overflow-hidden flex flex-row flex-shrink-0 gap-2 first:pl-6 last:pr-6 ">
-                    <ImpactCard
-                        :feature="'Sengkang Pri Sch'"
-                        :content="'Student Engagement activity'"
-                        :date="'21 Oct'"
+                    <template v-for="(event,index) in eventList">
+                        <ImpactCard 
+                        v-if="event.EventType == 'Community Events'"
+                        :feature="event.EventName"
+                        :content="event.EventDescription"
+                        :date ="'12 Nov'"
                         :image="'ImpactCards/Contributor.jpg'"
                         :hoverImage="'ImpactCards/Contributor.jpg'"
-                    />
-                    
-                    <ImpactCard
-                        :feature="'IMH Outreach'"
-                        :content="'Being in nature calms the mind'"
-                        :date="'17 Oct'"
-                        :image="'ImpactCards/Contributor.jpg'"
-                        :hoverImage="'ImpactCards/Contributor.jpg'"
-                    />
+                        />
+                    </template>
                     
                 </div>
             </TabPanel>
@@ -118,10 +87,12 @@
     export default {
 
         async setup() {
-            console.log("Setup Initiated")
+            // console.log("Setup Initiated")
             const eventList = await getAllEvents();
+            // console.log(eventList[0].EventType)
+
             return {
-                eventList,
+                eventList
             };
             
         },
@@ -137,5 +108,7 @@
         },
     }
 
+    
+    
   
   </script>

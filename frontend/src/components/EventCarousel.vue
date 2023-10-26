@@ -11,20 +11,20 @@
         </div>
         <div class="carousel w-full h-80 flex relative content-center">
             <div class="inner relative w-full h-full content-center" ref="inner" :style="innerStyles">
-                <div class="jumbo absolute w-11/12 ml-3 " v-for="jumbo in EventJumbotron" :key="jumbo">
+                <div class="jumbo absolute w-11/12 ml-3 " v-for="(jumbo, index) in eventList" :key="jumbo">
                     <div class="w-full pl-4 pb-1 h-72">
                         <div class="h-64 sm:p-2 bg-amber-400 rounded-xl shadow-xl dark:bg-gray-800 grid grid-cols-2 relative">
                             <div class="">
                                 <h1 class="text-xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">
-                                    {{ jumbo.Header }} 
+                                    {{ jumbo.EventName }} 
                                 </h1>
                                 -----------------------------
                                 <h3 class="mb-1 text-l font-extrabold tracking-tight leading-none text-gray-900 md:text-xl lg:text-2xl dark:text-white">
-                                    {{ jumbo.Date }} 
+                                    {{ jumbo.EventDate }} 
                                 </h3>
 
                                 <h4 class="mb-1 text-l font-normal tracking-tight leading-none text-gray-900 md:text-xl lg:text-2xl dark:text-white">
-                                    {{ jumbo.Organiser }} 
+                                    {{ jumbo.EventOrganiser }} 
                                 </h4>
                                 
                                 <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center">Learn more
@@ -33,12 +33,10 @@
                                     </svg>
                                 </a>
                             </div>
-                            <div>
-                                <p class="mb-1 text-lg font-normal text-black lg:text-xl dark:text-gray-400">
-                                    {{ jumbo.Desc }} 
+                            <div class="overflow-y-auto">
+                                <p class="mb-1 text-lg font-normal text-black lg:text-xl dark:text-gray-400 break-normal whitespace-normal">
+                                    {{ jumbo.EventDescription }} 
                                 </p>
-
-                                
                             </div>
                             <button class="absolute bottom-5 right-12 w-8 h-8 rounded-full bg-black hover:bg-gray-500 text-white" @click="prev">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-1 w-6 h-6">
@@ -63,29 +61,19 @@
 <script>
 // import { ref } from "vue";
 import EventJumbotron from "./EventJumbotron.vue"
+import { getAllEvents } from "@/utils/firebase"
 
 export default {
-    
-    // setup() {
-    // },
-    // components: {
-    //     J: EventJumbotron,
-    //     innerStyles: {},
-    //     step: '',
-    //     transitioning: false
-    // },
+    async setup() {
+            console.log("Setup Initiated for Event Map")
+            const eventList = await getAllEvents();
+            //console.log(eventList[0].EventType)
 
-    
-    // methods: {
-    //     children() {
-    //         let ComponentClass = Vue.extend(EventJumbotron);
-    //         let instance = new ComponentClass({});
-
-    //         return [
-    //             instance, instance, instance, instance
-    //         ];
-    //     },
-    // },
+            return {
+                eventList
+            };
+            
+        },
     
     data () {
         return {
@@ -106,7 +94,7 @@ mounted () {
 methods: {
     setStep () {
     const innerWidth = this.$refs.inner.scrollWidth
-    const totalJumbotrons = this.EventJumbotron.length
+    const totalJumbotrons = this.eventList.length
     // this.step = `${innerWidth }px`
     this.step = `${innerWidth / totalJumbotrons}px`
     },
@@ -119,8 +107,8 @@ methods: {
     this.moveLeft()
 
     this.afterTransition(() => {
-        const jumbo = this.EventJumbotron.shift()
-        this.EventJumbotron.push(jumbo)
+        const jumbo = this.eventList.shift()
+        this.eventList.push(jumbo)
         this.resetTranslate()
         this.transitioning = false
     })
@@ -134,8 +122,8 @@ methods: {
     this.moveRight()
 
     this.afterTransition(() => {
-        const jumbo = this.EventJumbotron.pop()
-        this.EventJumbotron.unshift(jumbo)
+        const jumbo = this.eventList.pop()
+        this.eventList.unshift(jumbo)
         this.resetTranslate()
         this.transitioning = false
     })
