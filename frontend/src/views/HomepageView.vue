@@ -133,96 +133,96 @@
                 >
                   Our Street Cred
                 </p>
-                
               </div>
-              
             </div>
           </div>
         </div>
       </div>
       <div>
-                <TwitterFeed />
+        <TwitterFeed />
       </div>
-      <div class="grid place-items-center">
-        <div class="w-6/12 mx-auto rounded border">
-          <div class="bg-white p-10 shadow-sm">
+      <div class="grid place-items-center ">
+        <div class="w-6/12 mx-auto rounded-xl border min-w-[450PX]">
+          <div class="bg-yellow-900 p-10 shadow-sm rounded-xl -m-[10px]">
             <!-- ... your other content ... -->
             <h1
-              class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"
+              class="text-2xl font-bold tracking-tight text-white sm:text-3xl"
             >
               FAQ
             </h1>
             <!-- Accordion Wrapper -->
-            <div class="transition hover:bg-indigo-50">
+            <div class="transition hover:bg-amber-500 bg-black rounded-xl text-white mt-2" >
               <!-- header -->
               <div
                 class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16"
-                @click="toggleAccordion('howCanItBeDefined')"
+                @click="toggleAccordion('vision')"
               >
                 <i
                   class="fas"
                   :class="{
-                    'fa-plus': !accordionStatus.howCanItBeDefined,
-                    'fa-minus': accordionStatus.howCanItBeDefined,
+                    'fa-plus': !accordionStatus.vision,
+                    'fa-minus': accordionStatus.vision,
                   }"
                 ></i>
-                <h3>How can it be defined?</h3>
+                <h3 class="font-bold">What is the long-term vision for BlackGold?</h3>
               </div>
               <!-- Content -->
               <div
                 class="accordion-content px-5 pt-0 overflow-hidden"
                 :style="{
-                  maxHeight: accordionStatus.howCanItBeDefined ? 'none' : '0',
+                  maxHeight: accordionStatus.vision ? 'none' : '0',
                 }"
               >
-                <p class="leading-6 font-light pl-9 text-justify">
-                  Our asked sex point her she seems. New plenty she horses
-                  parish design you. Stuff sight equal of my woody. Him children
-                  bringing goodness suitable she entirely put far daughter.
-                </p>
-                <button
-                  class="rounded-full bg-indigo-600 text-white font-medium font-lg px-6 py-2 my-5 ml-9"
+                <p class="leading-6 mb-4 p-2 text-justify bg-amber-500 rounded-2xl text-black font-medium">
+                  At BlackGold, our mission is driven by the commitment to
+                  support Singapore's ambitious 30 by 30 food security plan. Our
+                  goal is to cultivate a productive, resilient, and
+                  resource-efficient agri-food industry.
+                  <button
+                  class="rounded-full bg-indigo-600 text-white font-medium font-lg px-6 py-2 mt-3 "
                 >
                   Learn more
                 </button>
+                </p>
+                
               </div>
             </div>
-            <div class="transition hover:bg-indigo-50">
+            <div class="transition hover:bg-amber-500 bg-black rounded-xl text-white mt-2" >
               <!-- header -->
               <div
                 class="accordion-header cursor-pointer transition flex space-x-5 px-5 items-center h-16"
-                @click="toggleAccordion('howCanItBeDefined')"
+                @click="toggleAccordion('vision')"
               >
                 <i
                   class="fas"
                   :class="{
-                    'fa-plus': !accordionStatus.howCanItBeDefined,
-                    'fa-minus': accordionStatus.howCanItBeDefined,
+                    'fa-plus': !accordionStatus.vision,
+                    'fa-minus': accordionStatus.vision,
                   }"
                 ></i>
-                <h3>How can it be defined?</h3>
+                <h3 class="font-bold">What is the long-term vision for BlackGold?</h3>
               </div>
               <!-- Content -->
               <div
                 class="accordion-content px-5 pt-0 overflow-hidden"
                 :style="{
-                  maxHeight: accordionStatus.howCanItBeDefined ? 'none' : '0',
+                  maxHeight: accordionStatus.vision ? 'none' : '0',
                 }"
               >
-                <p class="leading-6 font-light pl-9 text-justify">
-                  Our asked sex point her she seems. New plenty she horses
-                  parish design you. Stuff sight equal of my woody. Him children
-                  bringing goodness suitable she entirely put far daughter.
-                </p>
-                <button
-                  class="rounded-full bg-indigo-600 text-white font-medium font-lg px-6 py-2 my-5 ml-9"
+                <p class="leading-6 mb-4 p-2 text-justify bg-amber-500 rounded-2xl text-black font-medium">
+                  At BlackGold, our mission is driven by the commitment to
+                  support Singapore's ambitious 30 by 30 food security plan. Our
+                  goal is to cultivate a productive, resilient, and
+                  resource-efficient agri-food industry.
+                  <button
+                  class="rounded-full bg-indigo-600 text-white font-medium font-lg px-6 py-2 mt-3 "
                 >
                   Learn more
                 </button>
+                </p>
+                
               </div>
             </div>
-
-            <!-- ... your other accordions ... -->
           </div>
         </div>
       </div>
@@ -251,7 +251,7 @@ export default {
 
   setup() {
     const store = useStore();
-    console.log(store.state.user)
+    console.log(store.state.user);
   },
 
   data() {
