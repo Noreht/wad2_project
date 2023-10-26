@@ -8,7 +8,7 @@
                 <EventCarousel />
             </Suspense>
             
-            <div>
+            <div v-if="pageWidth >= 768" >
                 <h1 class="pt-4 mb-4 text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
                     Find your closest communities 
                 </h1>
@@ -19,11 +19,15 @@
             
             <div class="">
 
-                <h1 class="pt-4 mb-4 text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white">
+                <h1 class="pt-4 mb-4 text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-4xl dark:text-white" v-if="pageWidth >= 768" >
                     Nothing near you?
+                    <EventCategoryHeader />
                 </h1>
 
-                <EventCategoryHeader />
+                <h1 class="pt-4 mb-4 text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-4xl dark:text-white" v-else >
+                    Check out our events by category!
+                </h1>
+                
             </div>
             <Suspense>
                 <div>
@@ -55,6 +59,20 @@
     export default {
         name: "EventsView",
         components: { EventCarousel, EventJumbotron, EventMap, EventCategoryHeader, EventCardBar, Foot },
+        data () {
+            return {pageWidth: window.innerWidth}
+        },
+        mounted() {
+            window.addEventListener('resize', this.handleResize);
+        },
+        beforeDestroy() {
+            window.removeEventListener('resize', this.handleResize);
+        },
+        methods: {
+            handleResize() {
+                this.pageWidth = window.innerWidth;
+            },
+        },
     };
 
 </script>

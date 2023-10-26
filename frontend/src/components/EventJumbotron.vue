@@ -2,11 +2,11 @@
 
     <section class="bg-transparent dark:bg-gray-900 border-2 border-black rounded-xl ">
         <div class="w-full mb-5 pl-4">
-            <h1 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-6xl dark:text-white inline">
+            <h1 class="mb-4 text-6xl font-extrabold tracking-tight leading-none text-gray-900 md:text-7xl lg:text-8xl dark:text-white inline">
                 Upcoming 
             </h1>
 
-            <h1 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-amber-400 md:text-3xl lg:text-6xl dark:text-white inline">
+            <h1 class="mb-4 text-6xl font-extrabold tracking-tight leading-none text-amber-400 md:text-7xl lg:text-8xl dark:text-white inline">
                 Events
             </h1>
         </div>

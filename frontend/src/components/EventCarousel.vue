@@ -1,11 +1,11 @@
 <template>
      <section class="bg-transparent dark:bg-gray-900 rounded-3xl border-4 border-orange-800  ">
         <div class="w-full mb-5 pl-4">
-            <h1 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-black md:text-3xl lg:text-6xl dark:text-white inline">
+            <h1 class="mb-4 text-5xl font-extrabold tracking-tight leading-none text-black md:text-6xl lg:text-7xl dark:text-white inline">
                 Hot
             </h1>
 
-            <h1 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-amber-400 md:text-3xl lg:text-6xl dark:text-white inline">
+            <h1 class="mb-4 text-5xl font-extrabold tracking-tight leading-none text-amber-400 md:text-6xl lg:text-7xl dark:text-white inline">
                 Events
             </h1>
         </div>
@@ -14,16 +14,16 @@
                 <div class="jumbo absolute w-11/12 ml-3 " v-for="(jumbo, index) in eventList" :key="jumbo">
                     <div class="w-full pl-4 pb-1 h-72">
                         <div class="h-64 sm:p-2 bg-amber-400 rounded-xl shadow-xl dark:bg-gray-800 grid grid-cols-2 relative">
-                            <div class="">
-                                <h1 class="text-xl font-extrabold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white">
+                            <div class="overflow-y-auto">
+                                <h1 class="text-2xl font-extrabold tracking-tight leading-none text-gray-900 md:text-3xl lg:text-4xl dark:text-white underline mb-2 break-normal whitespace-normal">
                                     {{ jumbo.EventName }} 
                                 </h1>
-                                -----------------------------
-                                <h3 class="mb-1 text-l font-extrabold tracking-tight leading-none text-gray-900 md:text-xl lg:text-2xl dark:text-white">
+                              
+                                <h3 class="mb-1 text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white italic">
                                     {{ jumbo.EventDate }} 
                                 </h3>
 
-                                <h4 class="mb-1 text-l font-normal tracking-tight leading-none text-gray-900 md:text-xl lg:text-2xl dark:text-white">
+                                <h4 class="mb-1 text-xl font-bold tracking-tight leading-none text-gray-900 md:text-2xl lg:text-3xl dark:text-white italic">
                                     {{ jumbo.EventOrganiser }} 
                                 </h4>
                                 
