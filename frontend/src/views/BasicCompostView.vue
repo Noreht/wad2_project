@@ -1,6 +1,6 @@
 <template>
 <Guides
-    :title="'How to make a Basic Compost'"
+    :title="guidetitle"
     :requireditems="itemList"
     :requiredimage="imageurl"
     :thesteps = "steps"
@@ -20,6 +20,7 @@ export default {
   components: { StepCards, Foot, Guides },
   data() {
     return {
+      guidetitle: 'How to make a Basic Compost',
       itemList: ['Garden soil', 'Medium-sized bucket', 'Kitchen fork','Dry leaves','Water'],
       imageurl: "/bucketandwater.png",
       steps:[{name:'Step 1 : Collect and prepare your scraps',text:'Collect all fruit and vegetable scraps. The best kitchen scraps to add to your compost pile are those fruit and vegetable scraps because they break down quickly and do not attract rodents and insects in the same way that animal products do. Add all of your fruit and vegetable scraps, including those that have been cooked.',image:'/stepcards/step1image.png'},{name:'Step 2 : Setting up your Bin',text:'Begin the pile with garden soil  or other dry yard debris that you have available. Ideally this layer should be a few inches deep and will give the pile a good, solid base. Next, add the fruits and vegetables on top of the layer of soil. Lastly, finish off with a layer of dry leaves again.',image:'/stepcards/step2image.png'},{name:'Step 3: Caring for your Bin',text:'Keep your compost moist. In order for biodegradable items to break down quickly, they need to be in contact with moisture. The easiest way to do this is to sprinkle water on your compost. After a week, mix the compost and repeat once every week. Your compost will be turn deep brown throughout after 3 months and it is ready to be used.',image:'/stepcards/step3image.png'}],
