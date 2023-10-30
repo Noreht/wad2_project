@@ -1,28 +1,23 @@
 <template>
-    <div class="columns-3 flex-auto ">
-        <div>
-            <Tweet :cards = "hidden" tweet-id="1239826988983914496" class="w-1/2 h-1/2 aspect-video" />
-            <Tweet tweet-id="1078324202703269889" class="w-1/2 h-1/2 aspect-video " />
-            <Tweet tweet-id="1014405712565293056" class="w-1/2 h-1/2 aspect-video" />
-        </div>
-        <div>
-            <Tweet 
-            :cards = "hidden"
-            tweet-id="956427505686073344" class="w-1/2 h-1/2 aspect-video" />
-            <Tweet tweet-id="958238947162951680" class="w-1/2 h-1/2 " />
-            <Tweet tweet-id="1014405712565293056" class="w-1/2 h-1/2 " />
-        </div>
+  <div class="lg:flex max-w-[100%] items-stretch gap-3 justify-center mb-10">
+    <div>
+      <Tweet tweet-id="1239826988983914496" class="" />
+      <Tweet tweet-id="1078324202703269889" class=" " />
     </div>
+    <div>
+      <Tweet tweet-id="1014405712565293056" class="" />
+      <Tweet tweet-id="958238947162951680" class="" />
+    </div>
+    <div>
+      <Tweet tweet-id="956427505686073344" class="" />
+      <Tweet tweet-id="1014405712565293056" class="" />
+    </div>
+  </div>
 </template>
 
-
 <script setup>
-// import Tweet from "vue-tweet";
+import Tweet from "vue-tweet";
 </script>
-
-
-
-
 
 <!-- <template>
     
@@ -51,36 +46,6 @@
     }
 }
 </script> -->
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- <template>
     <div>

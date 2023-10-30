@@ -34,7 +34,7 @@
             >
           </h1> -->
           <h1
-            class="drop-shadow-xl text-6xl font-bold tracking-tight text-gray-900 sm:text-8xl lg:min-w-[300px] max-h-[90px] min-h-[90px] typewriter"
+            class="drop-shadow-xl text-6xl font-bold tracking-tight text-gray-900 sm:text-7xl md:text-8xl lg:text-8xl lg:min-w-[300px] max-h-[50px] min-h-[90px] typewriter"
           >
             <span
               v-for="(char, index) in typewriterText"
@@ -111,7 +111,7 @@
       </div>
 
       <div>
-        <div class="mx-auto w-8/12 m-10">
+        <div class="mx-auto w-8/12 mt-10">
           <div
             class="pointer-events-none inset-x-0 bottom-0 sm:flex justify-center sm:px-6 sm:pb-5 lg:px-8"
           >
