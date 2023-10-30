@@ -13,8 +13,12 @@
       >
         Back
       </a>
+      <div class="mx-auto max-w-7xl px-6 lg:px-8 rounded-3xl border-4 border-orange-800 mt-8 min-w-[200px] shadow-2xl">
+        <h1 class="mt-8 mb-6 text-4xl  sm:text-5xl font-semibold">{{ description['title'] }}</h1>
+        <h3 class="pb-5 mb-3 sm:text-xl leading-10 font-semibold text-black">{{ description['body'] }}</h3>
+      </div>
       <div
-        class="rounded-3xl border-4 border-orange-800 mt-8 min-w-[200px] shadow-2xl"
+        class="rounded-3xl border-4 border-orange-700 mt-8 min-w-[200px] shadow-2xl"
       >
         <div class="min-[1280px]:max-h-96 lg:grid grid-cols-2 grid-rows-3">
           <div class="col-span-2">
@@ -74,7 +78,7 @@
           src="/quicktips.png"
         />
         <div
-          class="rounded-3xl border-4 border-green-600 mt-5 min-w-[200px] shadow-2xl"
+          class="rounded-3xl border-4 border-orange-600 mt-5 py-3 min-w-[200px] shadow-2xl"
         >
           <p class="mt-4 pl-8 text-2xl sm:text-3xl font-semibold">Tips:</p>
           <ul class="mt-5 px-14 list-disc">
@@ -84,19 +88,93 @@
           </ul>
         </div>
       </div>
+
+      <div class="rounded-3xl border-4 border-amber-600 mt-5 px-8 py-1 min-w-[200px] shadow-2xl">
+        <p class="mt-4 text-2xl sm:text-3xl font-semibold">More Guides:</p>
+        <div id="beginner" class="">
+        <h3 class="text-2xl font-semibold mt-3">Starter's Haven</h3>
+        <h3 class="text-lg font-normal mb-3">For precious beginners</h3>
+        <div class="border-4 border-black rounded-3xl p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6">
+          <ResourceGuidesCard
+            :title="'Make a Basic Compost?'"
+            :image="'ResourceGuidesCards/compostbin1.png'"
+            :url1="'/basiccompost'"
+          />
+          <ResourceGuidesCard
+            :title="'Build a Composting Bin?'"
+            :image="'ResourceGuidesCards/compostbin.png'"
+            :url1="''"
+          />
+          <ResourceGuidesCard
+            :title="'Keep your Compost Warm?'"
+            :image="'ResourceGuidesCards/warm.png'"
+            :url1="''"
+          />
+          <ResourceGuidesCard
+            :title="'Speed up Composting Process?'"
+            :image="'ResourceGuidesCards/time.png'"
+            :url1="''"
+          />
+          <ResourceGuidesCard
+            :title="'Keep your Compost from Smelling?'"
+            :image="'ResourceGuidesCards/odor.png'"
+            :url1="''"
+          />
+          <ResourceGuidesCard
+            :title="'Process Food Waste before using?'"
+            :image="'ResourceGuidesCards/food.png'"
+            :url1="''"
+          />
+        </div>
+      </div>
+
+      <div id="intermediate" class="mb-8">
+          <h3 class="text-2xl font-semibold mt-8">Next-Level Navigators</h3>
+          <h3 class="text-lg font-normal mb-3">For experienced composters</h3>
+          <div class="border-4 p-4 rounded-3xl border-black bg-green-300 overflow-x-auto overflow-hidden flex">
+            <ResourceGuidesCard 
+            :title="'Build a Tumbling Composter?'"
+            :image="'ResourceGuidesCards/tumbling.png'"
+            />
+            <ResourceGuidesCard 
+            :title="'Apply Mulch to Compost?'"
+            :image="'ResourceGuidesCards/mulch.png'" />
+            <ResourceGuidesCard 
+            :title="'Make a Worm Compost System?'"
+            :image="'ResourceGuidesCards/wormcompost.png'" />
+            <ResourceGuidesCard 
+            :title="'Upscale your Compost Bin'"
+            :image="'ResourceGuidesCards/compostbox.png'" />
+            <ResourceGuidesCard 
+            :title="'Make a Compost Tea?'"
+            :image="'ResourceGuidesCards/composttea.png'" />
+            <ResourceGuidesCard 
+            :title="'Add Nitrogen to Compost?'"
+            :image="'ResourceGuidesCards/nitrogen.png'" />
+          </div>
+      </div>
     </div>
+      </div>
+      
+
+    
     <div class="col-span-2 p-4"></div>
   </div>
+  
+  
 </template>
 
 <script>
 import StepCards from "@/components/StepCards.vue";
+import ResourceGuidesCard from "@/components/ResourceGuidesCard.vue";
+
 export default {
   components: {
-    StepCards,
+    StepCards, ResourceGuidesCard,
   },
   props: {
     title: String,
+    description: {type: Object, required: true},
     requireditems: { type: Array, required: true },
     requiredimage: String,
     thesteps: { type: Array, required: true },

@@ -95,11 +95,16 @@
   </div>
   <div class="col-span-2 px-4"></div>
 
+  <div>
+    
+  </div>
+  
+
   <Foot />
 </template>
 
 <script>
-import ResourceGuidesCard from "@/components/ResourceGuidesCard.vue";
+import ResourceGuidesCard from "../components/ResourceGuidesCard.vue";
 import ResourceGuidesSummary from "@/components/ResourceGuidesSummary.vue";
 import Foot from "@/components/Footer.vue";
 
