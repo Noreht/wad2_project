@@ -41,9 +41,9 @@
       </div>
     </div>
   </div>
-  <div class="flex justify-center">
+  <div class="flex justify-center mt-[20px]">
     <h1
-      class="pt-4 mb-4 text-center font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl dark:text-white"
+      class="pt-4 mb-4 text-center font-extrabold leading-none tracking-tight text-gray-900 text-3xl lg:text-4xl dark:text-white"
     >
       Find a community that suits you today!
     </h1>
