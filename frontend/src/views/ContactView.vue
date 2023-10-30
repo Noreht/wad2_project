@@ -3,14 +3,14 @@
     <div class="col-span-2"></div>
     <div class="col-span-8">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
-      <div class="relative isolate py-10">
+      <div class="relative isolate py-10 ">
         <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
           <div
             class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 xs:py-0 lg:py-48"
           >
-            <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
+            <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg ">
               <div
-                class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-1/2"
+                class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden lg:w-1/2 "
               >
 
               </div>
@@ -41,10 +41,10 @@
           <div class="flex min-h-full flex-1 flex-col justify-center sm:px-6 lg:px-8">
 
 <div class="sm:mx-auto sm:w-full sm:max-w-xxl mt-10">
-  <div class="bg-white px-6 py-2 shadow-xl sm:rounded-lg sm:px-12 border-4 border-black rounded-3xl">
+  <div class=" min-w-[400px] bg-white px-6 py-2 shadow-xl sm:rounded-lg sm:px-12 border-4 border-black rounded-3xl">
     <div class="space-y-6 mt-5">
 
-
+ 
 
       <div class="lg:flex lg:space-x-6">
   <div class="lg:w-1/2">
