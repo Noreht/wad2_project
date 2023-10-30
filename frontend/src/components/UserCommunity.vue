@@ -29,7 +29,7 @@
       
     <div v-if="activeTab === 'updates'" >
         <div class="columns-2">
-            <div class="w-full bg-amber-400">
+            <div class="w-full">
                 <div v-for ="(item, index) in items">
                 <!-- selected feed item content  -->
                     <CommunityFeedItem v-if="item.selected == true"
@@ -37,13 +37,17 @@
                     :postAge ="item.postAge"
                     :postDesc ="item.postDesc"
                     :postAuthor ="item.postAuthor" > 
-
+                    
                     <div class="mt-5 mb-5">
-                            <label for="comment" class="block text-sm font-medium leading-6 text-gray-900">Add your comment</label>
+                        <label for="newComment" class="block text-sm font-medium leading-6 text-gray-900"> <slot>Add your comment</slot> {{ errorText }}</label>
                         <div class="mt-2">
-                            <textarea rows="4" name="comment" id="comment" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                            <textarea rows="4" name="newComment" v-model="newComment" id="newComment" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                        </div>
+                        <div class="mt-2 flex justify-end">
+                          <button type="submit" @click="onSubmit" class="inline-flex items-center rounded-md bg-amber-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Post</button>
                         </div>
                     </div>
+                    
 
                     <h2 class="font-bold mt-2">
                         Comments
@@ -83,8 +87,9 @@
         <CommunityEvents />
       </Suspense>
     </div>
-    <div v-if="activeTab === 'volunteers'" class="volunteers-container">
+    <div v-if="activeTab === 'Volunteers'" class="volunteers-container">
       <!-- Community User content -->
+      <CommunityMembers />
     </div>
     
   </template>
@@ -94,18 +99,38 @@
     import CommunityInformationBar from './CommunityInformationBar.vue';
     import CommunityFeedItem from "./CommunityFeedItem.vue";
     import CommunityEvents from "./CommunityEvents.vue";
+    import CommunityMembers from "./CommunityMembers.vue";
+    //import firebase from "@/utils/firebase";
+    import { db } from "@/utils/firebase/firebaseInit.js";
+    import {document, updatedoc, arrayunion} from "@/utils/firebase/firebaseInit.js";
+
+    
 
 
     export default {
+
+      // async setup() {
+      //       console.log("Setup Initiated for Feed Items")
+      //       const feedList = await getAllFeeds();
+      //       console.log(feedList[0].Title)
+
+      //       return {
+      //           feedList
+      //       };
+            
+      //   },
+
         components: {
-            CommunityInformationBar, CommunityFeedItem, CommunityEvents
+            CommunityInformationBar, CommunityFeedItem, CommunityEvents, CommunityMembers, 
         },
         data() {
             return {
                 activeTab: 'feed',
                 items: [{topic: "Assistance Required", postAge: "3 days ago", postDesc: "As stated above. We are requiring volunteers to help fix our farm roof or water risks flooding everything! Sign up on Events or leave comments for more info.", postAuthor: "Jese Leos", selected: false, comments: ["hi", "bye", "suck", "whe"]},
                         {topic:"Dying Over Here", postAge:"5 days ago", postDesc:"Volunteers, please be more active! Our community is not a one man show!", postAuthor: "Jese Leos", selected: false, comments: ["whoops", "bgg", "my", "wfffe"]},
-                        {topic:"Milestone reached!", postAge:"13 days ago", postDesc:"We are now 500 days old!", postAuthor: "Jese Leos", selected: false, comments: ["kappa", "bye", "omgk", "YEESH"]}]
+                        {topic:"Milestone reached!", postAge:"13 days ago", postDesc:"We are now 500 days old!", postAuthor: "Jese Leos", selected: false, comments: ["kappa", "bye", "omgk", "YEESH"]}],
+                currentPostId: 1,
+                newComment: ""
                 
             }
         },
@@ -134,13 +159,38 @@
                 });
             },
 
-            // selectItem() {
-            //     console.log("selectItem start")
-            //     console.log("Item Selected" + items.$child.topic)
-            // }
-        },
+            async onSubmit() {
+              console.log("onSubmit Start")
+              // obtain user info 
+              // const user = firebase.auth().currentUser;
+              // console.log("User: "+ user)
+
+              const currentPost = document(db, `CommunityPosts`, "i94HlLPoeejIQnUAebGZ");
+
+              
+              if (this.newComment != "") {
+                    console.log("Adding to doc")
+                    await updatedoc(currentPost, {
+                        PostComments: arrayunion({
+                          id: Math.random() * 1000,
+                        text: this.newComment,
+                        author: "Bryan",
+                        })
+                    });
+                    
+                    this.newComment = null;
+                    this.errorText = null;
+                    console.log("Added to doc")
+                } else {
+                    console.log("MessageNotFound")
+                    this.errorText = "A message must be entered first!";
+                }
+
+        
+            },
   
-};
+    },
+  }
 
 
 </script>

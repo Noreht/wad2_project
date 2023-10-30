@@ -25,7 +25,11 @@
                 </div>
         </div>
     
-        <div ref="map" class="map absolute left-1/3 w-2/3 overflow-hidden rounded-r-2xl"></div>
+        <div ref="map" class="map absolute left-1/3 w-2/3 overflow-hidden rounded-r-2xl">
+            <div class="bg-gray-600 font-semibold text-white z-10 absolute p-2 rounded-md mt-2">
+                Move the map to find events around Singapore!
+            </div>
+        </div>
     </div>
 </template>
   
@@ -85,7 +89,7 @@
             // { name: 'IMH Outreach session', location: [103.8847, 1.3819], organiser:"Buangkok Club", date: "17 Oct 2023", isVisible: false }, 
             // // Add more events as needed
             // ],
-            currentEventsInArea: 2,
+            currentEventsInArea: 0,
         };
         },
         mounted() {
@@ -94,7 +98,7 @@
         this.map = new mapboxgl.Map({
             container: this.$refs.map,
             style: 'mapbox://styles/mapbox/streets-v11',
-            center: [loadLongitude, loadLatitude], // Centered at Singapore's latitude and longitude
+            center: [loadLongitude, loadLatitude], // Centered at user's latitude and longitude
             zoom: 12,
         });
     
