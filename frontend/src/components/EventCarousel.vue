@@ -1,6 +1,6 @@
 <template>
-     <section class="bg-transparent dark:bg-gray-900 rounded-3xl border-4 border-orange-800  ">
-        <div class="w-full mb-5 pl-4">
+     <section class=" shadow-2xl hover:-translate-y-1 dark:bg-gray-900 rounded-3xl border-4 border-orange-800 mt-[20px] ">
+        <div class="w-full mt-3 pl-5 ">
             <h1 class="mb-4 text-5xl font-extrabold tracking-tight leading-none text-black md:text-6xl lg:text-7xl dark:text-white inline">
                 Hot
             </h1>
