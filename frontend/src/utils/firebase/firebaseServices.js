@@ -53,6 +53,26 @@ export async function getAllVolunteers() {
     return volunteers;
 }
 
+//Get all posts 
+export async function getAllPosts() {
+    const postsColRef = collection(db, "CommunityPosts");
+    const querySnapshot = await getDocs(postsColRef);
+    let posts = [];
+    querySnapshot.forEach((doc) => {
+        const postData = doc.data();
+        const post = {
+            id: doc.id,
+            ...postData,
+        };
+        posts.push(post);
+    });
+    if (posts.length > 0) {
+        console.log(posts);
+    } else {
+        console.log("No data or query error");
+    }
+    return posts;
+}
 
 
 
