@@ -22,18 +22,28 @@
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                   </svg>
               </div>
-              <input type="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 focus:ring-orange-400 focus:border-orange-400" placeholder="Search Guides" required>
-              <button type="submit" class=" place-content-center absolute top-1 right-1 h-5/6 p-2.5 text-sm font-medium text-white bg-green-600 rounded-3xl border border-green-600 hover:bg-green-900 focus:ring-2 focus:outline-none focus:ring-green-400">
-                <span class="text-sm mx-3">Search</span>
-              </button>
+              <input v-model='searchText' type="search" id="default-search" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 focus:ring-orange-400 focus:border-orange-400" placeholder="Search Guides" required>
+              
           </div>
       </form>
+      
 
-      <div id="beginner" class="">
+      <div v-if="searchText==''">
+      <div id="beginner" class="fixed-container">
         <h3 class="text-2xl font-semibold mt-8">Starter's Haven</h3>
         <h3 class="text-lg font-normal mb-3">For precious beginners</h3>
         <div class="border-4 border-black rounded-3xl p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6">
-          <ResourceGuidesCard
+          <!-- <Suspense>
+              <ResourceGuidesCard />
+          </Suspense> -->
+
+          <ResourceGuidesCard v-for="guide in ResourceGuideList1"
+            :title="guide.comp.title"
+            :image="guide.comp.image"
+            :url1="guide.comp.url">
+          </ResourceGuidesCard>
+          
+          <!-- <ResourceGuidesCard
             :title="'Make a Basic Compost?'"
             :image="'ResourceGuidesCards/compostbin1.png'"
             :url1="'/basiccompost'"
@@ -62,35 +72,54 @@
             :title="'Process Food Waste before using?'"
             :image="'ResourceGuidesCards/food.png'"
             :url1="''"
-          />
+          /> -->
         </div>
       </div>
 
-      <div id="intermediate" class="mb-8">
+      <div id="intermediate" class="fixed-container mb-8">
           <h3 class="text-2xl font-semibold mt-8">Next-Level Navigators</h3>
           <h3 class="text-lg font-normal mb-3">For experienced composters</h3>
           <div class="border-4 p-4 rounded-3xl border-black bg-green-300 overflow-x-auto overflow-hidden flex">
+            <ResourceGuidesCard v-for="guide in ResourceGuideList2"
+            :title="guide.comp.title"
+            :image="guide.comp.image"
+            :url1="guide.comp.url">
+            </ResourceGuidesCard>
+          <!-- </ResourceGuidesCard>
             <ResourceGuidesCard 
-            :title="'Build a Tumbling Composter?'"
+            :title="'Build a Tumbling Composter'"
             :image="'ResourceGuidesCards/tumbling.png'"
             />
             <ResourceGuidesCard 
-            :title="'Apply Mulch to Compost?'"
+            :title="'Apply Mulch to Compost'"
             :image="'ResourceGuidesCards/mulch.png'" />
             <ResourceGuidesCard 
-            :title="'Make a Worm Compost System?'"
+            :title="'Make a Worm Compost System'"
             :image="'ResourceGuidesCards/wormcompost.png'" />
             <ResourceGuidesCard 
             :title="'Upscale your Compost Bin'"
             :image="'ResourceGuidesCards/compostbox.png'" />
             <ResourceGuidesCard 
-            :title="'Make a Compost Tea?'"
+            :title="'Make a Compost Tea'"
             :image="'ResourceGuidesCards/composttea.png'" />
             <ResourceGuidesCard 
-            :title="'Add Nitrogen to Compost?'"
-            :image="'ResourceGuidesCards/nitrogen.png'" />
+            :title="'Add Nitrogen to Compost'"
+            :image="'ResourceGuidesCards/nitrogen.png'" /> -->
           </div>
       </div>
+    </div>
+
+    <div class="border-4 border-black rounded-3xl my-4 p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6" v-else-if="filteredResourceGuideList.length > 0">
+        <ResourceGuidesCard v-for="guide in filteredResourceGuideList"
+            :title="guide.comp.title"
+            :image="guide.comp.image"
+            :url1="guide.comp.url">
+          </ResourceGuidesCard>
+      </div>
+
+    <div v-else>
+      
+    </div>
     </div>
   </div>
   <div class="col-span-2 px-4"></div>
@@ -98,8 +127,6 @@
   <div>
     
   </div>
-  
-
   <Foot />
 </template>
 
@@ -108,8 +135,52 @@ import ResourceGuidesCard from "../components/ResourceGuidesCard.vue";
 import ResourceGuidesSummary from "@/components/ResourceGuidesSummary.vue";
 import Foot from "@/components/Footer.vue";
 
+
 export default {
   name: "ResourceGuidesView",
-  components: { ResourceGuidesCard, ResourceGuidesSummary, Foot },
-};
+  components: { ResourceGuidesCard, ResourceGuidesSummary, Foot, },
+  // ResourceGuideList:[{search:'how to build a basic compost',comp:{title:'Make a Basic Compost',image:'ResourceGuidesCards/compostbin1.png',url:'/basiccompost'}},{search:'how to build a composting bin',comp:{title:'Build a Composting Bin',image:'ResourceGuidesCards/compostbin.png',url:''}}]
+  data(){
+    return {
+    ResourceGuideList1:[{search:'how to make a basic compost',comp:{title:'Make a Basic Compost',image:'ResourceGuidesCards/compostbin1.png',url:'/basiccompost'}},
+    {search:'how to build a composting bin',comp:{title:'Build a Composting Bin',image:'ResourceGuidesCards/compostbin.png',url:''}},
+    {search:'how to keep your compost warm', comp:{title:'Keep your Compost Warm', image:'ResourceGuidesCards/warm.png', url:''}},
+    {search:'how to speed up composting process',comp:{title:'Speed up Composting Process', image:'ResourceGuidesCards/time.png', url:''}},
+    {search:'how to keep your compost from smelling', comp:{title:'Keep your Compost from Smelling', image:'ResourceGuidesCards/odor.png', url:''}},
+    {search:'how to process food waste before using it', comp:{title:'Process Food Waste before using', image:'ResourceGuidesCards/food.png', url:''}}],
+    
+    ResourceGuideList2:[{search:'how to build a tumbling composter',comp:{title:'Build a Tumbling Composter',image:'ResourceGuidesCards/tumbling.png',url:''}},
+    {search:'how to apply mulch to compost',comp:{title:'Apply Mulch to Compost',image:'ResourceGuidesCards/mulch.png',url:''}},
+    {search:'how to make a worm compost system', comp:{title:'Make a Worm Compost System', image:'ResourceGuidesCards/wormcompost.png', url:''}},
+    {search:'how to upscale your compost bin',comp:{title:'Upscale your Compost Bin', image:'ResourceGuidesCards/compostbox.png', url:''}},
+    {search:'how to make compost tea', comp:{title:'Make Compost Tea', image:'ResourceGuidesCards/composttea.png', url:''}},
+    {search:'how to add nitrogen to compost', comp:{title:'Add Nitrogen to Compost', image:'ResourceGuidesCards/nitrogen.png', url:''}}],
+
+    searchText:''
+  }},
+  computed: {
+      // Manipulate the local copy of the list
+      filteredResourceGuideList() {
+      const searchLowerCase = this.searchText.toLowerCase();
+      var ret
+      if (searchLowerCase==''){
+        ret=[]
+      }
+      else{
+        let newarray = this.ResourceGuideList1.concat(this.ResourceGuideList2)
+        ret = newarray.filter(resource => {
+                return resource.search.toLowerCase().includes(searchLowerCase);
+              })
+      }
+      
+      console.log(ret)
+      return ret;
+      
+    }
+    },
+  }
+;
+
+
+
 </script>

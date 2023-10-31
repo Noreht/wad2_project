@@ -16,6 +16,7 @@ import Guides from "@/components/Guides.vue";
 import StepCards from "@/components/StepCards.vue";
 import Foot from "@/components/Footer.vue";
 
+
 export default {
   name: "BasicCompostView",
   components: { StepCards, Foot, Guides },
