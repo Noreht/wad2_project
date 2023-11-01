@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="sticky top-16 ">
       <CommunityInformationBar />
     </div>
 
@@ -11,7 +11,7 @@
         :class="{ 'active-tab': activeTab === 'Updates' }"
         @click="activeTab = 'updates'"
       >
-        Updates
+        Feed
       </button>
       <button
         v-else
@@ -19,11 +19,11 @@
         :class="{ 'active-tab': activeTab === 'Updates' }"
         @click="activeTab = 'updates'"
       >
-        Updates
+        Feed
       </button>
       <button
         v-if="activeTab == 'events'"
-        class="tab block w-full rounded-t-3xl text-center py-3 text-basesm:text-sm bg-green-800 text-white font-bold"
+        class="tab block w-full rounded-t-3xl text-center py-3 text-base sm:text-sm bg-green-800 text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Events' }"
         @click="activeTab = 'events'"
       >
@@ -39,7 +39,7 @@
       </button>
       <button
         v-if="activeTab == 'Volunteers'"
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base] sm:text-sm bg-green-800 text-white font-bold"
+        class="tab block w-full rounded-t-3xl text-center py-3 text-base sm:text-sm bg-green-800 text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Volunteers' }"
         @click="activeTab = 'Volunteers'"
       >
@@ -58,10 +58,10 @@
     <hr class="border-3 border-black" />
 
     <div v-if="activeTab === 'updates'">
-      <div class="columns-2 rounded-b-3xl border-4 border-green-800">
-        <div class="w-full">
+      <div class="columns-2 rounded-b-3xl border-4 border-green-800 h-[630px] overflow-y-scroll">
+        <div class="w-full ">
           <div
-          class="w-full bg-gray-300 rounded-3xl flex-1 overflow-y-scroll h-screen"
+          class="w-full bg-gray-300 rounded-3xl flex-1 overflow-y-scroll "
         >
           <div class="mt-2">
             <input

@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-b-3xl border-4 border-green-800">
+  <div class="rounded-b-3xl border-4 border-green-800 h-[630px] overflow-y-scroll">
     <!-- Community Administrators -->
 
     <div class="bg-white sm:pt-3">
