@@ -1,10 +1,16 @@
 <template>
   <Disclosure as="nav" class="bg-orange-50 sticky top-0 z-50" v-slot="{ open }">
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
-      <div class="relative flex h-16 items-center justify-between">
+      <div
+        class="relative flex h-16 items-center xs:justify-center lg:justify-between"
+      >
         <div class="flex items-center px-2 lg:px-0">
-          <div class="flex-shrink-0">
-            <img class="h-12 w-auto mt-3" src="BlackGoldIcon.svg" alt="Icon" />
+          <div class="xs:ml-auto lg:mx-auto">
+            <img
+              class="h-12 w-auto mt-3 mx-auto"
+              src="BlackGoldIcon.svg"
+              alt="Icon"
+            />
           </div>
           <div class="hidden lg:ml-6 lg:block">
             <div class="flex space-x-4">
@@ -19,13 +25,8 @@
                 >Community Page
               </a>
 
-              <a
-                v-else=""
-                href="/home" 
-                :class="getClass('/home')">
-                Home
-              </a>
-              
+              <a v-else="" href="/home" :class="getClass('/home')"> Home </a>
+
               <a href="/resourceguides" :class="getClass('/resourceguides')"
                 >Resources & Guides</a
               >
@@ -135,7 +136,7 @@
           </div>
         </div>
 
-        <div class="flex lg:hidden">
+        <div class="flex lg:hidden xs:fixed right-3">
           <!-- Mobile menu button -->
           <DisclosureButton
             class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-amber-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
