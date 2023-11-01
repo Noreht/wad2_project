@@ -57,7 +57,7 @@ const stats = [
   { name: "Events Held", value: "40" },
   { name: "People Reached", value: "1000+" },
 ];
-const words = ["Join Us!"];
+const words = ["Join Now!"];
 const typeSpeed = 200; // Adjust the speed as needed (in milliseconds)
 import { ref, onBeforeUnmount } from "vue";
 
@@ -77,7 +77,7 @@ const type = async () => {
 
       while (j >= 0 && j < word.length) {
         typewriterText.value = word.substring(0, j + 1);
-        isGoldVisible.value = word[j] === "U";
+        isGoldVisible.value = word[j] === "N";
 
         if (isDeleting) {
           await delay(typeSpeed / 2);
@@ -94,7 +94,7 @@ const type = async () => {
 
       while (j >= 0) {
         typewriterText.value = word.substring(0, j);
-        isGoldVisible.value = word[j] === "U";
+        isGoldVisible.value = word[j] === "N";
 
         await delay(typeSpeed / 2);
         j--;

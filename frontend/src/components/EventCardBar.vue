@@ -32,11 +32,11 @@
         </Tab>
         </div>
       </TabList>
-      <TabPanels>
+      <TabPanels class="border-yellow-900 border-4 rounded-xl my-[10px] p-[15px]">
             <TabPanel> 
                 <div class="overflow-x-scroll overflow-hidden flex flex-row flex-shrink-0 gap-2 pt-5 first:pl-3 last:pr-6 " v-if="pageWidth >= 768" >
                     <template v-for="(event,index) in eventList">
-                        <ImpactCard 
+                        <ImpactCard class="md: w-1/2 "
                         v-if="event.EventType == 'Ad-hoc Volunteering'"
                         :feature="event.EventName"
                         :content="event.EventDescription"

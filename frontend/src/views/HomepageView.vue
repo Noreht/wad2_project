@@ -1,4 +1,4 @@
-<template class="min-w-[350px]">
+<template class="min-w-[350px] ">
   <!-- <div>
     <div class="rounded-lg pl-20 mr-20 border-4 border-slate-500 px-6 py-24 sm:py-32 lg:px-8 mt-5">
 
@@ -7,7 +7,7 @@
     </div>
 </div> -->
 
-  <div class="grid grid-cols-12">
+  <div class="grid grid-cols-12 bg-gradient-to-b from-orange-50 to-amber-300">
     <div class="col-span-2 p-4"></div>
     <div class="col-span-8 align-center z-10">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
@@ -90,21 +90,21 @@
         <ImpactCard
           :feature="'Individual'"
           :content="'I’m just looking to try out composting within my household and learning more about the movement!'"
-          :date="'See More'"
+
           :image="'ImpactCards/Individual.jpg'"
           :hoverImage="'ImpactCards/Individual.jpg'"
         />
         <ImpactCard
           :feature="'Community'"
           :content="'I want to join the larger composting community to promote the movement!'"
-          :date="'See More'"
+
           :image="'ImpactCards/Community.jpg'"
           :hoverImage="'ImpactCards/Community.jpg'"
         />
         <ImpactCard
           :feature="'Contributor'"
           :content="'I don’t have the time to contribute actively, but I have food waste to donate to the movement!'"
-          :date="'See More'"
+
           :image="'ImpactCards/Contributor.jpg'"
           :hoverImage="'ImpactCards/Contributor.jpg'"
         />
@@ -141,20 +141,17 @@
       <div>
         <TwitterFeed />
       </div>
-      <div class="grid place-items-center">
+      <div class="grid place-items-center rounded-xl bg-white mb-[10px]">
         <div
-          class="py-5 px-10 rounded-xl -m-[20px] border-black border-[3px] bg-white"
-          :style="{
-            background:
-              'linear-gradient(to bottom, white 0%, white 22.5%, rgb(99 49 18) 20%, rgb(99 49 18) 100%)',
-          }"
+          class="py-5  px-10 rounded-xl border-black border-[3px] bg-white"
+          
         >
           <h1 class="font-extrabold tracking-tight text-green-900 text-4xl">
             FAQs
           </h1>
           <!-- Accordion Wrapper -->
-          <div
-            class="transition hover:bg-amber-300 bg-gray-500 rounded-xl text-white mt-2 hover:text-green-900"
+           <div
+            class="transition hover:bg-amber-300 bg-green-800 rounded-xl text-white mt-2 hover:text-green-900 py-1"
           >
             <!-- header -->
             <div
@@ -188,22 +185,18 @@
               }"
             >
               <p
-                class="leading-6 mb-4 p-2 bg-white rounded-2xl text-black font-medium"
+                class="leading-6 ml-9 mb-4 p-4 bg-white rounded-2xl text-black font-medium mt-[10px]"
               >
                 At BlackGold, our mission is driven by the commitment to support
                 Singapore's ambitious 30 by 30 food security plan. Our goal is
                 to cultivate a productive, resilient, and resource-efficient
                 agri-food industry. <br />
-                <button
-                  class="rounded-full bg-green-900 hover:bg-green-600 text-white font-medium font-lg px-6 py-2 mt-3"
-                >
-                  Learn more
-                </button>
+                
               </p>
             </div>
           </div>
           <div
-            class="transition hover:bg-amber-300 bg-gray-500 rounded-xl text-white mt-2 hover:text-green-900"
+            class="transition hover:bg-amber-300 bg-green-800 rounded-xl text-white mt-2 hover:text-green-900 py-1"
           >
             <!-- header -->
             <div
@@ -237,7 +230,7 @@
               }"
             >
               <p
-                class="leading-6 mb-4 p-2 bg-white rounded-2xl text-black font-medium"
+                class="leading-6 ml-9 mb-4 p-4 bg-white rounded-2xl text-black font-medium mt-[10px]"
               >
                 BlackGold collaborates with various community partners,
                 including local environmental organizations, schools, and
@@ -245,16 +238,12 @@
                 workshops, awareness campaigns, and community composting
                 programs. By working together, we can expand the reach and
                 impact of the initiative. <br />
-                <button
-                  class="rounded-full bg-green-900 hover:bg-green-600 text-white font-medium font-lg px-6 py-2 mt-3"
-                >
-                  Learn more
-                </button>
+                
               </p>
             </div>
           </div>
           <div
-            class="transition hover:bg-amber-300 bg-gray-500 rounded-xl text-white mt-2 hover:text-green-900"
+            class="transition hover:bg-amber-300 bg-green-800 rounded-xl text-white mt-2 hover:text-green-900 py-1"
           >
             <!-- header -->
             <div
@@ -288,7 +277,7 @@
               }"
             >
               <p
-                class="leading-6 mb-4 p-2 bg-white rounded-2xl text-black font-medium"
+                class="leading-6 ml-9 mb-4 p-4 bg-white rounded-2xl text-black font-medium mt-[10px]"
               >
                 Yes, BlackGold is open to businesses and organizations
                 interested in sustainable waste management practices. We
@@ -296,16 +285,12 @@
                 participate in our corporate composting programs. By doing so,
                 they can reduce their environmental footprint and contribute to
                 a greener, more sustainable Singapore. <br />
-                <button
-                  class="rounded-full bg-green-900 hover:bg-green-600 text-white font-medium font-lg px-6 py-2 mt-3"
-                >
-                  Learn more
-                </button>
+                
               </p>
             </div>
           </div>
           <div
-            class="transition hover:bg-amber-300 bg-gray-500 rounded-xl text-white mt-2 hover:text-green-900"
+            class="transition hover:bg-amber-300 bg-green-800 rounded-xl text-white mt-2 hover:text-green-900 py-1"
           >
             <!-- header -->
             <div
@@ -339,23 +324,19 @@
               }"
             >
               <p
-                class="leading-6 mb-4 p-2 bg-white rounded-2xl text-black font-medium"
+                class="leading-6 mb-4 p-4 ml-9 bg-white rounded-2xl text-black font-medium mt-[10px]"
               >
                 BlackGold is supported by government initiatives and funding in
                 partnership with the National Environment Agency (NEA) of
                 Singapore. While it receives governmental support, it is also
                 dependent on community involvement and contributions from
                 participants and sponsors. <br />
-                <button
-                  class="rounded-full bg-green-900 hover:bg-green-600 text-white font-medium font-lg px-6 py-2 mt-3"
-                >
-                  Learn more
-                </button>
+                
               </p>
             </div>
           </div>
           <div
-            class="transition hover:bg-amber-300 bg-gray-500 rounded-xl text-white mt-2 hover:text-green-900"
+            class="transition hover:bg-amber-300 bg-green-800 rounded-xl text-white mt-2 hover:text-green-900 py-1"
           >
             <!-- header -->
             <div
@@ -389,7 +370,7 @@
               }"
             >
               <div
-                class="leading-6 mb-4 p-2 bg-white rounded-2xl text-black font-medium"
+                class="leading-6 mt-[10px] ml-9 mb-4 p-4 bg-white rounded-2xl text-black font-medium"
               >
                 BlackGold offers a range of support to participants, including:
                 <li>
@@ -409,11 +390,7 @@
                   how they contribute to a greener, more sustainable Singapore.
                 </li>
 
-                <button
-                  class="rounded-full bg-green-900 hover:bg-green-600 text-white font-medium font-lg px-6 py-2 mt-3"
-                >
-                  Learn more
-                </button>
+                
               </div>
             </div>
           </div>
@@ -422,7 +399,7 @@
     </div>
 
     <div
-      class="col-span-2 p-4"
+      class="col-span-2 p-4" 
     ></div>
   </div>
   <Foot />

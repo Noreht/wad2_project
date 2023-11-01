@@ -1,30 +1,15 @@
 <template>
-  <section class="mb-3 lg:w-1/3 h-auto flex-shrink-0">
+  <section class="mb-3 lg:w-1/3 h-auto flex-shrink-0 max-h-[100%] bg-white rounded-3xl">
     <article
       class="transform duration-300 hover:-translate-y-1 cursor-pointer hover:shadow-2xl group border-4 border-black rounded-3xl hover:scale-105"
     >
-      <div
+      <!-- <div
         class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100"
       >
-        <a target="_blank" href="https://unsplash.com/@mehranhadad">
-          <svg
-            class="w-5"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="rgba(0,0,0,0.5)"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            />
-          </svg>
-        </a>
-      </div>
+                  
+      </div> -->
       <ul class="mt-5 font-bold text-black text-center">
-        <li class="inline pb-1 border-b-4 border-green-700 text-3xl min-h-max">
+        <li class="inline pt-1 border-b-4 border-green-700 text-3xl min-h-max">
           {{ feature }}
         </li>
       </ul>
