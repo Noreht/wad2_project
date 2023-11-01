@@ -11,7 +11,7 @@
           <CommunityList @toggle-modal="updateParent" />
         </suspense>
       </div>
-      <div class="bg-white">
+      <div class="bg-white ">
         <CommunityModal :showing="showModal" @close="showModal = false">
           <h2 class="text-xl font-bold text-black">{{ modalTitle }}</h2>
           <p class="mb-6">{{ modalDesc }}</p>
