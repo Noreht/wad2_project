@@ -97,7 +97,7 @@
                 <ul role="list" class="-mx-2 mt-2 space-y-1">
                   <li v-for="event in events" :key="event.name">
                     <a :class="[event.current ? 'bg-gray-50 text-black' : 'text-gray-400 hover:text-amber-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
-                      <span :class="[event.current ? 'text-black border-amber-600' : 'text-gray-400 border-gray-200 group-hover:border-amber-600 group-hover:text-black', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ event.date }}</span>
+                      <span :class="[event.current ? 'text-black border-amber-600' : 'text-gray-400 border-gray-200 group-hover:border-amber-600 group-hover:text-black', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ event.date.replace(" 2023", "") }}</span>
                       <span class="truncate">{{ event.name }}</span>
                     </a>
                   </li>
@@ -124,17 +124,17 @@
     </div>
   </template>
   
-  <script setup>
+  <script >
   import { ref } from 'vue'
   import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import {
     Bars3Icon,
-    CalendarIcon,
-    FolderIcon,
     HomeIcon,
     UsersIcon,
     XMarkIcon,
   } from '@heroicons/vue/24/outline'
+
+  import {getAllRegisteredEvents} from "@/utils/firebase";
   
   const navigation = [
     { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
@@ -145,11 +145,24 @@
     { id: 2, name: 'Pasir Ris CC', href: '#', initial: 'PRC', current: false },
   ]
 
-  const events = [
-    { id: 1, name: 'Composting Session', href: '#', date: '27/10', current: false },
-    { id: 2, name: 'Roof Repair', href: '#', date: '23/12', current: false },
-  ]
+  // const events = [
+  //   { id: 1, name: 'Composting Session', href: '#', date: '27/10', current: false },
+  //   { id: 2, name: 'Roof Repair', href: '#', date: '23/12', current: false },
+  // ]
   
   const sidebarOpen = ref(false)
+
+  export default {
+    async setup() {
+            // console.log("Setup Initiated")
+            const events = await getAllRegisteredEvents();
+            console.log(events[0])
+
+            return {
+                events
+            };
+            
+        },
+  }
 
 </script>
