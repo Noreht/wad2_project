@@ -8,6 +8,7 @@ import EventsView from "@/views/EventsView.vue";
 import ContactView from "@/views/ContactView.vue";
 import BasicCompost from "@/views/BasicCompostView.vue";
 import CommunityPage from "@/views/CommunityPageView.vue";
+import CompostingBin from "@/views/CompostingBinView.vue";
 
 import store from "@/store";
 import { inject } from "vue";
@@ -74,8 +75,12 @@ const routes = [
         path: "/communitypage",
         name: "CommunityPage",
         component: CommunityPage,
+      },
+      { 
+        path: "/CompostingBin",
+        name: "CompostingBin",
+        component: CompostingBin,
       }
-
 ];
 
 const router = createRouter({
