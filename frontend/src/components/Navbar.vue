@@ -247,6 +247,14 @@
       <div class="space-y-1 px-2 pb-3 pt-2">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <DisclosureButton
+          v-if="checkPageLoggedIn"
+          as="a"
+          href="/communitypage"
+          :class="getClassResponsive('/communitypage')"
+          >Community Page</DisclosureButton
+        >
+        <DisclosureButton
+        v-else
           as="a"
           href="/home"
           :class="getClassResponsive('/home')"
@@ -308,7 +316,7 @@
           >
           <DisclosureButton
             as="a"
-            href="#"
+            href="/home"
             class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
             >Sign out</DisclosureButton
           >
@@ -318,7 +326,7 @@
 
       <!-- Responsive If NOT Logged in Start-->
 
-      <div v-else="" class="border-t border-gray-700">
+      <div v-else class="border-t border-gray-700">
         <div class="mt-3 space-y-1 px-2">
           <DisclosureButton
             as="a"
@@ -363,7 +371,7 @@ const checkPageLoggedIn = ref(null);
 
 const signOut = async () => {
   await store.dispatch("logOut");
-  router.push("/login");
+  router.push("/home");
 };
 
 onMounted(async () => {

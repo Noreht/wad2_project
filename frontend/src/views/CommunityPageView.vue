@@ -5,7 +5,7 @@
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-2 pt-50">
             <suspense>
-                <UserSidebar class="z-0"/>
+                <UserSidebarLeft class="z-0"/>
             </suspense>
         </div>
       
@@ -16,7 +16,11 @@
             </suspense>
     
         </div>
-        <div class="col-span-2"></div>
+        <div class="col-span-2 pt-50">
+            <suspense>
+                <UserSidebarRight class="z-0"/>
+            </suspense>
+        </div>
     
     </div>
     <Foot/>
@@ -25,11 +29,13 @@
 
 <script>
 import UserCommunity from "@/components/UserCommunity.vue";
-import UserSidebar from "@/components/UserSidebar.vue";
+import UserSidebarLeft from "@/components/UserSidebar1.vue";
+import UserSidebarRight from "@/components/UserSidebar2.vue";
+
 
 
 export default {
   name: "CommunityPageView",
-  components: { UserCommunity, UserSidebar},
+  components: { UserCommunity, UserSidebarLeft, UserSidebarRight},
 };
 </script>
