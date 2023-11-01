@@ -5,43 +5,49 @@
     </div>
 
     <div class="flex gap-2">
-      <button v-if="activeTab=='updates'"
-        class="tab block w-full text-center rounded-t-3xl py-3 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-green-800 text-white font-bold"
+      <button
+        v-if="activeTab == 'updates'"
+        class="tab block w-full text-center rounded-t-3xl py-3 text-base- sm:text-sm bg-green-800 text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Updates' }"
         @click="activeTab = 'updates'"
       >
         Updates
       </button>
-      <button v-else
-        class="tab block w-full text-center rounded-t-3xl py-3 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
+      <button
+        v-else
+        class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Updates' }"
         @click="activeTab = 'updates'"
       >
         Updates
       </button>
-      <button v-if="activeTab=='events'"
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-green-800 text-white font-bold"
+      <button
+        v-if="activeTab == 'events'"
+        class="tab block w-full rounded-t-3xl text-center py-3 text-basesm:text-sm bg-green-800 text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Events' }"
         @click="activeTab = 'events'"
       >
         Events
       </button>
-      <button v-else
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
+      <button
+        v-else
+        class="tab block w-full rounded-t-3xl text-center py-3 text-base sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Events' }"
         @click="activeTab = 'events'"
       >
         Events
       </button>
-      <button v-if="activeTab=='Volunteers'"
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-green-800 text-white font-bold"
+      <button
+        v-if="activeTab == 'Volunteers'"
+        class="tab block w-full rounded-t-3xl text-center py-3 text-base] sm:text-sm bg-green-800 text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Volunteers' }"
         @click="activeTab = 'Volunteers'"
       >
         Volunteers
       </button>
-      <button v-else
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
+      <button
+        v-else
+        class="tab block w-full rounded-t-3xl text-center py-3 text-base= sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Volunteers' }"
         @click="activeTab = 'Volunteers'"
       >
@@ -52,8 +58,35 @@
     <hr class="border-3 border-black" />
 
     <div v-if="activeTab === 'updates'">
-      <div class="columns-2 rounded-b-xl border-4 border-green-800">
+      <div class="columns-2 rounded-b-3xl border-4 border-green-800">
         <div class="w-full">
+          <div
+          class="w-full bg-gray-300 rounded-3xl flex-1 overflow-y-scroll h-screen"
+        >
+          <div class="mt-2">
+            <input
+              type="text"
+              name="search"
+              id="search"
+              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+              placeholder="Search..."
+            />
+          </div>
+          <!-- Feed 1-->
+
+          <CommunityFeedItem
+            v-for="(item, index) in postList"
+            @click="handleItemClicked(item.PostTitle)"
+            :key="index"
+            :topic="item.PostTitle"
+            :postAge="item.PostAge"
+            :postDesc="item.PostDesc"
+            :postAuthor="item.PostAuthor"
+            @item-clicked="handleItemClicked"
+            @update:selected="updateSelected"
+            class="justify-left"
+          />
+        </div>
           <div v-for="(item, index) in postList">
             <!-- selected feed item content  -->
             <CommunityFeedItem
@@ -62,6 +95,7 @@
               :postAge="item.PostAge"
               :postDesc="item.PostDesc"
               :postAuthor="item.PostAuthor"
+              class="justify-end"
             >
               <div class="mt-5 mb-5">
                 <label
@@ -108,30 +142,7 @@
           </div>
           <slot class="col"> </slot>
         </div>
-        <div class="w-full bg-gray-300 flex-1 overflow-y-scroll h-screen">
-          <div class="mt-2">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              placeholder="Search"
-            />
-          </div>
-          <!-- Feed 1-->
-
-          <CommunityFeedItem
-            v-for="(item, index) in postList"
-            @click="handleItemClicked(item.PostTitle)"
-            :key="index"
-            :topic="item.PostTitle"
-            :postAge="item.PostAge"
-            :postDesc="item.PostDesc"
-            :postAuthor="item.PostAuthor"
-            @item-clicked="handleItemClicked"
-            @update:selected="updateSelected"
-          />
-        </div>
+        
       </div>
     </div>
     <div v-if="activeTab === 'events'" class="events-container">

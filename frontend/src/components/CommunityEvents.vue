@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-b-xl border-4 border-green-800">
+  <div class="rounded-b-3xl border-4 border-green-800">
     <slot>
       <div v-if="isModalOpen" class="fixed z-10 inset-0 overflow-y-auto">
         <div
@@ -8,7 +8,7 @@
       </div>
     </slot>
     <div class="grid grid-cols-2 w-full gap-x-2">
-      <div class="bg-amber-300 rounded-md px-2">
+      <div class="bg-amber-300 rounded-3xl px-2">
         <h1 class="text-sm pl-2 pt-2 flex items-center">
           Members Only
 
@@ -44,7 +44,7 @@
         />
       </div>
 
-      <div class="bg-gray-300 rounded-md px-2">
+      <div class="bg-gray-300 rounded-3xl px-2">
         <h1 class="text-sm pl-2 pt-2 flex items-center">
           Public Events
           <div

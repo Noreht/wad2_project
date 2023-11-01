@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-b-xl border-4 border-green-800">
+  <div class="rounded-b-3xl border-4 border-green-800">
     <!-- Community Administrators -->
 
     <div class="bg-white sm:pt-3">
@@ -39,7 +39,7 @@
       </div>
     </div>
 
-    <hr class="border-2 max-w-[97%] m-auto mt-7 border-green-800">
+    <hr class="border-2 max-w-[97%] m-auto mt-7 border-green-800" />
 
     <!-- Community Volunteers -->
 
