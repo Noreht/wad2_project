@@ -4,17 +4,21 @@
     <div class="col-span-8 p-4 place-content-center">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
       <h1
-        class="text-center drop-shadow-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl lg:min-w-[400px] max-h-[50px] mb-[10px] typewriter"
+        class="text-center drop-shadow-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl lg:min-w-[400px] xs:min-h-[80px] sm: -mb-[20px] typewriter"
       >
         <span
           v-for="(char, index) in typewriterText"
           :key="index"
-          :class="{ 'text-amber-400': index >= typewriterText.length - 6 }"
+          :class="{
+            'text-amber-400': index >= typewriterText.length - 10 && index<=typewriterText.length - 7,
+            }"
           >{{ char }}</span
         >
       </h1>
 
-      <h3 class="py-4 text-center text-lg sm:text-xl font-semibold leading-10">
+      <h3
+        class="py-4 text-center text-lg xs:text-base md:text-xl lg:text-2xl font-semibold leading-10"
+      >
         Explore and kick start your journey today!
       </h3>
       <ResourceGuidesSummary
@@ -176,7 +180,7 @@ import ResourceGuidesSummary from "@/components/ResourceGuidesSummary.vue";
 import Foot from "@/components/Footer.vue";
 
 const words = ["Resources and Guides"];
-const typeSpeed = 200; // Adjust the speed as needed (in milliseconds)
+const typeSpeed = 100; // Adjust the speed as needed (in milliseconds)
 
 export default {
   name: "ResourceGuidesView",
@@ -302,7 +306,7 @@ export default {
 
             while (j >= 0 && j < word.length) {
               this.typewriterText = word.substring(0, j + 1);
-              if (word[j] === "G") {
+              if (word[j] === "R") {
                 this.isGoldVisible = true;
               } else {
                 this.isGoldVisible = false;
@@ -323,7 +327,7 @@ export default {
             // Clear the word with a delay
             while (j >= 0) {
               this.typewriterText = word.substring(0, j);
-              if (word[j] === "G") {
+              if (word[j] === "R") {
                 this.isGoldVisible = true;
               } else {
                 this.isGoldVisible = false;

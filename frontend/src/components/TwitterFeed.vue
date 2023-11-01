@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:flex max-w-[100%] items-stretch gap-3 justify-center mb-10">
+  <div class="items-center md:flex max-w-[100%] gap-3 justify-center mb-10 ">
     <div>
       <Tweet tweet-id="1239826988983914496" class="" />
       <Tweet tweet-id="1078324202703269889" class=" " />
