@@ -1,7 +1,7 @@
 <template>
   <section class="mb-3 lg:w-1/3 h-auto flex-shrink-0 max-h-[100%] bg-white rounded-3xl">
     <article
-      class="transform duration-300 hover:-translate-y-1 cursor-pointer hover:shadow-2xl group border-4 border-black rounded-3xl hover:scale-105"
+      class="bg-white transform duration-300 hover:-translate-y-1 cursor-pointer hover:shadow-2xl group border-4 border-black rounded-3xl hover:scale-105"
     >
       <!-- <div
         class="p-4 absolute bg-gray-200 rounded-full top-10 right-10 transform duration-500 opacity-0 group-hover:opacity-100"
