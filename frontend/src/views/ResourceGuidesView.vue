@@ -66,9 +66,6 @@
           <div
             class="border-4 border-black rounded-3xl p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6"
           >
-            <!-- <Suspense>
-              <ResourceGuidesCard />
-          </Suspense> -->
 
             <ResourceGuidesCard
               v-for="guide in ResourceGuideList1"
@@ -77,37 +74,6 @@
               :url1="guide.comp.url"
             >
             </ResourceGuidesCard>
-
-            <!-- <ResourceGuidesCard
-            :title="'Make a Basic Compost?'"
-            :image="'ResourceGuidesCards/compostbin1.png'"
-            :url1="'/basiccompost'"
-          />
-          <ResourceGuidesCard
-            :title="'Build a Composting Bin?'"
-            :image="'ResourceGuidesCards/compostbin.png'"
-            :url1="''"
-          />
-          <ResourceGuidesCard
-            :title="'Keep your Compost Warm?'"
-            :image="'ResourceGuidesCards/warm.png'"
-            :url1="''"
-          />
-          <ResourceGuidesCard
-            :title="'Speed up Composting Process?'"
-            :image="'ResourceGuidesCards/time.png'"
-            :url1="''"
-          />
-          <ResourceGuidesCard
-            :title="'Keep your Compost from Smelling?'"
-            :image="'ResourceGuidesCards/odor.png'"
-            :url1="''"
-          />
-          <ResourceGuidesCard
-            :title="'Process Food Waste before using?'"
-            :image="'ResourceGuidesCards/food.png'"
-            :url1="''"
-          /> -->
           </div>
         </div>
 
@@ -124,26 +90,7 @@
               :url1="guide.comp.url"
             >
             </ResourceGuidesCard>
-            <!-- </ResourceGuidesCard>
-            <ResourceGuidesCard 
-            :title="'Build a Tumbling Composter'"
-            :image="'ResourceGuidesCards/tumbling.png'"
-            />
-            <ResourceGuidesCard 
-            :title="'Apply Mulch to Compost'"
-            :image="'ResourceGuidesCards/mulch.png'" />
-            <ResourceGuidesCard 
-            :title="'Make a Worm Compost System'"
-            :image="'ResourceGuidesCards/wormcompost.png'" />
-            <ResourceGuidesCard 
-            :title="'Upscale your Compost Bin'"
-            :image="'ResourceGuidesCards/compostbox.png'" />
-            <ResourceGuidesCard 
-            :title="'Make a Compost Tea'"
-            :image="'ResourceGuidesCards/composttea.png'" />
-            <ResourceGuidesCard 
-            :title="'Add Nitrogen to Compost'"
-            :image="'ResourceGuidesCards/nitrogen.png'" /> -->
+
           </div>
         </div>
       </div>
