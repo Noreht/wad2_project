@@ -9,7 +9,23 @@
           <div class="hidden lg:ml-6 lg:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/home" :class="getClass('/home')">Home</a>
+              <!-- <a href="/home" :class="getClass('/home')">Home</a> -->
+
+              <!-- if isLoggedIn -->
+              <a
+                v-if="checkPageLoggedIn"
+                href="/communitypage"
+                :class="getClass('/communitypage')"
+                >Community Page
+              </a>
+
+              <a
+                v-else=""
+                href="/home" 
+                :class="getClass('/home')">
+                Home
+              </a>
+              
               <a href="/resourceguides" :class="getClass('/resourceguides')"
                 >Resources & Guides</a
               >
