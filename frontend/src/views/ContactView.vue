@@ -147,6 +147,12 @@ export default {
       //   Body: this.message,
       // }).then(() => alert("Thank you for your message! We will get back to you soon."));
 
+      // refresh the input fields
+      this.firstName = "";
+      this.lastName = "";
+      this.email = "";
+      this.message = "";
+      this.subject = "";
       this.$toast.success("Thank you for your message! We will get back to you soon" + "!");
       
     },

@@ -38,6 +38,15 @@
     import '@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
     import mapboxgl from "mapbox-gl";
     import { getAllEvents } from "@/utils/firebase";
+    import { ref, onMounted } from "vue";
+    import { isLoggedIn } from '../utils/firebase';
+
+    const checkPageLoggedIn = ref(null);
+
+    onMounted(async () => {
+        const loggedIn = await isLoggedIn();
+        checkPageLoggedIn.value = loggedIn;
+    });
 
     let loadLatitude = 1.3521;
     let loadLongitude = 103.8198;
@@ -70,6 +79,8 @@
             console.log("Setup Initiated for Event Map")
             const eventList = await getAllEvents();
             console.log(eventList[0].EventType)
+            const loggedIn = await isLoggedIn();
+            checkPageLoggedIn.value = loggedIn;
 
             return {
                 eventList
@@ -79,16 +90,6 @@
 
         data() {
         return {
-
-            // events: eventList,
-            // events: [
-            // { name: 'Composting Workshop', location: [103.8198, 1.3521], organiser: "Punggol Community Club", date: "12 Oct 2023", isVisible: true}, 
-            // { name: 'Roof Repair', location: [103.8914, 1.3868], organiser:"Hougang Club", date: "15 Oct 2023", isVisible: false}, 
-            // { name: 'Composting Bazaar', location: [103.8114, 1.3668], organiser:"Tekong Club", date: "16 Oct 2023", isVisible: true }, 
-            // { name: 'Family Volunteering Weekend', location: [103.7914, 1.3863], organiser:"Daddy's Club", date: "17 Oct 2023", isVisible: false }, 
-            // { name: 'IMH Outreach session', location: [103.8847, 1.3819], organiser:"Buangkok Club", date: "17 Oct 2023", isVisible: false }, 
-            // // Add more events as needed
-            // ],
             currentEventsInArea: 0,
         };
         },
@@ -102,6 +103,7 @@
             zoom: 12,
         });
     
+        {{ console.log(checkPageLoggedIn) }}
         this.addMarkers();
         this.map.on('moveend', this.filterEventsInCurrentArea);
         },
@@ -117,11 +119,13 @@
             new mapboxgl.Marker()
                 .setLngLat([long, lat])
                 .setPopup(new mapboxgl.Popup().setHTML(`
-                        <div class="content-center w-30 h-30">
-                            <h1 class='font-bold py-2'>${event.name}</h1>
-                        
-                            <a href="#" class="bg-amber-400 rounded-sm px-2 py-2" > Login to sign up! </a>
-                        </div>`))
+                    <div class="content-center w-30 h-30">
+                        <h1 class='font-bold py-2'>${event.EventName}</h1>
+                        ${checkPageLoggedIn.value ? 
+                            '<a href="#" class="bg-amber-400 rounded-sm px-2 py-2" > Sign up for the event now! </a>' 
+                            : 
+                            '<a href="/login" class="bg-amber-400 rounded-sm px-2 py-2" > Login to sign up! </a>'}
+                    </div>`))
                 .addTo(this.map);
             });
         },
