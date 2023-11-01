@@ -1,17 +1,16 @@
 <template>
   <ul role="list" class="bg-amber-400 rounded-lg mb-[20px] px-[25px] py-[10px]">
     <li
-      v-for="community in communities"
-      :key="community.id"
+      v-for="community in communityList"
       class="my-2"
     >
     <div class="rounded-xl bg-[rgb(255,255,255,0.8)] flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap hover:-translate-y-1 hover:scale-[103%]">
       <div >
         <p class="pl-5 text-xl font-semibold leading-6 text-gray-900">
           <a
-            @click="$emit('toggleModal', { Title: community.title })"
+            @click="$emit('toggleModal', { Title: community.name, Description: community.desc})"
             class="hover:underline"
-            >{{ community.title }}</a
+            >{{ community.name }}</a
           >
         </p>
         <div
@@ -19,7 +18,7 @@
         >
           <p>
             <a class="hover:underline text-base">{{
-              community.location.name
+              community.cc
             }}</a>
           </p>
           <svg viewBox="0 0 2 2" class="h-0.5 w-0.5 fill-current">
@@ -32,58 +31,57 @@
           </p>
         </div>
       </div>
-      <dl class="flex w-full flex-none justify-between gap-x-8 sm:w-auto">
+      <dl class="flex w-full flex-none justify-between gap-x-8 sm:w-auto pr-3">
         <div class="flex -space-x-0.5 pl-[20px]">
           <dt class="sr-only">Commenters</dt>
-          <dd v-for="commenter in community.commenters" :key="commenter.id">
+          <dd v-for="volunteer in community.volunteerPreview" >
             <img
               class="h-6 w-6 rounded-full bg-gray-50 ring-2 ring-white"
-              :src="commenter.imageUrl"
-              :alt="commenter.name"
+              :src="volunteer.imageUrl"
+              :alt="volunteer.name"
             />
           </dd>
         </div>
-        <div class="flex w-16 gap-x-2.5">
+        <!-- <div class="flex w-16 gap-x-2.5">
           <dt>
-            <span class="sr-only">Total comments</span>
-            <CheckCircleIcon
-              v-if="community.status === 'resolved'"
-              class="h-6 w-6 text-gray-400"
-              aria-hidden="true"
-            />
-            <ChatBubbleLeftIcon
-              v-else
-              class="h-6 w-6 text-gray-400"
-              aria-hidden="true"
-            />
+            <span class="sr-only">Total volunteers</span>
           </dt>
           <dd class="text-sm leading-6 text-gray-900">
-            {{ community.totalComments }}
+            {{ community.totalVolunteers }}
           </dd>
-        </div>
+        </div> -->
       </dl>
       </div>
     </li>
   </ul>
 </template>
 
-<script setup>
+<script>
 import { ChatBubbleLeftIcon, CheckCircleIcon } from "@heroicons/vue/24/outline";
 import { ref, onMounted } from "vue";
+import {getAllCommunities} from "@/utils/firebase";
 
-//   export const {
-//     name:"modal",
-//     data(){
-//         return {
-//             toggleModal: false
-//         };
-//     },
-//   }
+
+  export default {
+    async setup() {
+          //console.log("Community Setup Initiated")
+          const communityList = await getAllCommunities();
+          //console.log(communityList[0])
+
+          return {
+              communityList
+          };
+          
+      },
+  }
+
 
 function toggleModal() {
   console.log("open modal child initiated");
   emit("openModal", true);
 }
+
+
 
 const communities = [
   {

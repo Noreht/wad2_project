@@ -23,7 +23,7 @@
     import UserSidebar from "@/components/UserSidebar.vue";
 
     export default {
-        name: "CommunityPage",
+        name: "CommunityPageView",
         components: { UserCommunity, UserSidebar },
     };
 

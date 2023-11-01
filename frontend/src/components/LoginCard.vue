@@ -129,7 +129,7 @@ export default {
             console.log(this.store.state.user); // Verify that loggedIn is set to true
             let displayName = this.store.getters.user.data.displayName;
 
-            this.router.push("/");
+            this.router.push("/communitypage");
             this.$toast.success("Welcome, " + displayName + "!");
           });
        } catch (err) {
