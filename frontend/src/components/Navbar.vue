@@ -134,17 +134,7 @@
             </div>
           </div>
         </div>
-        <div class="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
-          <a
-            href="https://donate.stripe.com/test_7sIeVDeaU6FoaEo002"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-amber-400 text-white text-xl font-medium rounded-md px-4 py-2 flex items-center justify-center hover:bg-yellow-600 transition duration-300 ease-in-out shadow-lg min-w-[215px]"
-          >
-            <span class="text-3xl mr-1">☕</span>
-            Buy us a coffee
-          </a>
-        </div>
+
         <div class="flex lg:hidden">
           <!-- Mobile menu button -->
           <DisclosureButton

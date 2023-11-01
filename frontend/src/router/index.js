@@ -80,6 +80,7 @@ const routes = [
         path: "/CompostingBin",
         name: "CompostingBin",
         component: CompostingBin,
+        meta:{requiresAuth:true},
       }
 ];
 
