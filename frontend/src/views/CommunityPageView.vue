@@ -4,7 +4,9 @@
 
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-2 pt-50">
-            <UserSidebar class="z-0"/>
+            <suspense>
+                <UserSidebar class="z-0"/>
+            </suspense>
         </div>
       
         <div class="col-span-8">

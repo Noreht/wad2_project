@@ -12,12 +12,14 @@
                            
                             <h1 class="font-bold">{{ event.EventName }}, {{ event.EventDate }} </h1>
                             <p class="italic text-sm"> Organiser: {{ event.EventOrganiser }} </p>
+                            <button z-20 v-if="userAuthentication" @click="Signup(event.EventName,event.EventDate)"> Sign Up </button>
 
                         </li>
                         <li v-if="event.isVisible== false" :key="index" @click="centerMap(event)" class="overflow-auto bg-white hover:bg-gray-200 px-2 py-2 shadow sm:rounded-md sm:px-6 my-2" >
                            
                            <h1 class="font-bold">{{ event.EventName }}, {{ event.EventDate }} </h1>
                            <p class="italic text-sm"> Organiser: {{ event.EventOrganiser }} </p>
+                           <button z-20 v-if="userAuthentication" @click="Signup(event.EventName, event.EventDate)"> Sign Up </button>
 
                        </li>
                         </template>
@@ -40,6 +42,10 @@
     import { getAllEvents } from "@/utils/firebase";
     import { ref, onMounted } from "vue";
     import { isLoggedIn } from '../utils/firebase';
+    import { document, updatedoc, arrayunion, setdoc} from "@/utils/firebase/firebaseInit.js";
+    import { db } from "@/utils/firebase/firebaseInit.js";
+
+    
 
     const checkPageLoggedIn = ref(null);
 
@@ -50,6 +56,8 @@
 
     let loadLatitude = 1.3521;
     let loadLongitude = 103.8198;
+
+
 
     function getLocation() {
             let status = false;
@@ -81,9 +89,13 @@
             console.log(eventList[0].EventType)
             const loggedIn = await isLoggedIn();
             checkPageLoggedIn.value = loggedIn;
+            var userAuthentication = false;
+            if (checkPageLoggedIn.value) {
+                userAuthentication = true;
+            } 
 
             return {
-                eventList
+                eventList, userAuthentication
             };
             
         },
@@ -108,6 +120,19 @@
         this.map.on('moveend', this.filterEventsInCurrentArea);
         },
         methods: {
+
+        async Signup(list1,list3) {
+            console.log("event registration started")
+            let eventName = list1
+            // let eventOrganiser = list2
+            let eventDate = list3
+            let id = Math.random() * 1000
+            console.log("List: ", list1)
+            
+            await setdoc(document(db, "UserRegisteredEvents", id.toString()), {name: eventName, date: eventDate} )
+            console.log("Event registration successful")
+        },
+
         addMarkers() {
             //console.log("Add markers initiated, for the following events: " + this.eventList)
             this.eventList.forEach((event) => {
@@ -121,8 +146,10 @@
                 .setPopup(new mapboxgl.Popup().setHTML(`
                     <div class="content-center w-30 h-30">
                         <h1 class='font-bold py-2'>${event.EventName}</h1>
+                        <p> ${event.EventDescription}</p>
                         ${checkPageLoggedIn.value ? 
-                            '<a href="#" class="bg-amber-400 rounded-sm px-2 py-2" > Sign up for the event now! </a>' 
+                            // '<a href="#" class="bg-amber-400 rounded-sm px-2 py-2" > Sign up for the event now! </a>' 
+                            ''
                             : 
                             '<a href="/login" class="bg-amber-400 rounded-sm px-2 py-2" > Login to sign up! </a>'}
                     </div>`))

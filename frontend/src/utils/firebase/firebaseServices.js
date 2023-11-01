@@ -116,6 +116,27 @@ export async function getAllCommunities() {
     return communities;
 }
 
+export async function getAllRegisteredEvents() {
+    const registeredColRef = collection(db, "UserRegisteredEvents");
+
+    const querySnapshot = await getDocs(registeredColRef);
+    let registeredEvents = [];
+    querySnapshot.forEach((doc) => {
+        const registeredData = doc.data();
+        const registeredEvent = {
+            id: doc.id,
+            ...registeredData,
+        };
+        registeredEvents.push(registeredEvent);
+    });
+    if (registeredEvents.length > 0) {
+        console.log(registeredEvents);
+    } else {
+        console.log("No data or query error");
+    }
+    return registeredEvents;
+}
+
 
 // export async function getModuleTerms(moduleCode) {
 //     const sectionColRef = collection(db, "Modules", moduleCode, "Sections");
