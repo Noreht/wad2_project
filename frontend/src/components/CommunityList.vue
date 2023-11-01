@@ -1,5 +1,5 @@
 <template>
-  <ul role="list" class="bg-amber-400 rounded-lg mb-[20px] px-[25px] py-[10px]">
+  <ul role="list" class="bg-amber-400 rounded-2xl border-yellow-700 border-4 mb-[20px] px-[25px] py-[10px]">
     <li
       v-for="community in communityList"
       class="my-2"
