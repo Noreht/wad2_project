@@ -7,7 +7,7 @@ import CommunitiesView from "@/views/CommunitiesView.vue";
 import EventsView from "@/views/EventsView.vue";
 import ContactView from "@/views/ContactView.vue";
 import BasicCompost from "@/views/BasicCompostView.vue";
-import CommunityPage from "@/views/CommunityPage.vue";
+import CommunityPage from "@/views/CommunityPageView.vue";
 
 import store from "@/store";
 import { inject } from "vue";
