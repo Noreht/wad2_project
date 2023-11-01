@@ -6,9 +6,12 @@
         <div class="col-span-2 pt-50">
             <UserSidebar class="z-0"/>
         </div>
+      
         <div class="col-span-8">
             <!-- ADD THE COMPONENTS AND STYLING HERE -->
-            <UserCommunity />
+            <suspense>
+                <UserCommunity />
+            </suspense>
     
         </div>
         <div class="col-span-2"></div>

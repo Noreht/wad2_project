@@ -85,19 +85,23 @@
                 <div class="text-xs font-semibold leading-6 text-gray-400">Your Communities</div>
                 <ul role="list" class="-mx-2 mt-2 space-y-1">
                   <li v-for="team in teams" :key="team.name">
-                    <a :href="team.href" :class="[team.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
-                      <span :class="[team.current ? 'text-indigo-600 border-indigo-600' : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ team.initial }}</span>
+                    <a :href="team.href" :class="[team.current ? 'bg-gray-50 text-black' : 'text-gray-400 hover:text-amber-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                      <span :class="[team.current ? 'text-black border-amber-600' : 'text-gray-400 border-gray-200 group-hover:border-amber-600 group-hover:text-black', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ team.initial }}</span>
                       <span class="truncate">{{ team.name }}</span>
                     </a>
                   </li>
                 </ul>
               </li>
-              <li class="-mx-6 mt-auto">
-                <a href="#" class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-50">
-                  <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-                  <span class="sr-only">Your profile</span>
-                  <span aria-hidden="true">Tom Cook</span>
-                </a>
+              <li>
+                <div class="text-xs font-semibold leading-6 text-gray-400">Your Events</div>
+                <ul role="list" class="-mx-2 mt-2 space-y-1">
+                  <li v-for="event in events" :key="event.name">
+                    <a :class="[event.current ? 'bg-gray-50 text-black' : 'text-gray-400 hover:text-amber-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                      <span :class="[event.current ? 'text-black border-amber-600' : 'text-gray-400 border-gray-200 group-hover:border-amber-600 group-hover:text-black', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ event.date }}</span>
+                      <span class="truncate">{{ event.name }}</span>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </nav>
@@ -110,10 +114,6 @@
           <Bars3Icon class="h-6 w-6" aria-hidden="true" />
         </button>
         <div class="flex-1 text-sm font-semibold leading-6 text-gray-900">Dashboard</div>
-        <a href="#">
-          <span class="sr-only">Your profile</span>
-          <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
-        </a>
       </div>
   
       <main class="py-10 lg:pl-72">
@@ -138,14 +138,16 @@
   
   const navigation = [
     { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-    { name: 'Team', href: '#', icon: UsersIcon, current: false },
-    { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-    { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
+    { name: 'Friends', href: '#', icon: UsersIcon, current: false },
   ]
   const teams = [
-    { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-    { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-    { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
+    { id: 1, name: 'Punggol CC', href: '#', initial: 'PC', current: false },
+    { id: 2, name: 'Pasir Ris CC', href: '#', initial: 'PRC', current: false },
+  ]
+
+  const events = [
+    { id: 1, name: 'Composting Session', href: '#', date: '27/10', current: false },
+    { id: 2, name: 'Roof Repair', href: '#', date: '23/12', current: false },
   ]
   
   const sidebarOpen = ref(false)

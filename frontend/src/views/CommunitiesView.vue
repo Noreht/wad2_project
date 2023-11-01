@@ -17,8 +17,8 @@
                     <h2 class="text-xl font-bold text-black"> {{ modalTitle }}</h2>
                     <p class="mb-6"> {{modalDesc}} </p>
                         <button
-                        class="bg-amber-400 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg" :disabled="joinedCommunity = true"
-                        @click="joinedCommunity = true"
+                        class="bg-amber-400 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg disabled:bg-gray-300 disabled:text-white" :disabled="this.disable"
+                        @click="isDisabled()"
                         >
                         Join Community 
                         </button>
@@ -50,12 +50,12 @@
 
     
 
-
+    
     export default {
         name: "CommunitiesView",
         components: { CommunityList, CommunityHeader, CommunityModal},
         data() {
-            return {showModal: false, joinedCommunity:false};
+            return {showModal: false, disable:false};
         },
         methods: {
             updateParent(input) {
@@ -68,6 +68,12 @@
                 console.log("Modal Title:", modalTitle)
                 this.showModal = true;
                 return this.modalTitle = modalTitle, this.modalDesc = modalDesc;
+            },
+
+            isDisabled() {
+                console.log("isDisabled initiated")
+            
+                return this.disable=true;
             }
 
 
@@ -82,7 +88,6 @@
     //     console.log("Handling Open Modal")
     // }
 
-    
 
 
 </script>

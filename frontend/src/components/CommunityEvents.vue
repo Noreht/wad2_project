@@ -25,16 +25,16 @@
             <hr class="border-5 border-black w-5/6 ml-2 rounded">
             
             <CommunityEventItem 
-                :name = "'Kappa 1'"
-                :eventDate = "'25 Dec'"
-                :eventDesc = "'Kapp 4'"
-                :eventSignups ="'6'"
+                :name = "'Regular Composting Session'"
+                :eventDate = "'21 Dec'"
+                :eventDesc = "'We will be activating our soil and adding new composts'"
+                :eventSignups ="'3'"
             /> 
             <CommunityEventItem 
-                :name = "'Kappa 2'"
-                :eventDate = "'21 Dec'"
-                :eventDesc = "'Kapp 3'"
-                :eventSignups ="'6'"
+                :name = "'Regular Composting Session'"
+                :eventDate = "'27 Dec'"
+                :eventDesc = "'We will be preparing for the new year by upgrading the farm!'"
+                :eventSignups ="'8'"
             /> 
         </div>
 
@@ -55,7 +55,7 @@
                             :name = event.EventName
                             :eventDate = event.EventDate
                             :eventDesc = event.EventDescription
-                            :eventSignups ="'6'"/> 
+                            :eventSignups ="event.signups"/> 
 
                         </li>
                     </template>

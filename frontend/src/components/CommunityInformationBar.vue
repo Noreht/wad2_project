@@ -16,10 +16,6 @@
           <CurrencyDollarIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
           Aug 2017 &ndash; Present
         </div>
-        <div class="mt-2 flex items-center text-sm text-gray-500">
-          <CalendarIcon class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-          Next composting session on 5 Oct 2023
-        </div>
       </div>
     </div>
 </div>

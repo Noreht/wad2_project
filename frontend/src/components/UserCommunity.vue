@@ -26,17 +26,19 @@
           volunteers
         </div>
       </div>
+
+    <hr class="border-3 border-black">
       
     <div v-if="activeTab === 'updates'" >
         <div class="columns-2">
             <div class="w-full">
-                <div v-for ="(item, index) in items">
+                <div v-for ="(item, index) in postList">
                 <!-- selected feed item content  -->
                     <CommunityFeedItem v-if="item.selected == true"
-                    :topic ="item.topic"
-                    :postAge ="item.postAge"
-                    :postDesc ="item.postDesc"
-                    :postAuthor ="item.postAuthor" > 
+                    :topic ="item.PostTitle"
+                    :postAge ="item.PostAge"
+                    :postDesc ="item.PostDesc"
+                    :postAuthor ="item.PostAuthor" > 
                     
                     <div class="mt-5 mb-5">
                         <label for="newComment" class="block text-sm font-medium leading-6 text-gray-900"> <slot>Add your comment</slot> {{ errorText }}</label>
@@ -53,14 +55,22 @@
                         Comments
                     </h2>
                     <ul role="list" class="space-y-3">
-                        <li v-for="(comment) in item.comments" class="overflow-hidden rounded-md bg-amber-300 px-6 py-4 shadow">
-                            {{  comment  }}
+                        <li v-for="(comment) in item.PostComments" class="overflow-hidden rounded-md bg-amber-300 px-6 py-4 shadow">
+                            <div class="text-black text-lg">
+                              <p>{{ comment.text }}</p>
+                            </div>
+                            <div class="text-black text-sm mt-2">
+                              <p>By: {{ comment.author }}</p>
+                            </div>
                         </li>
                     </ul>
                 
                 </CommunityFeedItem>
                 
                 </div>
+              <slot class="col">
+
+              </slot>       
             </div>
             <div class="w-full bg-gray-300 flex-1 overflow-y-scroll h-screen">
                 <div class="mt-2">
@@ -68,13 +78,13 @@
                 </div>
                 <!-- Feed 1-->
 
-                <CommunityFeedItem v-for="(item, index) in items"
-                    @click="handleItemClicked(item.topic)"
+                <CommunityFeedItem v-for="(item, index) in postList"
+                    @click="handleItemClicked(item.PostTitle)"
                     :key="index"
-                    :topic="item.topic"
-                    :postAge="item.postAge"
-                    :postDesc="item.postDesc"
-                    :postAuthor="item.postAuthor"
+                    :topic="item.PostTitle"
+                    :postAge="item.PostAge "
+                    :postDesc="item.PostDesc"
+                    :postAuthor="item.PostAuthor"
                     @item-clicked="handleItemClicked"
                     @update:selected="updateSelected" />
                 
@@ -103,7 +113,7 @@
     //import firebase from "@/utils/firebase";
     import { db } from "@/utils/firebase/firebaseInit.js";
     import {document, updatedoc, arrayunion} from "@/utils/firebase/firebaseInit.js";
-
+    // import {getAllPosts } from "@/utils/firebase"; 
     
 
 
@@ -111,14 +121,31 @@
 
       // async setup() {
       //       console.log("Setup Initiated for Feed Items")
-      //       const feedList = await getAllFeeds();
-      //       console.log(feedList[0].Title)
+      //       const postList = await getAllPosts();
+      //       console.log(postList[0])
+
+      //       const database = db
+
+      //       database.ref('/CommunityPosts').on('value', (snapshot) => {
+      //       postList = snapshot.val();
+      //       console.log("Updated post list:", postList);
+      //       // Do something with the updated post list
+      //           // You can call any function that uses postList here
+      //       }, (error) => {
+      //           console.error('Error fetching data:', error);
+      //       });
+
+      //       // Wait for the initial fetch before returning
+      //       await database.ref('/CommunityPosts').once('value', (snapshot) => {
+      //           postList = snapshot.val();
+      //       });
+
+      //       console.log(postList);
 
       //       return {
-      //           feedList
+      //           postList
       //       };
-            
-      //   },
+      //       },
 
         components: {
             CommunityInformationBar, CommunityFeedItem, CommunityEvents, CommunityMembers, 
@@ -126,57 +153,64 @@
         data() {
             return {
                 activeTab: 'feed',
-                items: [{topic: "Assistance Required", postAge: "3 days ago", postDesc: "As stated above. We are requiring volunteers to help fix our farm roof or water risks flooding everything! Sign up on Events or leave comments for more info.", postAuthor: "Jese Leos", selected: false, comments: ["hi", "bye", "suck", "whe"]},
-                        {topic:"Dying Over Here", postAge:"5 days ago", postDesc:"Volunteers, please be more active! Our community is not a one man show!", postAuthor: "Jese Leos", selected: false, comments: ["whoops", "bgg", "my", "wfffe"]},
-                        {topic:"Milestone reached!", postAge:"13 days ago", postDesc:"We are now 500 days old!", postAuthor: "Jese Leos", selected: false, comments: ["kappa", "bye", "omgk", "YEESH"]}],
+                postList: [{PostTitle: "Assistance Required", PostAge: "3 ", PostDesc: "As stated above. We are requiring volunteers to help fix our farm roof or water risks flooding everything! Sign up on Events or leave comments for more info.", PostAuthor: "Jese Leos", selected: false, PostComments: [{author: "Cai Jun", text: "Sure of course!", id:1}, {author: "Pieces", text: "Can't wait to join!", id:2}, {author: "Darren", text: "I will try to join- update later!", id:3}]},
+                        {PostTitle:"Dying Over Here", PostAge:"5 ", PostDesc:"Volunteers, please be more active! Our community is not a one man show!", PostAuthor: "Jese Leos", selected: false, PostComments: [{author: "Jeremy", text: "Damn that's tough bro", id:1},{author: "Cai Jun", text: "Whoops, will contribute more often", id:2}, {author: "Leo", text: "Stop throwing your work to us!", id:3}]},
+                        {PostTitle:"Milestone reached!", PostAge:"13 ", PostDesc:"Hi everyone, we have reached 100 people as of today! That's actually insane! Congrats on a job well done!", PostAuthor: "Jese Leos", selected: false, PostComments: [{author: "Donovan", text: "Great job guys!", id:1}, {author: "Faith Tham", text: "Let's reach 100 people next!", id:2}]}],
                 currentPostId: 1,
-                newComment: ""
+                newComment: "",
                 
             }
         },
         methods: {
-            handleItemClicked(clickedItem) {
+        handleItemClicked(clickedItem) {
                 //console.log("handleItemClicked start")
-                //console.log("Clicked Item: " + clickedItem)
-                this.items.forEach((item) => {
-                    if (item.topic == clickedItem) {
+                // //console.log("Clicked Item: " + clickedItem)
+                // let postID = ""
+                // let otherPosts = []
+                
+                this.postList.forEach((item) => {
+                    if (item.PostTitle == clickedItem) {
                     item.selected = true;
-                    console.log("item selected: " + item.topic + ", " + item.selected)
+                    
+                    console.log("item selected: " + item.PostTitle + ", " + item.selected)
                     } else {
-                    item.selected = false;
-                    console.log("item not selected: " + item.topic + ", " + item.selected)
+                      item.selected = false;
+                      console.log("item not selected: " + item.PostTitle + ", " + item.selected)
+                      // let nonSelectedPosts = document(db, "CommunityPosts", item.id)
+                      // otherPosts.push(nonSelectedPosts)
                     }
 
-                })
+                  })
                 ;
             },
+  
+    
+
             updateSelected(selectedItem) {
                 //console.log("SelectedItem Start")
                 
-                this.items.forEach((item) => {
+                this.postList.forEach((item) => {
                     item.selected = item === selectedItem;
-                    console.log("Topic: " + item.topic + ", " + item.selected)
+                    console.log("Topic: " + item.PostTitle + ", " + item.selected)
                 });
             },
 
-            async onSubmit() {
+            onSubmit() {
               console.log("onSubmit Start")
               // obtain user info 
               // const user = firebase.auth().currentUser;
               // console.log("User: "+ user)
-
-              const currentPost = document(db, `CommunityPosts`, "i94HlLPoeejIQnUAebGZ");
-
-              
-              if (this.newComment != "") {
-                    console.log("Adding to doc")
-                    await updatedoc(currentPost, {
-                        PostComments: arrayunion({
-                          id: Math.random() * 1000,
+              this.postList.forEach((item) => {
+                if (item.selected == true) {
+                  
+                  if (this.newComment != "") {
+                    console.log("Adding to doc");
+                        item.PostComments.unshift({
+                        id: Math.random() * 1000,
                         text: this.newComment,
                         author: "Bryan",
-                        })
-                    });
+                      })
+                    }
                     
                     this.newComment = null;
                     this.errorText = null;
@@ -185,13 +219,10 @@
                     console.log("MessageNotFound")
                     this.errorText = "A message must be entered first!";
                 }
-
-        
+              }); 
             },
-  
-    },
-  }
-
+          },
+        }
 
 </script>
   

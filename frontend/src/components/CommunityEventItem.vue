@@ -10,15 +10,20 @@
         <p class="mb-5 font-light text-gray-500 dark:text-gray-400"> {{ eventDesc }}</p>
         <div class="flex justify-between items-center">
             <div class="flex items-center space-x-4">
-                <img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Leos avatar" />
                 <span class="font-medium dark:text-white">
-                    {{ eventSignups }}
+                    Event Signups: {{ eventSignups }}
                 </span>
+                <button id="{{ eventID }}"
+                class="bg-amber-400 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg disabled:bg-gray-300 disabled:text-white" :disabled="this.disable"
+                @click=""
+                >
+                Sign Up
+                </button>
             </div>
         </div>
         <div>
             <slot>
-                Nothing
+               
             </slot>
         </div>
     </article>
@@ -31,6 +36,7 @@
             eventDate: String, // Event Date
             eventDesc: String, // Event Description
             eventSignups: String, // NumofEventVolunteers
+            eventID: Number,
         },
     }
 </script>
