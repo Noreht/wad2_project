@@ -74,7 +74,26 @@ export async function getAllPosts() {
     return posts;
 }
 
-
+// Get All Communities 
+export async function getAllCommunities() {
+    const communitiesColRef = collection(db, "Community");
+    const querySnapshot = await getDocs(communitiesColRef);
+    let communities = [];
+    querySnapshot.forEach((doc) => {
+        const communityData = doc.data();
+        const community = {
+            id: doc.id,
+            ...communityData,
+        };
+        communities.push(community);
+    });
+    if (communities.length > 0) {
+        console.log(communities);
+    } else {
+        console.log("No data or query error");
+    }
+    return communities;
+}
 
 
 // export async function getModuleTerms(moduleCode) {
