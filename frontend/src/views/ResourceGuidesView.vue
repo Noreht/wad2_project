@@ -100,7 +100,7 @@
       </div>
 
       <div
-        class="border-4 border-black rounded-3xl my-4 p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6"
+        class="border-4 border-black rounded-3xl my-4 p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6 "
         v-else-if="filteredResourceGuideList.length > 0"
       >
         <ResourceGuidesCard
@@ -112,7 +112,7 @@
         </ResourceGuidesCard>
       </div>
 
-      <div v-else></div>
+      <div v-else class="min-h-[202px]"></div>
     </div>
   </div>
   <div class="col-span-2 px-4"></div>

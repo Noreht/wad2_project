@@ -1,7 +1,7 @@
 <template>
   <ul
     role="list"
-    class="bg-amber-400/80 rounded-2xl border-yellow-700 border-4 mb-[20px] px-[25px] py-[10px]"
+    class="bg-amber-400/80 rounded-2xl border-yellow-700 border-4 mb-[20px] px-[25px] py-[10px] overflow-y-scroll"
   >
     <li v-for="community in communityList" class="my-2">
       <button
