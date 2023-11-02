@@ -1,10 +1,10 @@
 <template>
-  <div class="grid grid-cols-12 bg-gradient-to-t from-amber-300 to-orange-50">
+  <div class="grid grid-cols-12 bg-gradient-to-t from-amber-300 to-orange-50 min-w-[400px]">
     <div class="col-span-2 p-4"></div>
     <div class="col-span-8 p-4 place-content-center">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
       <h1
-        class="text-center drop-shadow-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
+        class="text-center drop-shadow-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
       >
         <span
           v-for="(char, index) in typewriterText"
