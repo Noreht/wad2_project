@@ -3,8 +3,7 @@
     <div
     class=" my-5 border-b-4 border-b-yellow-800 pt-5 px-5"
   >
-    <div class="sticky top-16 ">
-      
+    <div>
       <CommunityInformationBar />
     </div>
 
@@ -58,10 +57,10 @@
         People
       </button>
       <button
-        v-if="activeTab == 'Volunteers'"
+        v-if="activeTab == 'Media'"
         class="tab block w-full rounded-t-3xl text-center py-3 text-base sm:text-sm bg-green-800 text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Volunteers' }"
-        @click="activeTab = 'Volunteers'"
+        @click="activeTab = 'Media'"
       >
         Media
       </button>
@@ -69,7 +68,7 @@
         v-else
         class="tab block w-full rounded-t-3xl text-center py-3 text-base= sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Volunteers' }"
-        @click="activeTab = 'Volunteers'"
+        @click="activeTab = 'Media'"
       >
         Media
       </button>

@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-b-3xl border-4 border-green-800 h-[630px] overflow-y-scroll">
+  <div >
     <slot>
       <div v-if="isModalOpen" class="fixed z-10 inset-0 overflow-y-auto">
         <div
