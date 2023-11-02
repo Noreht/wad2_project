@@ -1,110 +1,108 @@
 <template>
   <div>
-    <div
-    class=" my-5 border-b-4 border-b-yellow-800 pt-5 px-5"
-  >
-    <div>
-      <CommunityInformationBar />
-    </div>
+    <div class="my-5 border-b-4 border-b-yellow-800 pt-5 px-5">
+      <div>
+        <CommunityInformationBar />
+      </div>
 
-    <div class="flex gap-2 mt-5">
-      <button
-        v-if="activeTab == 'updates'"
-        class="tab block w-full text-center rounded-t-3xl py-3 text-base- sm:text-sm bg-green-800 text-white font-bold"
-        :class="{ 'active-tab': activeTab === 'Updates' }"
-        @click="activeTab = 'updates'"
-      >
-        Discussions
-      </button>
-      <button
-        v-else
-        class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
-        :class="{ 'active-tab': activeTab === 'Updates' }"
-        @click="activeTab = 'updates'"
-      >
-        Discussions
-      </button>
-      <button
-        v-if="activeTab == 'events'"
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base sm:text-sm bg-green-800 text-white font-bold"
-        :class="{ 'active-tab': activeTab === 'Events' }"
-        @click="activeTab = 'events'"
-      >
-        Events
-      </button>
-      <button
-        v-else
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
-        :class="{ 'active-tab': activeTab === 'Events' }"
-        @click="activeTab = 'events'"
-      >
-        Events
-      </button>
-      <button
-        v-if="activeTab == 'Volunteers'"
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base sm:text-sm bg-green-800 text-white font-bold"
-        :class="{ 'active-tab': activeTab === 'Volunteers' }"
-        @click="activeTab = 'Volunteers'"
-      >
-        People
-      </button>
-      <button
-        v-else
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base= sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
-        :class="{ 'active-tab': activeTab === 'Volunteers' }"
-        @click="activeTab = 'Volunteers'"
-      >
-        People
-      </button>
-      <button
-        v-if="activeTab == 'Media'"
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base sm:text-sm bg-green-800 text-white font-bold"
-        :class="{ 'active-tab': activeTab === 'Volunteers' }"
-        @click="activeTab = 'Media'"
-      >
-        Media
-      </button>
-      <button
-        v-else
-        class="tab block w-full rounded-t-3xl text-center py-3 text-base= sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
-        :class="{ 'active-tab': activeTab === 'Volunteers' }"
-        @click="activeTab = 'Media'"
-      >
-        Media
-      </button>
-    </div>
-    </div>
-
-    <div v-if="activeTab === 'updates'">
-      <div class="columns-2 rounded-b-3xl border-4 border-green-800 h-[630px] overflow-y-scroll">
-        <div class="w-full ">
-          <div
-          class="w-full bg-gray-300 rounded-3xl flex-1 overflow-y-scroll "
+      <div class="flex gap-2 mt-5">
+        <button
+          v-if="activeTab == 'updates'"
+          class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
+          @click="activeTab = 'updates'"
         >
-          <div class="mt-2">
-            <input
-              type="text"
-              name="search"
-              id="search"
-              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-              placeholder="Search..."
+          Discussions
+        </button>
+        <button
+          v-else
+          class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm hover:bg-yellow-300 hover:text-white font-bold"
+          :class="{ 'active-tab': activeTab === 'Updates' }"
+          @click="activeTab = 'updates'"
+        >
+          Discussions
+        </button>
+        <button
+          v-if="activeTab == 'events'"
+          class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
+          :class="{ 'active-tab': activeTab === 'Events' }"
+          @click="activeTab = 'events'"
+        >
+          Community Events
+        </button>
+        <button
+          v-else
+          class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm hover:bg-yellow-300 hover:text-white font-bold"
+          :class="{ 'active-tab': activeTab === 'Events' }"
+          @click="activeTab = 'events'"
+        >
+          Community Events
+        </button>
+        <button
+          v-if="activeTab == 'Volunteers'"
+          class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
+          :class="{ 'active-tab': activeTab === 'Volunteers' }"
+          @click="activeTab = 'Volunteers'"
+        >
+          People
+        </button>
+        <button
+          v-else
+          class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm hover:bg-yellow-300 hover:text-white font-bold"
+          :class="{ 'active-tab': activeTab === 'Volunteers' }"
+          @click="activeTab = 'Volunteers'"
+        >
+          People
+        </button>
+        <button
+          v-if="activeTab == 'Media'"
+          class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
+          :class="{ 'active-tab': activeTab === 'Volunteers' }"
+          @click="activeTab = 'Media'"
+        >
+          Media
+        </button>
+        <button
+          v-else
+          class="tab block w-full text-center rounded-t-3xl py-3 text-base sm:text-sm hover:bg-yellow-300 hover:text-white font-bold"
+          :class="{ 'active-tab': activeTab === 'Volunteers' }"
+          @click="activeTab = 'Media'"
+        >
+          Media
+        </button>
+      </div>
+    </div>
+
+    <div v-if="activeTab === 'updates'" class="grid grid-cols-2 gap-1 h-auto">
+      <div class="col-span-1">
+        <div>
+          <div>
+            <div class="mt-2">
+              <input
+                type="text"
+                name="search"
+                id="search"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                placeholder="Search..."
+              />
+            </div>
+            <!-- Feed 1-->
+
+            <CommunityFeedItem
+              v-for="(item, index) in postList"
+              @click="handleItemClicked(item.PostTitle)"
+              :key="index"
+              :topic="item.PostTitle"
+              :postAge="item.PostAge"
+              :postDesc="item.PostDesc"
+              :postAuthor="item.PostAuthor"
+              @item-clicked="handleItemClicked"
+              @update:selected="updateSelected"
             />
           </div>
-          <!-- Feed 1-->
-
-          <CommunityFeedItem
-            v-for="(item, index) in postList"
-            @click="handleItemClicked(item.PostTitle)"
-            :key="index"
-            :topic="item.PostTitle"
-            :postAge="item.PostAge"
-            :postDesc="item.PostDesc"
-            :postAuthor="item.PostAuthor"
-            @item-clicked="handleItemClicked"
-            @update:selected="updateSelected"
-            class="justify-left"
-          />
         </div>
+      </div>
+      <div class="col-span-1 sticky top-32">
+        <div class="sticky top-20">
           <div v-for="(item, index) in postList">
             <!-- selected feed item content  -->
             <CommunityFeedItem
@@ -113,18 +111,18 @@
               :postAge="item.PostAge"
               :postDesc="item.PostDesc"
               :postAuthor="item.PostAuthor"
-              class="justify-end"
+              class="justify-left bg-yellow-900/30 rounded-xl"
             >
-              <div class="mt-5 mb-5">
+              <div class="mt-3">
                 <label
                   for="newComment"
-                  class="block text-sm font-medium leading-6 text-gray-900"
+                  class="block text-sm font-medium leading-6 text-gray-900 px-2.5"
                 >
                   <slot>Add your comment</slot> {{ errorText }}</label
                 >
-                <div class="mt-2">
+                <div class="mt-1 px-2.5">
                   <textarea
-                    rows="4"
+                    rows="2"
                     name="newComment"
                     v-model="newComment"
                     id="newComment"
@@ -142,25 +140,23 @@
                 </div>
               </div>
 
-              <h2 class="font-bold mt-2">Comments</h2>
-              <ul role="list" class="space-y-3">
+              <h2 class="font-bold px-2.5">Comments</h2>
+              <ul role="list" class="space-y-3 overflow-y-scroll h-[500px] px-2.5">
                 <li
                   v-for="comment in item.PostComments"
-                  class="overflow-hidden rounded-md bg-amber-300 px-6 py-4 shadow"
+                  class="overflow-hidden rounded-md bg-slate-200 px-2.5 py-2.5 shadow "
                 >
                   <div class="text-black text-lg">
                     <p>{{ comment.text }}</p>
                   </div>
-                  <div class="text-black text-sm mt-2">
+                  <div class="text-black text-sm">
                     <p>By: {{ comment.author }}</p>
                   </div>
                 </li>
               </ul>
             </CommunityFeedItem>
           </div>
-          <slot class="col"> </slot>
         </div>
-        
       </div>
     </div>
     <div v-if="activeTab === 'events'" class="events-container">
@@ -227,7 +223,7 @@ export default {
   },
   data() {
     return {
-      activeTab: "feed",
+      activeTab: "updates",
       postList: [
         {
           PostTitle: "Assistance Required",
@@ -235,7 +231,7 @@ export default {
           PostDesc:
             "As stated above. We are requiring volunteers to help fix our farm roof or water risks flooding everything! Sign up on Events or leave comments for more info.",
           PostAuthor: "Jese Leos",
-          selected: false,
+          selected: true,
           PostComments: [
             { author: "Cai Jun", text: "Sure of course!", id: 1 },
             { author: "Pieces", text: "Can't wait to join!", id: 2 },
@@ -265,6 +261,106 @@ export default {
         },
         {
           PostTitle: "Milestone reached!",
+          PostAge: "13 ",
+          PostDesc:
+            "Hi everyone, we have reached 100 people as of today! That's actually insane! Congrats on a job well done!",
+          PostAuthor: "Jese Leos",
+          selected: false,
+          PostComments: [
+            { author: "Donovan", text: "Great job guys!", id: 1 },
+            {
+              author: "Faith Tham",
+              text: "Let's reach 100 people next!",
+              id: 2,
+            },
+          ],
+        },
+        {
+          PostTitle: "Assistance Required Again",
+          PostAge: "3 ",
+          PostDesc:
+            "As stated above. We are requiring volunteers to help fix our farm roof or water risks flooding everything! Sign up on Events or leave comments for more info.",
+          PostAuthor: "Jese Leos",
+          selected: false,
+          PostComments: [
+            { author: "Cai Jun", text: "Sure of course!", id: 1 },
+            { author: "Pieces", text: "Can't wait to join!", id: 2 },
+            {
+              author: "Darren",
+              text: "I will try to join- update later!",
+              id: 3,
+            },
+          ],
+        },
+        {
+          PostTitle: "Dying Over Here people",
+          PostAge: "5 ",
+          PostDesc:
+            "Volunteers, please be more active! Our community is not a one man show!",
+          PostAuthor: "Jese Leos",
+          selected: false,
+          PostComments: [
+            { author: "Jeremy", text: "Damn that's tough bro", id: 1 },
+            {
+              author: "Cai Jun",
+              text: "Whoops, will contribute more often",
+              id: 2,
+            },
+            { author: "Leo", text: "Stop throwing your work to us!", id: 3 },
+          ],
+        },
+        {
+          PostTitle: "Milestone reached! Hooray!",
+          PostAge: "13 ",
+          PostDesc:
+            "Hi everyone, we have reached 100 people as of today! That's actually insane! Congrats on a job well done!",
+          PostAuthor: "Jese Leos",
+          selected: false,
+          PostComments: [
+            { author: "Donovan", text: "Great job guys!", id: 1 },
+            {
+              author: "Faith Tham",
+              text: "Let's reach 100 people next!",
+              id: 2,
+            },
+          ],
+        },
+        {
+          PostTitle: "Assistance Required AGAINNNN",
+          PostAge: "3 ",
+          PostDesc:
+            "As stated above. We are requiring volunteers to help fix our farm roof or water risks flooding everything! Sign up on Events or leave comments for more info.",
+          PostAuthor: "Jese Leos",
+          selected: false,
+          PostComments: [
+            { author: "Cai Jun", text: "Sure of course!", id: 1 },
+            { author: "Pieces", text: "Can't wait to join!", id: 2 },
+            {
+              author: "Darren",
+              text: "I will try to join- update later!",
+              id: 3,
+            },
+          ],
+        },
+        {
+          PostTitle: "Dying Over Here, send SOS",
+          PostAge: "5 ",
+          PostDesc:
+            "Volunteers, please be more active! Our community is not a one man show!",
+          PostAuthor: "Jese Leos",
+          selected: false,
+          PostComments: [
+            { author: "Jeremy", text: "Damn that's tough bro", id: 1 },
+            {
+              author: "Cai Jun",
+              text: "Whoops, will contribute more often",
+              id: 2,
+            },
+            { author: "Leo", text: "Stop throwing your work to us!", id: 3 },
+          ],
+        },
+        {
+          PostTitle: "Milestone reached! Booyah!",
           PostAge: "13 ",
           PostDesc:
             "Hi everyone, we have reached 100 people as of today! That's actually insane! Congrats on a job well done!",
@@ -339,7 +435,7 @@ export default {
           console.log("Added to doc");
         } else {
           console.log("MessageNotFound");
-          this.errorText = "A message must be entered first!";
+          this.errorText = "!";
         }
       });
     },

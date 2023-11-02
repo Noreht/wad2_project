@@ -1,15 +1,13 @@
 <template>
     <div>
-    <article @click="selectItem" class="p-6 bg-amber-100 rounded-lg border border-amber-800 shadow-md my-5">
-        <div class="flex justify-between items-center mb-5 text-black">
-            <span class="bg-primary-100 text-primary-800 text-lg font-medium inline-flex items-center px-2.5 py-0.5 rounded dark:bg-primary-200 dark:text-primary-800">
+    <article @click="selectItem" class="p-2 rounded-lg border-2 border-amber-800 shadow-md my-2">
+        <div class="flex justify-between items-center mb-1 text-black">
+            <span class="bg-primary-100 text-primary-800 text-lg font-medium inline-flex items-center px-2.5 py-0.5">
                 {{ topic }}
             </span>
-            <span class="text-sm">{{ postAge }} days ago</span>
+            <span class="text-sm px-2.5">{{ postAge }} days ago</span>
         </div>
-        
-        <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{{ postDesc }}</p>
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center mb-3 px-2.5">
             <div class="flex items-center space-x-4">
                 <img class="w-7 h-7 rounded-full" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png" alt="Jese Leos avatar" />
                 <span class="font-medium dark:text-white">
@@ -17,6 +15,8 @@
                 </span>
             </div>
         </div>
+        <p class="mb-2 text-black px-2.5">{{ postDesc }}</p>
+        
         <div>
             <slot>
                

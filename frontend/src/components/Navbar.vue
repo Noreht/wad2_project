@@ -36,14 +36,14 @@
                 v-if="checkPageLoggedIn"
                 href="/communities"
                 :class="getClass('/communities')"
-                >Communities</a
+                >All Communities</a
               >
               <a
                 v-else=""
                 data-modal-target="medium-modal"
                 data-modal-toggle="medium-modal"
                 :class="getClass('/communities')"
-                >Communities</a
+                >All Communities</a
               >
 
               <div
@@ -130,7 +130,7 @@
                 </div>
               </div>
 
-              <a href="/events" :class="getClass('/events')">Events</a>
+              <a href="/events" :class="getClass('/events')">Public Events</a>
               <a href="/contact" :class="getClass('/contact')">Contact</a>
             </div>
           </div>
