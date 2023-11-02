@@ -152,9 +152,10 @@
             // let eventOrganiser = list2
             let eventDate = list3
             let id = Math.random() * 1000
+            let id2 = id.toString()
             console.log("List: ", list1)
             
-            await setdoc(document(db, "UserRegisteredEvents", id.toString()), {name: eventName, date: eventDate} )
+            await setdoc(document(db, "UserRegisteredEvents", id.toString()), {name: eventName, date: eventDate, id2: false } )
             this.getRegisteredEvents(eventName)
             console.log("Event registration successful")
         },

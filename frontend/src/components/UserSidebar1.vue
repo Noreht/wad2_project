@@ -93,13 +93,16 @@
                 </ul>
               </li>
               <li>
-                <div class="text-xs font-semibold leading-6 text-gray-400">Your Events</div>
+                <div class="text-xs font-semibold leading-6 text-gray-400">Upcoming Events</div>
                 <ul role="list" class="-mx-2 mt-2 space-y-1">
-                  <li v-for="event in events" :key="event.name">
-                    <a :class="[event.current ? 'bg-gray-50 text-black' : 'text-gray-400 hover:text-amber-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                  <li v-for="(event,index) in eventList" :key="event.name" >
+                    <span :class="[event.current ? 'bg-gray-50 text-black' : 'text-gray-400 hover:text-amber-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']"  
+                    @mouseover="showButton[index].button1 = true" @mouseleave="showButton[index].button1 = false"  >
                       <span :class="[event.current ? 'text-black border-amber-600' : 'text-gray-400 border-gray-200 group-hover:border-amber-600 group-hover:text-black', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ event.date.replace(" 2023", "") }}</span>
-                      <span class="truncate">{{ event.name }}</span>
-                    </a>
+                      <span  class="truncate">{{ event.name }} </span>
+                      <button v-if="showButton[index].button1" @click="confirm(index)" class="bg-red-600 text-white rounded-full p-1 text-sm leading-6 font-semibold">x</button>
+                      <button v-if="this.wantsToQuit[index].w1" @click="leave(event.name, index)" class="bg-red-600 text-white rounded-sm p-1 text-sm leading-6 font-semibold">Cfm</button>
+                  </span>
                   </li>
                 </ul>
               </li>
@@ -129,10 +132,11 @@
   import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
   import {
     Bars3Icon,
-    HomeIcon,
-    UsersIcon,
     XMarkIcon,
   } from '@heroicons/vue/24/outline'
+
+  import { deletedoc, Query, Collection, Where, getdocs, document } from "@/utils/firebase/firebaseInit.js";
+  import { db } from "@/utils/firebase/firebaseInit.js";
 
   import {getAllRegisteredEvents, getAllJoinedCommunities} from "@/utils/firebase";
   
@@ -151,19 +155,59 @@
   // ]
   
   const sidebarOpen = ref(false)
+  const hover = ref(false)
 
   export default {
     async setup() {
             // console.log("Setup Initiated")
             const events = await getAllRegisteredEvents();
             const communities = await getAllJoinedCommunities();
-            console.log(events[0])
-
+            //console.log(events[0])
             return {
-                events, communities
+                events, communities, 
             };
             
         },
+    data() {
+        return {
+          showButton: [{button1: false}, {button1: false}, {button1: false}, 
+          {button1: false},  {button1: false},  {button1: false},  {button1: false},  {button1: false}, {button1: false}, {button1: false}],
+
+          wantsToQuit:[{w1:false}, {w1:false}, {w1:false}, 
+          {w1:false},  {w1:false}, {w1:false}, {w1:false}, {w1:false}, {w1:false}, {w1:false} ],
+
+          eventList: this.events,
+    }},
+
+    methods: {
+      confirm(index) {
+        console.log("index:", index)
+        console.log(this.wantsToQuit[index])
+        return this.wantsToQuit[index].w1 = true, showButton[index].button1=false;
+    },
+
+    async deleteThis(id, index) {
+      console.log("Deleting event...")
+      await deletedoc(document(db, "UserRegisteredEvents", id));
+      this.eventList.splice(index, 1);
+      console.log("Event deleted")
+      
+    },
+
+    async leave(name,index) {
+      console.log("Quitting Event")
+      console.log(name)
+      const q = Query(Collection(db, 'UserRegisteredEvents'), Where('name', '==', name))
+      const querySnap = await getdocs(q);
+      this.wantsToQuit[index].w1 = false;
+      querySnap.forEach((doc) => {
+        console.log(doc.id)
+        this.deleteThis(doc.id, index)
+    });
+    }
+  
   }
+}
+  
 
 </script>
