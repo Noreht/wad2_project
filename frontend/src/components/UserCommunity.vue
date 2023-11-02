@@ -1,17 +1,21 @@
 <template>
   <div>
+    <div
+    class=" my-5 border-b-4 border-b-yellow-800 pt-5 px-5"
+  >
     <div class="sticky top-16 ">
+      
       <CommunityInformationBar />
     </div>
 
-    <div class="flex gap-2">
+    <div class="flex gap-2 mt-5">
       <button
         v-if="activeTab == 'updates'"
         class="tab block w-full text-center rounded-t-3xl py-3 text-base- sm:text-sm bg-green-800 text-white font-bold"
         :class="{ 'active-tab': activeTab === 'Updates' }"
         @click="activeTab = 'updates'"
       >
-        Feed
+        Discussions
       </button>
       <button
         v-else
@@ -19,7 +23,7 @@
         :class="{ 'active-tab': activeTab === 'Updates' }"
         @click="activeTab = 'updates'"
       >
-        Feed
+        Discussions
       </button>
       <button
         v-if="activeTab == 'events'"
@@ -43,7 +47,7 @@
         :class="{ 'active-tab': activeTab === 'Volunteers' }"
         @click="activeTab = 'Volunteers'"
       >
-        Volunteers
+        People
       </button>
       <button
         v-else
@@ -51,11 +55,26 @@
         :class="{ 'active-tab': activeTab === 'Volunteers' }"
         @click="activeTab = 'Volunteers'"
       >
-        Volunteers
+        People
+      </button>
+      <button
+        v-if="activeTab == 'Volunteers'"
+        class="tab block w-full rounded-t-3xl text-center py-3 text-base sm:text-sm bg-green-800 text-white font-bold"
+        :class="{ 'active-tab': activeTab === 'Volunteers' }"
+        @click="activeTab = 'Volunteers'"
+      >
+        Media
+      </button>
+      <button
+        v-else
+        class="tab block w-full rounded-t-3xl text-center py-3 text-base= sm:text-sm bg-yellow-300 hover:bg-green-800 hover:text-white font-bold"
+        :class="{ 'active-tab': activeTab === 'Volunteers' }"
+        @click="activeTab = 'Volunteers'"
+      >
+        Media
       </button>
     </div>
-
-    <hr class="border-3 border-black" />
+    </div>
 
     <div v-if="activeTab === 'updates'">
       <div class="columns-2 rounded-b-3xl border-4 border-green-800 h-[630px] overflow-y-scroll">

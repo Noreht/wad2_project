@@ -22,7 +22,7 @@
                 v-if="checkPageLoggedIn"
                 href="/communitypage"
                 :class="getClass('/communitypage')"
-                >Community Page
+                >My Feed
               </a>
 
               <a v-else="" href="/home" :class="getClass('/home')"> Home </a>
