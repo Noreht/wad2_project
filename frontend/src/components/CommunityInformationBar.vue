@@ -14,7 +14,7 @@
       <h2
         class="mt-3 text-3xl font-bold leading-7 text-gray-900 sm:truncate sm:tracking-tight min-h-[50px]"
       >
-      Punggol Community Warriors!
+      Punggol Warriors Community!
       </h2>
       <div
         class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6"
@@ -40,7 +40,71 @@
           />
           Aug 2017 &ndash; Present
         </div>
+        <div>
+          <button
+              v-if="!wantsToLeave"
+              class="bg-amber-400 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg"
+              @click="confirm()"
+            >
+              Leave Community
+          </button>
+
+          <button
+              v-if="wantsToLeave"
+              class="bg-red-600 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg"
+              @click="leave()"
+            >
+              Confirm
+          </button>
+
+        </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import { deletedoc, Query, Collection, Where, getdocs, document } from "@/utils/firebase/firebaseInit.js";
+import { db } from "@/utils/firebase/firebaseInit.js";
+import {useRouter} from "vue-router";
+
+
+export default {
+  data() {
+    return {
+      wantsToLeave: false,
+      router: useRouter()
+    }
+  },
+  methods: {
+
+    confirm() {
+      return this.wantsToLeave = true;
+    },
+
+    async deleteThis(id) {
+      //console.log("Deleting community...")
+      await deletedoc(document(db, "UserCommunities", id));
+      this.router.push('/communities');
+      //console.log("Community deleted")
+    },
+
+    async leave() {
+      //console.log("Leaving community...")
+      const q = Query(Collection(db, 'UserCommunities'), Where('name', '==', "Punggol Warriors Community"))
+      const querySnap = await getdocs(q);
+      
+      querySnap.forEach((doc) => {
+        //console.log(doc.id)
+        this.deleteThis(doc.id)
+    });
+
+  },
+   
+
+}
+
+}
+
+
+</script>

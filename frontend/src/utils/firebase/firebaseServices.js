@@ -137,6 +137,26 @@ export async function getAllRegisteredEvents() {
     return registeredEvents;
 }
 
+export async function getAllJoinedCommunities() {
+    const communityColRef = collection(db, "UserCommunities");
+
+    const querySnapshot = await getDocs(communityColRef);
+    let joinedCommunities = [];
+    querySnapshot.forEach((doc) => {
+        const joinedCommunityData = doc.data();
+        const joinedCommunity = {
+            id: doc.id,
+            ...joinedCommunityData,
+        };
+        joinedCommunities.push(joinedCommunity);
+    });
+    if (joinedCommunities.length > 0) {
+        console.log(joinedCommunities);
+    } else {
+        console.log("No data or query error");
+    }
+    return joinedCommunities;
+}
 
 // export async function getModuleTerms(moduleCode) {
 //     const sectionColRef = collection(db, "Modules", moduleCode, "Sections");
