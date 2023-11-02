@@ -371,7 +371,9 @@ const checkPageLoggedIn = ref(null);
 
 const signOut = async () => {
   await store.dispatch("logOut");
-  router.push("/home");
+  window.location.reload();
+  window.location.href = '/home';
+  
 };
 
 onMounted(async () => {
