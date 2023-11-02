@@ -48,7 +48,6 @@
     
 <script>
     import EventCarousel from "@/components/EventCarousel.vue";
-    import EventJumbotron from "@/components/EventJumbotron.vue";
     import EventMap from "@/components/EventMap.vue";
     
     import EventCategoryHeader from "@/components/EventCategoryHeader.vue";
@@ -58,7 +57,7 @@
 
     export default {
         name: "EventsView",
-        components: { EventCarousel, EventJumbotron, EventMap, EventCategoryHeader, EventCardBar, Foot },
+        components: { EventCarousel, EventMap, EventCategoryHeader, EventCardBar, Foot },
         data () {
             return {pageWidth: window.innerWidth}
         },

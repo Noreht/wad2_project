@@ -9,17 +9,18 @@
                     <ul class="last:pb-50">
                         <template v-for="(event, index) in eventList">
                         <li v-if="event.isVisible== true" :key="index" @click="centerMap(event)" class="overflow-auto  bg-amber-200 px-2 py-2 shadow sm:rounded-md sm:px-6 my-2" >
-                           
+
                             <h1 class="font-bold">{{ event.EventName }}, {{ event.EventDate }} </h1>
                             <p class="italic text-sm"> Organiser: {{ event.EventOrganiser }} </p>
-                            <button z-20 v-if="userAuthentication" @click="Signup(event.EventName,event.EventDate)"> Sign Up </button>
-
+                            <button z-20 class="bg-black text-white rounded-lg p-1 disabled:bg-gray-400" :disabled = "this.joinedEvent.includes(event.EventName)" v-if="userAuthentication" @click="Signup(event.EventName,event.EventDate)"> {{this.joinedEvent.includes(event.EventName) ? "Registered" : "Sign Up" }} </button>
+                            
+                            
                         </li>
                         <li v-if="event.isVisible== false" :key="index" @click="centerMap(event)" class="overflow-auto bg-white hover:bg-gray-200 px-2 py-2 shadow sm:rounded-md sm:px-6 my-2" >
                            
                            <h1 class="font-bold">{{ event.EventName }}, {{ event.EventDate }} </h1>
                            <p class="italic text-sm"> Organiser: {{ event.EventOrganiser }} </p>
-                           <button z-20 v-if="userAuthentication" @click="Signup(event.EventName, event.EventDate)"> Sign Up </button>
+                           <button z-20 class="bg-black text-white rounded-lg p-1 disabled:bg-gray-400" :disabled = "this.joinedEvent.includes(event.EventName)" v-if="userAuthentication" @click="Signup(event.EventName,event.EventDate)"> {{this.joinedEvent.includes(event.EventName) ? "Registered" : "Sign Up" }} </button>
 
                        </li>
                         </template>
@@ -41,8 +42,8 @@
     import mapboxgl from "mapbox-gl";
     import { getAllEvents } from "@/utils/firebase";
     import { ref, onMounted } from "vue";
-    import { isLoggedIn } from '../utils/firebase';
-    import { document, updatedoc, arrayunion, setdoc} from "@/utils/firebase/firebaseInit.js";
+    import { getAllRegisteredEvents, isLoggedIn } from '../utils/firebase';
+    import { document, updatedoc, arrayunion, setdoc, Query, Where, Collection, getdocs} from "@/utils/firebase/firebaseInit.js";
     import { db } from "@/utils/firebase/firebaseInit.js";
 
     
@@ -82,27 +83,27 @@
     getLocation()
 
     export default {
-
         async setup() {
-            console.log("Setup Initiated for Event Map")
+            //console.log("Setup Initiated for Event Map")
             const eventList = await getAllEvents();
-            console.log(eventList[0].EventType)
+            //console.log(eventList[0].EventType)
             const loggedIn = await isLoggedIn();
             checkPageLoggedIn.value = loggedIn;
             var userAuthentication = false;
+            const registeredEvents = await getAllRegisteredEvents();
             if (checkPageLoggedIn.value) {
                 userAuthentication = true;
             } 
 
             return {
-                eventList, userAuthentication
+                eventList, userAuthentication, registeredEvents
             };
             
         },
 
         data() {
         return {
-            currentEventsInArea: 0,
+            currentEventsInArea: 0, joinedEvent: [],
         };
         },
         mounted() {
@@ -121,6 +122,30 @@
         },
         methods: {
 
+        async getRegisteredEvents(eventname) {
+            console.log("getRegisteredEvents initiated")
+            console.log("eventname:", eventname)
+            //console.log("eventname:", eventname)
+            const q = Query(Collection(db, 'UserRegisteredEvents'), Where('name', '==', eventname))
+            const querySnap = await getdocs(q);
+            console.log(querySnap.size)
+            querySnap.forEach((doc) => {
+                console.log(doc.id, " => ", doc.data());
+                //console.log("Joined Events:", this.joinedEvent)
+                // doc.data() is never undefined for query doc snapshots
+                if (!this.joinedEvent.includes(eventname)) {
+                    this.joinedEvent.push(eventname)
+                    console.log("Joined Events:", this.joinedEvent)
+                    console.log("Registered for", eventname)
+
+                    return this.joinedEvent
+                } 
+                
+            })
+            //console.log("Joined Events:", this.joinedEvent)
+            ;
+        },
+
         async Signup(list1,list3) {
             console.log("event registration started")
             let eventName = list1
@@ -130,6 +155,7 @@
             console.log("List: ", list1)
             
             await setdoc(document(db, "UserRegisteredEvents", id.toString()), {name: eventName, date: eventDate} )
+            this.getRegisteredEvents(eventName)
             console.log("Event registration successful")
         },
 
@@ -139,6 +165,10 @@
                 let eventLocation = JSON.stringify(event.EventLocation);
                 let lat = JSON.parse(eventLocation)["latitude"];
                 let long = JSON.parse(eventLocation)["longitude"];
+
+                for (let i = 0; i < this.registeredEvents.length; i++) {
+                    this.joinedEvent.push(this.registeredEvents[i].name)
+                }
             //console.log("Location " + eventLocation);
             //console.log("Lat" + lat);
             new mapboxgl.Marker()
@@ -191,6 +221,9 @@
             
             this.eventList.forEach(event => {
                 let eventLocation = JSON.stringify(event.EventLocation)
+                let eventName = JSON.stringify(event.EventName)
+                
+                //console.log(eventName)
                 let lat = JSON.parse(eventLocation)["latitude"]
                 let long = JSON.parse(eventLocation)["longitude"]
 
@@ -206,6 +239,7 @@
             });
             this.eventList.sort((a, b) => (b.isVisible ? 1 : 0) - (a.isVisible ? 1 : 0));
             // this.events.sort((a, b) => { a.isVisible ? -1 : 1 })
+            
             
             //console.log("Sorted Events, " + JSON.stringify(this.eventList));
             return this.eventList;
