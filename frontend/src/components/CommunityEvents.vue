@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="pb-10">
     <slot>
       <div v-if="isModalOpen" class="fixed z-10 inset-0 overflow-y-auto">
         <div
@@ -7,13 +7,22 @@
         ></div>
       </div>
     </slot>
+    <h1
+      class="drop-shadow-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl md:text-7xl xl:text-8xl lg:min-w-[300px] max-h-[50px] min-h-[90px] typewriter mb-2"
+    >
+      <span
+        v-for="(char, index) in typewriterText"
+        :key="index"
+        :class="{ 'text-amber-400': index >= typewriterText.length - 7 }"
+        >{{ char }}</span
+      >
+    </h1>
     <div class="grid grid-cols-2 w-full gap-x-2">
-      <div class="bg-amber-300 rounded-3xl px-2">
-        <h1 class="text-sm pl-2 pt-2 flex items-center">
-          Members Only
-
+      <div class="bg-gray-300 rounded-3xl px-2">
+        <h1 class="text-2xl pl-2 pt-2 flex items-center font-bold">
+          Community Events
           <div
-            class="ml-2 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center text-white"
+            class="ml-2 w-5 h-5 text-lg bg-blue-500 rounded-full flex items-center justify-center text-white"
           >
             2
           </div>
@@ -21,53 +30,77 @@
             <button
               type="button"
               @click="NewEvent"
-              class="rounded-full bg-black p-1 text-white shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 place-self-end"
+              class="rounded-full p-1 bg-black text-white shadow-sm hover:bg-gray-200 place-self-end flex items-center justify-center"
             >
               <PlusIcon class="h-3 w-3" aria-hidden="true" />
             </button>
           </div>
         </h1>
 
-        <hr class="border-5 border-black w-5/6 ml-2 rounded" />
-
-        <CommunityEventItem
-          :name="'Regular Composting Session'"
-          :eventDate="'21 Dec'"
-          :eventDesc="'We will be activating our soil and adding new composts'"
-          :eventSignups="'3'"
-        />
-        <CommunityEventItem
-          :name="'Regular Composting Session'"
-          :eventDate="'27 Dec'"
-          :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
-          :eventSignups="'8'"
-        />
+        <hr class="border-2 border-black w-11/12 ml-2 rounded" />
+        <div>
+          <div class="rounded-xl h-[515px] overflow-y-scroll my-2">
+            <CommunityEventItem
+              :name="'Regular Composting Session'"
+              :eventDate="'21 Dec'"
+              :eventDesc="'We will be activating our soil and adding new composts'"
+              :eventSignups="'3'"
+            />
+            <CommunityEventItem
+              :name="'Regular Composting Session'"
+              :eventDate="'27 Dec'"
+              :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
+              :eventSignups="'8'"
+            />
+            <CommunityEventItem
+              :name="'Regular Composting Session'"
+              :eventDate="'27 Dec'"
+              :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
+              :eventSignups="'8'"
+            />
+            <CommunityEventItem
+              :name="'Regular Composting Session'"
+              :eventDate="'27 Dec'"
+              :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
+              :eventSignups="'8'"
+            />
+            <CommunityEventItem
+              :name="'Regular Composting Session'"
+              :eventDate="'27 Dec'"
+              :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
+              :eventSignups="'8'"
+            />
+          </div>
+        </div>
       </div>
 
-      <div class="bg-gray-300 rounded-3xl px-2">
-        <h1 class="text-sm pl-2 pt-2 flex items-center">
-          Public Events
+      <div class="bg-amber-300 rounded-3xl px-2">
+        <h1 class="text-2xl pl-2 pt-2 flex items-center font-bold">
+          BlackGold Public Events
           <div
-            class="ml-2 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center text-white"
+            class="ml-2 w-5 h-5 text-lg bg-blue-500 rounded-full flex items-center justify-center text-white"
           >
             2
           </div>
         </h1>
 
-        <hr class="border-5 border-black w-5/6 ml-2 rounded" />
-        <Suspense>
-          <ul>
-            <template v-for="event in eventList">
-              <li v-if="event.EventOrganiser == 'Punggol CC'">
-                <CommunityEventItem
-                  :name="event.EventName"
-                  :eventDate="event.EventDate"
-                  :eventDesc="event.EventDescription"
-                  :eventSignups="event.signups"
-                />
-              </li>
-            </template>
-          </ul>
+        <hr class="border-2 border-green-800 w-11/12 ml-2 rounded" />
+
+        <Suspense
+          ><div class="rounded-xl h-[515px] overflow-y-scroll my-2">
+            <ul>
+              <template v-for="event in eventList">
+                <li v-if="event.EventOrganiser == 'Punggol CC'">
+                  <CommunityEventItem
+                    :name="event.EventName"
+                    :eventDate="event.EventDate"
+                    :eventDesc="event.EventDescription"
+                    :eventSignups="event.signups"
+                  />
+                </li>
+              </template>
+            </ul>
+          </div>
         </Suspense>
       </div>
     </div>
@@ -78,6 +111,9 @@
 import CommunityEventItem from "./CommunityEventItem.vue";
 import { getAllEvents } from "@/utils/firebase";
 import { PlusIcon } from "@heroicons/vue/20/solid";
+
+const words = ["Discover Events:"];
+const typeSpeed = 200; // Adjust the speed as needed (in milliseconds)
 
 export default {
   components: {
@@ -97,6 +133,9 @@ export default {
 
   data() {
     return {
+      typewriterText: "",
+      isGoldVisible: false,
+      loopTyping: true,
       isModalOpen: false,
     };
   },
@@ -107,6 +146,55 @@ export default {
     closeModal() {
       this.isModalOpen = false;
     },
+    async type() {
+      while (this.loopTyping) {
+        for (const word of words) {
+          let isDeleting = false;
+          let j = 0;
+
+          while (j >= 0 && j < word.length) {
+            this.typewriterText = word.substring(0, j + 1);
+            if (word[j] === "G") {
+              this.isGoldVisible = true;
+            } else {
+              this.isGoldVisible = false;
+            }
+            if (isDeleting) {
+              await this.delay(typeSpeed / 2);
+            } else {
+              await this.delay(typeSpeed);
+            }
+            j = isDeleting ? j - 1 : j + 1;
+          }
+
+          // Add a pause after typing the full word
+          if (j === word.length) {
+            await this.delay(typeSpeed * 2);
+          }
+
+          // Clear the word with a delay
+          while (j >= 0) {
+            this.typewriterText = word.substring(0, j);
+            if (word[j] === "G") {
+              this.isGoldVisible = true;
+            } else {
+              this.isGoldVisible = false;
+            }
+            await this.delay(typeSpeed / 2);
+            j--;
+          }
+        }
+      }
+    },
+    delay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    },
+  },
+  mounted() {
+    this.type();
+  },
+  beforeDestroy() {
+    this.loopTyping = false; // Stop the looping when the component is destroyed
   },
 };
 </script>
