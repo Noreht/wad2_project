@@ -133,6 +133,7 @@ import {
   document,
 } from "@/utils/firebase/firebaseInit.js";
 import { db } from "@/utils/firebase/firebaseInit.js";
+//import { EventBus } from './EventBus.js';
 
 import {
   getAllRegisteredEvents,
@@ -234,6 +235,7 @@ export default {
       console.log("Deleting event...");
       await deletedoc(document(db, "UserRegisteredEvents", id));
       this.eventList.splice(index, 1);
+      //EventBus.updateList(this.eventList);
       console.log("Event deleted");
     },
 
@@ -252,5 +254,13 @@ export default {
       });
     },
   },
+  // watch: {
+  //   list: {
+  //     handler(newList) {
+  //       EventBus.$emit('list-updated', newList);
+  //     },
+  //     deep: true,
+  //   },
+  // }
 };
 </script>
