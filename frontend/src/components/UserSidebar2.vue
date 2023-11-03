@@ -1,27 +1,26 @@
 <template>
-  <div class="h-full bg-gray-300 z-30">
+  <div class="bg-gray-300 z-40">
     <!-- Static sidebar for desktop -->
     <div
-      class="w-[100%] top-0 z-40 px-2.5 lg:z-0 flex flex-row items-center bg-gray-300 py-4 shadow-sm "
+      :class="{ 'fixed': sidebarOpen }"
+      class="z-60 sticky top-16 px-2.5 lg:z-0 bg-gray-300 w-[100%] py-4 shadow-sm"
     >
       <button
         type="button"
-        class="top-0 w-[100%] p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold lg:text-xl"
+        class="w-[100px] sticky top-0 p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold"
         v-on:click="sidebarops()"
       >
         Chats
       </button>
-    </div>
-    <!-- Sidebar component, swap this element with another sidebar if you like -->
-    <div>
+    
       <nav
-        class="flex flex-1 flex-col bg-gray-300 h-full px-2.5 pt-05"
+        class="flex flex-1 flex-col bg-gray-300 h-full px-2.5 pt-05 mt-2"
         v-if="sidebarOpen"
       >
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
           <li>
             <div class="text-base font-bold leading-6 text-black">
-              Your Communities
+              Your Friends
             </div>
             <ul role="list" class="-mx-2 mt-2 space-y-1">
               <li v-for="team in communities" :key="team.name">
@@ -48,6 +47,7 @@
               </li>
             </ul>
           </li>
+          
         </ul>
       </nav>
     </div>
@@ -73,6 +73,7 @@ import {
   document,
 } from "@/utils/firebase/firebaseInit.js";
 import { db } from "@/utils/firebase/firebaseInit.js";
+//import { EventBus } from './EventBus.js';
 
 import {
   getAllRegisteredEvents,
@@ -161,18 +162,11 @@ export default {
       this.sidebarOpen = !this.sidebarOpen;
     },
 
-    confirm(index) {
-      console.log("index:", index);
-      console.log(this.wantsToQuit[index]);
-      return (
-        (this.wantsToQuit[index].w1 = true), (showButton[index].button1 = false)
-      );
-    },
-
     async deleteThis(id, index) {
       console.log("Deleting event...");
       await deletedoc(document(db, "UserRegisteredEvents", id));
       this.eventList.splice(index, 1);
+      //EventBus.updateList(this.eventList);
       console.log("Event deleted");
     },
 
@@ -191,5 +185,13 @@ export default {
       });
     },
   },
+  // watch: {
+  //   list: {
+  //     handler(newList) {
+  //       EventBus.$emit('list-updated', newList);
+  //     },
+  //     deep: true,
+  //   },
+  // }
 };
 </script>
