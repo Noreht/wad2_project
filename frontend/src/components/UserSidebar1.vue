@@ -1,9 +1,23 @@
 <template>
-  <div class="h-full">
+  <div class="h-full bg-gray-300 z-50 ">
     <!-- Static sidebar for desktop -->
-    <div class="hidden lg:contents h-full">
-      <!-- Sidebar component, swap this element with another sidebar if you like -->
-      <nav class="flex flex-1 flex-col bg-gray-300 h-full px-5 pt-5">
+    <div
+      class="top-0 z-40 px-2.5 lg:z-0 flex flex-row items-center bg-gray-300 w-max py-4 shadow-sm"
+    >
+      <button
+        type="button"
+        class="p-3 text-gray-700 bg-amber-500 rounded-full text-xs font-bold lg:text-xl"
+        v-on:click="sidebarops()"
+      >
+        Dashboard
+      </button>
+    </div>
+    <!-- Sidebar component, swap this element with another sidebar if you like -->
+    <div class="h-full">
+      <nav
+        class="flex flex-1 flex-col bg-gray-300 h-full px-5 pt-5"
+        v-if="sidebarOpen"
+      >
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
           <li>
             <div class="text-base font-bold leading-6 text-black">
@@ -81,22 +95,6 @@
         </ul>
       </nav>
     </div>
-
-    <div
-      class="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden"
-    >
-      <button
-        type="button"
-        class="-m-2.5 p-2.5 text-gray-700 lg:hidden"
-        @click="sidebarOpen = true"
-      >
-        <span class="sr-only">Open sidebar</span>
-        <Bars3Icon class="h-6 w-6" aria-hidden="true" />
-      </button>
-      <div class="flex-1 text-sm font-semibold leading-6 text-gray-900">
-        Dashboard
-      </div>
-    </div>
   </div>
 </template>
 
@@ -139,7 +137,6 @@ import {
 //   { id: 2, name: 'Roof Repair', href: '#', date: '23/12', current: false },
 // ]
 
-const sidebarOpen = ref(false);
 const hover = ref(false);
 
 export default {
@@ -155,6 +152,7 @@ export default {
   },
   data() {
     return {
+      sidebarOpen: true,
       showButton: [
         { button1: false },
         { button1: false },
@@ -186,6 +184,11 @@ export default {
   },
 
   methods: {
+    sidebarops() {
+      console.log(this.sidebarOpen);
+      this.sidebarOpen = !this.sidebarOpen;
+    },
+
     confirm(index) {
       console.log("index:", index);
       console.log(this.wantsToQuit[index]);

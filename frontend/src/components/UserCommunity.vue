@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div >
     <div class="mt-5 border-b-4 border-b-yellow-800 pt-5 px-5">
       <div>
         <CommunityInformationBar />

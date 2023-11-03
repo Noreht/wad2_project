@@ -2,9 +2,9 @@
 
 <template>
   <div class="grid grid-cols-12 gap-4">
-    <div class="col-span-2 pt-50">
+    <div class="col-span-2 flex">
       <suspense>
-        <UserSidebarLeft/>
+        <UserSidebarLeft />
       </suspense>
     </div>
 
@@ -62,7 +62,7 @@
               </svg>
             </button>
           </div>
-          <div  id="chatbox" class="p-4 h-80 overflow-y-auto">
+          <div id="chatbox" class="p-4 h-80 overflow-y-auto">
             <!-- Chat messages will be displayed here -->
             <div class="mb-2 text-right">
               <p
@@ -204,7 +204,7 @@ export default {
     respondToUser(userMessage) {
       // Replace this with your chatbot logic
       setTimeout(() => {
-        this.addBotMessage("This is a response from the chatbot.");
+        this.addBotMessage("yes he is indeed gay.");
       }, 500);
     },
   },
