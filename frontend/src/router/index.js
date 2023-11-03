@@ -9,6 +9,7 @@ import ContactView from "@/views/ContactView.vue";
 import BasicCompost from "@/views/BasicCompostView.vue";
 import CommunityPage from "@/views/CommunityPageView.vue";
 import CompostingBin from "@/views/CompostingBinView.vue";
+import MarketPlace from "@/views/MarketPlaceView.vue";
 
 import store from "@/store";
 import { inject } from "vue";
@@ -81,6 +82,11 @@ const routes = [
         name: "CompostingBin",
         component: CompostingBin,
         meta:{requiresAuth:true},
+      },
+      {
+        path: "/marketplace",
+        name: "MarketPlace",
+        component: MarketPlace
       }
 ];
 
