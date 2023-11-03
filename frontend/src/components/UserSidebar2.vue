@@ -1,7 +1,5 @@
 <template>
-  <div 
-  :class="{'bg-gray-300':sidebarOpen}"
-  class=" z-40 h-full">
+  <div :class="{ 'bg-gray-300': sidebarOpen }" class="z-40 h-full">
     <!-- Static sidebar for desktop -->
     <div
       :class="{ 'bg-gray-300': sidebarOpen }"
@@ -14,7 +12,7 @@
       >
         Chats
       </button>
-      
+
       <nav
         class="flex flex-1 flex-col bg-gray-300 px-2.5 pt-05 mt-2"
         v-if="sidebarOpen"
@@ -25,35 +23,27 @@
               Your Friends
             </div>
             <ul role="list" class="-mx-2 mt-2 space-y-1">
-              <li v-for="team in communities" :key="team.name">
+              <li v-for="chat of chats">
                 <a
-                  :href="team.href"
-                  :class="[
-                    team.current
-                      ? 'bg-gray-50 text-black'
-                      : 'text-gray-400 hover:text-amber-600 hover:bg-gray-50',
-                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
-                  ]"
+                  class="bg-gray-50 text-black hover:text-amber-600 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                 >
-                  <span
-                    :class="[
-                      team.current
-                        ? 'text-black border-amber-600'
-                        : 'text-gray-400 border-gray-200 group-hover:border-amber-600 group-hover:text-black',
-                      'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white',
-                    ]"
-                    >{{ team.initial }}</span
-                  >
-                  <span class="truncate text-black">{{ team.name }}</span>
+                  <span><div
+                    class="border-gray-200 hover:border-amber-600 flex h-6 w-6 items-center justify-center rounded-lg border"
+                    :style="{
+                      backgroundImage: `url('Impactcards/Community.jpg')`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center center',
+                    }"
+                  ></div></span
+                  >{{ chat }}
                 </a>
               </li>
             </ul>
           </li>
         </ul>
       </nav>
-      
     </div>
-    
   </div>
 </template>
 
