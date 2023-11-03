@@ -189,25 +189,51 @@ export default {
     sendEmail() {
       // send message to email
 
-      // Email.send({
-      //   SecureToken: "YOUR_SMTP_SERVER_SECURITY_TOKEN",
-      //   To: "broooyannn@gmail.com",
-      //   From: this.email,
-      //   FirstName: this.firstName,
-      //   LastName: this.lastName,
-      //   Subject: this.subject,
-      //   Body: this.message,
-      // }).then(() => alert("Thank you for your message! We will get back to you soon."));
 
-      // refresh the input fields
-      this.firstName = "";
-      this.lastName = "";
-      this.email = "";
-      this.message = "";
-      this.subject = "";
-      this.$toast.success(
+      // send messages to backend flask in json format
+      const data = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        message: this.message,
+        subject: this.subject,
+      };
+
+      console.log(data);
+
+      fetch('http://localhost:3000/api/contact', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+        key: data,
+        }),
+      })
+      .then(response => response.json())
+
+      .then(response => console.log(response.body))
+
+      .then(() => {
+          // refresh the input fields
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.message = "";
+        this.subject = "";
+        this.$toast.success(
         "Thank you for your message! We will get back to you soon" + "!"
       );
+      })
+
+      .catch((error) => {
+        console.error('Error:', error);
+        this.$toast.error(
+        "There is an error sending your message. Please try again later."
+      )
+        
+      });
+
     },
   },
 };
