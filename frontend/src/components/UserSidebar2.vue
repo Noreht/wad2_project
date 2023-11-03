@@ -2,13 +2,13 @@
   <div :class="{ 'bg-gray-300': sidebarOpen }" class="z-40 h-full">
     <!-- Static sidebar for desktop -->
     <div
-      :class="{ 'bg-gray-300': sidebarOpen }"
+      :class="{ fixed: sidebarOpen, 'bg-gray-300': sidebarOpen }"
       class="h-auto z-60 sticky top-16 px-2.5 lg:z-0 w-[100%] py-4"
     >
       <button
         type="button"
-        class="min-w-[100px] w-[100%] bottom-0 p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold"
-        v-on:click="sidebarops()"
+        class="min-w-[100px] w-[100%] sticky top-0 p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold"
+        @click="sidebarops"
       >
         Chats
       </button>
@@ -17,175 +17,203 @@
         class="flex flex-1 flex-col bg-gray-300 px-2.5 pt-05 mt-2"
         v-if="sidebarOpen"
       >
-        <ul role="list" class="flex flex-1 flex-col gap-y-7">
-          <li>
-            <div class="text-base font-bold leading-6 text-black">
-              Your Friends
+        <div class="text-base font-bold leading-6 text-black">Your Friends</div>
+        <ul
+          role="list"
+          class="-mx-2 mt-2 space-y-1 overflow-y-scroll h-[300px] border border-1 rounded-lg"
+        >
+          <li v-for="chat in chats" :key="chat">
+            <div
+              class="bg-gray-50 text-black hover-text-amber-600 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold items-center"
+            >
+              <span
+                class="border border-gray-200 hover:border-amber-600 w-8 h-8 rounded-full flex items-center justify-center"
+                :style="{
+                  backgroundImage: `url('public/Impactcards/Community.jpg')`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center center',
+                }"
+              ></span>
+              <span class="truncate">{{ chat }}</span>
+              <button
+                class="ml-auto mr-0 bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+                @click="openChat(chat)"
+              >
+                Chat
+              </button>
             </div>
-            <ul role="list" class="-mx-2 mt-2 space-y-1">
-              <li v-for="chat of chats">
-                <a
-                  class="bg-gray-50 text-black hover:text-amber-600 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-                >
-                  <span><div
-                    class="border-gray-200 hover:border-amber-600 flex h-6 w-6 items-center justify-center rounded-lg border"
-                    :style="{
-                      backgroundImage: `url('Impactcards/Community.jpg')`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center center',
-                    }"
-                  ></div></span
-                  >{{ chat }}
-                </a>
-              </li>
-            </ul>
           </li>
         </ul>
       </nav>
+
+      <!-- Chat container -->
+      <div
+        :class="{ hidden: isChatboxOpen || !sidebarOpen }"
+        class="w-full flex justify-center align-center items-center mt-12"
+      >
+        Open a Chat!
+      </div>
+      <div
+        id="chat-container"
+        class="w-auto mt-2 max-h-[310px]"
+        :class="{ hidden: !isChatboxOpen || !sidebarOpen }"
+      >
+        <div class="bg-white shadow-md rounded-lg max-w-lg w-full h-full">
+          <div
+            class="p-3 border-b bg-blue-500 text-white rounded-t-lg flex justify-between items-center"
+          >
+            <p class="text-lg font-semibold">{{ currentChat }}</p>
+            <button
+              class="text-gray-300 hover:text-gray-400 focus:outline-none focus:text-gray-400"
+              @click="closeChat"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div id="chatbox" class="p-2 h-[300px] overflow-y-scroll">
+            <!-- Chat messages will be displayed here -->
+            <div
+              class="mb-2"
+              v-for="message in chatMessages"
+              :key="message.id"
+              :class="{
+                'text-left': message.isResponse,
+                'text-right': !message.isResponse,
+              }"
+            >
+              <div
+                :class="
+                  message.isResponse
+                    ? 'bg-gray-200 text-gray-700 rounded-lg py-2 px-2 inline-block max-w-[85%] text-sm'
+                    : 'bg-blue-500 text-white rounded-lg py-2 px-2 inline-block max-w-[85%] text-sm'
+                "
+              >
+                {{ message.text }}
+              </div>
+            </div>
+          </div>
+          <div class="p-4 border-t flex">
+            <input
+              id="user-input"
+              type="text"
+              placeholder="Type a message"
+              class="w-full px-3 py-2 border rounded-l-md"
+              v-model="userMessage"
+              @keyup.enter="handleSendMessage"
+            />
+            <button
+              id="send-button"
+              class="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600 transition duration-300"
+              @click="handleSendMessage"
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-import {
-  Dialog,
-  DialogPanel,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
-import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
-
-import {
-  deletedoc,
-  Query,
-  Collection,
-  Where,
-  getdocs,
-  document,
-} from "@/utils/firebase/firebaseInit.js";
-import { db } from "@/utils/firebase/firebaseInit.js";
-//import { EventBus } from './EventBus.js';
-
-import {
-  getAllRegisteredEvents,
-  getAllJoinedCommunities,
-} from "@/utils/firebase";
-
-// const navigation = [
-//   { name: 'Dashboard', href: '#', icon: HomeIcon, current: true },
-//   { name: 'Friends', href: '#', icon: UsersIcon, current: false },
-// ]
-//const teams = [
-//   { id: 1, name: 'Punggol CC', href: '#', initial: 'PC', current: false },
-//   { id: 2, name: 'Pasir Ris CC', href: '#', initial: 'PRC', current: false },
-// ]
-
-// const events = [
-//   { id: 1, name: 'Composting Session', href: '#', date: '27/10', current: false },
-//   { id: 2, name: 'Roof Repair', href: '#', date: '23/12', current: false },
-// ]
-
-const hover = ref(false);
 
 export default {
-  async setup() {
-    // console.log("Setup Initiated")
-    const events = await getAllRegisteredEvents();
-    const communities = await getAllJoinedCommunities();
-    //console.log(events[0])
-    return {
-      events,
-      communities,
+  setup() {
+    const chats = ref([
+      "David",
+      "Caleb",
+      "Andrea",
+      "Austin",
+      "Bryan",
+      "Kyong",
+      "Chein",
+      "Tharman",
+    ]);
+    const sidebarOpen = ref(false);
+    const isChatboxOpen = ref(false);
+    const currentChat = ref("");
+    const userMessage = ref("");
+    const chatMessages = ref([]);
+
+    const sidebarops = () => {
+      sidebarOpen.value = !sidebarOpen.value;
     };
-  },
-  data() {
-    return {
-      chats: ["David", "Caleb", "Andrea", "Austin", "Bryan"],
-      sidebarOpen: false,
-      pageWidth: window.innerWidth,
-      showButton: [
-        { button1: false },
-        { button1: false },
-        { button1: false },
-        { button1: false },
-        { button1: false },
-        { button1: false },
-        { button1: false },
-        { button1: false },
-        { button1: false },
-        { button1: false },
-      ],
-
-      wantsToQuit: [
-        { w1: false },
-        { w1: false },
-        { w1: false },
-        { w1: false },
-        { w1: false },
-        { w1: false },
-        { w1: false },
-        { w1: false },
-        { w1: false },
-        { w1: false },
-      ],
-
-      eventList: this.events,
+    const openChat = (chat) => {
+      isChatboxOpen.value = true;
+      currentChat.value = chat;
     };
-  },
 
-  mounted() {
-    window.addEventListener("resize", this.handleResize);
-  },
-  beforeDestroy() {
-    window.removeEventListener("resize", this.handleResize);
-  },
-  methods: {
-    handleResize() {
-      this.pageWidth = window.innerWidth;
-      if (this.pageWidth >= 1440) {
-        this.sidebarOpen = true;
-        console.log("booyah12345");
-      } else if (this.pageWidth < 1440) {
-        this.sidebarOpen = false;
+    const closeChat = () => {
+      isChatboxOpen.value = false;
+      currentChat.value = "";
+    };
+
+    const handleSendMessage = () => {
+      const message = userMessage.value.trim();
+      if (message) {
+        addUserMessage(message);
+        respondToUser(message);
+        userMessage.value = "";
       }
-    },
-    sidebarops() {
-      console.log(this.sidebarOpen);
-      this.sidebarOpen = !this.sidebarOpen;
-    },
+    };
 
-    async deleteThis(id, index) {
-      console.log("Deleting event...");
-      await deletedoc(document(db, "UserRegisteredEvents", id));
-      this.eventList.splice(index, 1);
-      //EventBus.updateList(this.eventList);
-      console.log("Event deleted");
-    },
-
-    async leave(name, index) {
-      console.log("Quitting Event");
-      console.log(name);
-      const q = Query(
-        Collection(db, "UserRegisteredEvents"),
-        Where("name", "==", name)
-      );
-      const querySnap = await getdocs(q);
-      this.wantsToQuit[index].w1 = false;
-      querySnap.forEach((doc) => {
-        console.log(doc.id);
-        this.deleteThis(doc.id, index);
+    const addUserMessage = (message) => {
+      chatMessages.value.push({
+        id: Date.now(),
+        text: message,
+        isResponse: false,
       });
-    },
+      scrollToBottom();
+    };
+
+    const respondToUser = (userMessage) => {
+      // Replace this with your chatbot logic
+      setTimeout(() => {
+        const response =
+          "lorem ipsum sefecjnarejnb snrh s4onregsrno orng[o4srnbrnfd w4nrymgbrfd .";
+        chatMessages.value.push({
+          id: Date.now(),
+          text: response,
+          isResponse: true,
+        });
+        scrollToBottom();
+      }, 500);
+    };
+
+    const scrollToBottom = () => {
+      const chatbox = document.getElementById("chatbox");
+      if (chatbox) {
+        chatbox.scrollTop = chatbox.scrollHeight;
+      }
+    };
+
+    return {
+      chats,
+      sidebarOpen,
+      isChatboxOpen,
+      currentChat,
+      userMessage,
+      openChat,
+      closeChat,
+      handleSendMessage,
+      sidebarops,
+      chatMessages,
+    };
   },
-  // watch: {
-  //   list: {
-  //     handler(newList) {
-  //       EventBus.$emit('list-updated', newList);
-  //     },
-  //     deep: true,
-  //   },
-  // }
 };
 </script>
