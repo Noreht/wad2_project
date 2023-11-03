@@ -139,7 +139,7 @@
         <div class="flex lg:hidden xs:fixed right-3">
           <!-- Mobile menu button -->
           <DisclosureButton
-            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-amber-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            class="relative inline-flex items-center justify-center rounded-md p-2 bg-amber-400 text-yellow-900 hover:bg-amber-300 hover:text-white"
           >
             <span class="absolute -inset-0.5" />
             <span class="sr-only">Open main menu</span>

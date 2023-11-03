@@ -86,14 +86,14 @@
                       <button
                         v-if="this.wantsToQuit[index].w1"
                         @click="leave(event.name, index)"
-                        class=" bg-red-600 text-white rounded-full p-1 text-sm leading-6 font-semibold"
+                        class=" bg-red-600 text-white rounded-full px-1 text-sm leading-6 font-semibold"
                       >
                         Confirm cancel
                       </button>
                       <button
                         v-if="this.wantsToQuit[index].w1"
                         @click="this.wantsToQuit[index].w1=false"
-                        class="ml-1 bg-green-600 text-white rounded-full p-1 text-sm leading-6 font-semibold"
+                        class="ml-1 bg-green-600 text-white rounded-full px-1 text-sm leading-6 font-semibold"
                       >
                         Don't Cancel
                       </button>
