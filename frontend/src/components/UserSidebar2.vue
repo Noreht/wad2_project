@@ -2,11 +2,11 @@
   <div class="h-full bg-gray-300 z-50">
     <!-- Static sidebar for desktop -->
     <div
-      class="top-0 z-40 px-2.5 lg:z-0 flex flex-row items-center bg-gray-300 w-max py-4 shadow-sm"
+      class="w-[100%] top-0 z-40 px-2.5 lg:z-0 flex flex-row items-center bg-gray-300 py-4 shadow-sm"
     >
       <button
         type="button"
-        class="p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold lg:text-xl"
+        class="p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold lg:text-xl "
         v-on:click="sidebarops()"
       >
         Dashboard

@@ -124,7 +124,7 @@
         </div>
       </div>
     </div>
-    <div class="col-span-2 pt-50">
+    <div class="col-span-2 pt-50 flex flex-row-reverse  lg:block">
       <suspense>
         <UserSidebarRight />
       </suspense>
