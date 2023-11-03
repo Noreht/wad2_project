@@ -40,36 +40,46 @@
         <hr class="border-2 border-black w-11/12 ml-2 rounded" />
         <div>
           <div class="rounded-xl h-[515px] overflow-y-scroll my-2">
-            <CommunityEventItem
-              :name="'Regular Composting Session'"
-              :eventDate="'21 Dec'"
-              :eventDesc="'We will be activating our soil and adding new composts'"
-              :eventSignups="'3'"
-            />
-            <CommunityEventItem
-              :name="'Regular Composting Session'"
-              :eventDate="'27 Dec'"
-              :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
-              :eventSignups="'8'"
-            />
-            <CommunityEventItem
-              :name="'Regular Composting Session'"
-              :eventDate="'27 Dec'"
-              :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
-              :eventSignups="'8'"
-            />
-            <CommunityEventItem
-              :name="'Regular Composting Session'"
-              :eventDate="'27 Dec'"
-              :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
-              :eventSignups="'8'"
-            />
-            <CommunityEventItem
-              :name="'Regular Composting Session'"
-              :eventDate="'27 Dec'"
-              :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
-              :eventSignups="'8'"
-            />
+            <suspense>
+              <CommunityEventItem
+                :name="'Regular Composting Session 5'"
+                :eventDate="'21 Dec'"
+                :eventDesc="'We will be activating our soil and adding new composts'"
+                :eventSignups="'3'"
+              />
+            </suspense>
+            <suspense>
+              <CommunityEventItem
+                :name="'Regular Composting Session 6'"
+                :eventDate="'27 Dec'"
+                :eventDesc="'We will be preparing for the new year by upgrading the farm!'"
+                :eventSignups="'9'"
+              />
+            </suspense>
+            <suspense>
+              <CommunityEventItem
+                :name="'Regular Composting Session 7'"
+                :eventDate="'3 Jan'"
+                :eventDesc="'Starting off the new year well by introducing new members!'"
+                :eventSignups="'3'"
+              />
+            </suspense>
+            <suspense>
+              <CommunityEventItem
+                :name="'Regular Composting Session 8'"
+                :eventDate="'10 Jan'"
+                :eventDesc="'Loving it! We will be activating our soil and adding new composts'"
+                :eventSignups="'4'"
+              />
+            </suspense>
+            <suspense>
+              <CommunityEventItem
+                :name="'Regular Composting Session 9'"
+                :eventDate="'17 Jan'"
+                :eventDesc="'Just a chill regular session :D'"
+                :eventSignups="'5'"
+              />
+            </suspense>
           </div>
         </div>
       </div>
@@ -109,7 +119,7 @@
 
 <script>
 import CommunityEventItem from "./CommunityEventItem.vue";
-import { getAllEvents } from "@/utils/firebase";
+import { getAllEvents, getAllRegisteredEvents } from "@/utils/firebase";
 import { PlusIcon } from "@heroicons/vue/20/solid";
 
 const words = ["Discover Events:"];
@@ -124,10 +134,11 @@ export default {
   async setup() {
     console.log("Setup Initiated for CommunityEvents");
     const eventList = await getAllEvents();
-    console.log(eventList[0].EventType);
+    const registeredList = await getAllRegisteredEvents();
+    //console.log(eventList[0].EventType);
 
     return {
-      eventList,
+      eventList, registeredList
     };
   },
 

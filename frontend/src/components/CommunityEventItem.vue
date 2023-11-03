@@ -19,13 +19,18 @@
         <span class="font-medium dark:text-white px-2.5">
           Event Signups: {{ eventSignups }}
         </span>
-        <button
+        <button v-if="checkRegistered(name)"
           id="{{ eventID }}"
           class="border-2 hover-3 bg-amber-400 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg disabled:bg-gray-300 disabled:text-white"
-          :disabled="this.disable"
-          @click=""
+          @click="this.Signup(name, eventDate)"
         >
           Sign Up
+        </button>
+        <button v-else
+          id="{{ eventID }}"
+          class="border-2 bg-amber-400 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg disabled:bg-gray-300 disabled:text-white" :disabled="true"
+        >
+          Registered!
         </button>
       </div>
     </div>
@@ -36,7 +41,103 @@
 </template>
 
 <script>
+
+import { getAllEvents, getAllRegisteredEvents } from "@/utils/firebase";
+import { document, updatedoc, arrayunion, setdoc, Query, Where, Collection, getdocs, db} from "@/utils/firebase/firebaseInit.js";
+//import { EventBus } from './EventBus.js';
+import { computed } from 'vue';
+
 export default {
+  
+  async setup() {
+      console.log("Setup Initiated for CommunityEvent Item");
+      const eventList = await getAllEvents();
+      const registeredList = await getAllRegisteredEvents();
+      console.log(eventList[0].EventType);
+
+      console.log("Registered List" , registeredList)
+
+      return {
+        eventList, registeredList
+      }
+    },
+  methods: {
+    
+
+    checkRegistered(n) {
+      console.log("Check registered Run")
+      if (this.regEvents.includes(n)) {
+        return false
+      }
+      else {
+        return true
+      }
+    },
+    async Signup(list1,list3) {
+      console.log("event registration started")
+      let eventName = list1
+      // let eventOrganiser = list2
+      let eventDate = list3
+      let id = Math.random() * 1000
+      console.log("List: ", list1)
+      
+      await setdoc(document(db, "UserRegisteredEvents", id.toString()), {name: eventName, date: eventDate, id2: false } )
+      this.getRegisteredEvents(eventName)
+      console.log("Event registration successful")
+
+      this.getRegisteredEvents(list1)
+  },
+  async getRegisteredEvents(eventname) {
+      console.log("getRegisteredEvents initiated")
+      console.log("eventname:", eventname)
+      //console.log("eventname:", eventname)
+      const q = Query(Collection(db, 'UserRegisteredEvents'), Where('name', '==', eventname))
+      const querySnap = await getdocs(q);
+      console.log(querySnap.size)
+      querySnap.forEach((doc) => {
+          console.log(doc.id, " => ", doc.data());
+          //console.log("Joined Events:", this.regEvents)
+          // doc.data() is never undefined for query doc snapshots
+          if (!this.regEvents.includes(eventname)) {
+              this.regEvents.push(eventname)
+              console.log("Reg Events:", this.regEvents)
+              console.log("Registered for", eventname)
+
+              return this.regEvent
+          } 
+          
+      })
+      //console.log("Joined Events:", this.regEvents)
+      ;
+  },
+   
+  },
+
+  // created() {
+  //   EventBus.$on('list-updated', (newList) => {
+  //     this.regEvents = newList;
+  //   });
+  // },
+
+  data() {
+    return {
+      regEvents: []
+    }
+  },
+
+
+  created() {
+
+    console.log("Created:" , this.registeredList)
+    for (let i=0; i<this.registeredList.length; i++) {
+      this.regEvents.push(this.registeredList[i].name)
+    }
+    
+    console.log("regEvents: " , this.regEvents)
+  },
+
+
+
   props: {
     name: String, // Event Name
     eventDate: String, // Event Date
@@ -44,7 +145,21 @@ export default {
     eventSignups: String, // NumofEventVolunteers
     eventID: Number,
   },
-};
+
+  // setup() {
+  //   EventBus.list.forEach((item) => {
+  //     this.regEvents.push(item);
+  // })
+  
+// }}
+
+  // created() {
+  //     EventBus.list.forEach((item) => {
+  //       this.regEvents.push(item);
+  //     });
+  //   },
+}
+  
 </script>
 
 <style>
