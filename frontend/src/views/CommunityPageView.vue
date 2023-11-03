@@ -2,8 +2,8 @@
 
 <template>
   <div class="grid grid-cols-12 gap-4">
-    <div class="col-span-2 flex">
-      <suspense>
+    <div class="col-span-2 flex lg:block">
+      <suspense >
         <UserSidebarLeft />
       </suspense>
     </div>

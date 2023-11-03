@@ -1,12 +1,12 @@
 <template>
-  <div class="h-full bg-gray-300 z-50 ">
+  <div class="h-full bg-gray-300 z-50">
     <!-- Static sidebar for desktop -->
     <div
-      class="top-0 z-40 px-2.5 lg:z-0 flex flex-row items-center bg-gray-300 w-max py-4 shadow-sm"
+      class="top-0 z-40 flex px-2.5 lg:z-0 bg-gray-300 w-[100%] py-4 shadow-sm "
     >
       <button
         type="button"
-        class="p-3 text-gray-700 bg-amber-500 rounded-full text-xs font-bold lg:text-xl"
+        class="p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold w-[100%]"
         v-on:click="sidebarops()"
       >
         Dashboard
@@ -15,7 +15,7 @@
     <!-- Sidebar component, swap this element with another sidebar if you like -->
     <div class="h-full">
       <nav
-        class="flex flex-1 flex-col bg-gray-300 h-full px-5 pt-5"
+        class="flex flex-1 flex-col bg-gray-300 h-full px-5 pt-05"
         v-if="sidebarOpen"
       >
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -152,7 +152,8 @@ export default {
   },
   data() {
     return {
-      sidebarOpen: true,
+      sidebarOpen: false,
+      pageWidth: window.innerWidth,
       showButton: [
         { button1: false },
         { button1: false },
@@ -183,7 +184,22 @@ export default {
     };
   },
 
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   methods: {
+    handleResize() {
+      this.pageWidth = window.innerWidth;
+      if(this.pageWidth>=1440){
+        this.sidebarOpen=true
+        console.log('booyah12345')
+      }
+      else if(this.pageWidth<1440){this.sidebarOpen=false}
+
+    },
     sidebarops() {
       console.log(this.sidebarOpen);
       this.sidebarOpen = !this.sidebarOpen;
