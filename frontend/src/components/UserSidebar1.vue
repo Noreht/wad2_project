@@ -2,7 +2,7 @@
   <div class="h-full bg-gray-300 z-50">
     <!-- Static sidebar for desktop -->
     <div
-      class="top-0 z-40 flex px-2.5 lg:z-0 bg-gray-300 w-[100%] py-4 shadow-sm "
+      class="top-0 z-40 flex px-2.5 lg:z-0 bg-gray-300 w-[100%] py-4 shadow-sm"
     >
       <button
         type="button"
@@ -15,7 +15,7 @@
     <!-- Sidebar component, swap this element with another sidebar if you like -->
     <div class="h-full">
       <nav
-        class="flex flex-1 flex-col bg-gray-300 h-full px-5 pt-05"
+        class="flex flex-1 flex-col bg-gray-300 h-full px-2.5 pt-05"
         v-if="sidebarOpen"
       >
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -48,7 +48,7 @@
               </li>
             </ul>
           </li>
-          <li>
+          <li class="max-w-[100%]">
             <div class="text-base font-bold leading-6 text-black">
               Upcoming Events
             </div>
@@ -61,7 +61,7 @@
                       : 'text-gray-400 hover:text-amber-600 hover:bg-gray-50',
                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                   ]"
-                  @mouseover="showButton[index].button1 = true"
+                  @mouseover="wantsToQuit[index].w1 ? showButton[index].button1 = false : showButton[index].button1 = true "
                   @mouseleave="showButton[index].button1 = false"
                 >
                   <span
@@ -73,21 +73,32 @@
                     ]"
                     >{{ event.date.replace(" 2023", "") }}</span
                   >
-                  <span class="truncate text-black">{{ event.name }} </span>
-                  <button
-                    v-if="showButton[index].button1"
-                    @click="confirm(index)"
-                    class="bg-red-600 text-white rounded-full px-1 -py-0.5 text-sm font-semibold"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    v-if="this.wantsToQuit[index].w1"
-                    @click="leave(event.name, index)"
-                    class="bg-red-600 text-white rounded-sm p-1 text-sm leading-6 font-semibold"
-                  >
-                    Confirm?
-                  </button>
+                  <span class="truncate text-black"
+                    >{{ event.name }}
+                    <span class="flex">
+                      <button
+                        v-if="showButton[index].button1"
+                        @click="showButton[index].button1 = true, confirm(index)"
+                        class="  bg-red-600 text-white rounded-full px-1 -py-0.5 text-sm font-semibold"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        v-if="this.wantsToQuit[index].w1"
+                        @click="leave(event.name, index)"
+                        class=" bg-red-600 text-white rounded-full p-1 text-sm leading-6 font-semibold"
+                      >
+                        Confirm cancel
+                      </button>
+                      <button
+                        v-if="this.wantsToQuit[index].w1"
+                        @click="this.wantsToQuit[index].w1=false"
+                        class="ml-1 bg-green-600 text-white rounded-full p-1 text-sm leading-6 font-semibold"
+                      >
+                        Don't Cancel
+                      </button>
+                    </span>
+                    </span>
                 </span>
               </li>
             </ul>
@@ -193,12 +204,12 @@ export default {
   methods: {
     handleResize() {
       this.pageWidth = window.innerWidth;
-      if(this.pageWidth>=1440){
-        this.sidebarOpen=true
-        console.log('booyah12345')
+      if (this.pageWidth >= 1440) {
+        this.sidebarOpen = true;
+        console.log("booyah12345");
+      } else if (this.pageWidth < 1440) {
+        this.sidebarOpen = false;
       }
-      else if(this.pageWidth<1440){this.sidebarOpen=false}
-
     },
     sidebarops() {
       console.log(this.sidebarOpen);
@@ -209,7 +220,7 @@ export default {
       console.log("index:", index);
       console.log(this.wantsToQuit[index]);
       return (
-        (this.wantsToQuit[index].w1 = true), (showButton[index].button1 = false)
+        (this.wantsToQuit[index].w1 = true), (this.showButton[index].button1 = false)
       );
     },
 
