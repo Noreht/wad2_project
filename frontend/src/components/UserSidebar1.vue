@@ -1,9 +1,11 @@
 <template>
-  <div class="bg-gray-300 z-40">
+  <div 
+  :class="{'bg-gray-300':sidebarOpen}"
+  class=" z-40 h-full">
     <!-- Static sidebar for desktop -->
     <div
-      :class="{ 'fixed': sidebarOpen }"
-      class="z-60 sticky top-16 px-2.5 lg:z-0 bg-gray-300 w-[100%] py-4 shadow-sm"
+      :class="{ 'fixed': sidebarOpen, 'bg-gray-300':sidebarOpen,}"
+      class="z-60 sticky top-16 px-2.5 lg:z-0 w-[100%] py-4 "
     >
       <button
         type="button"
@@ -14,7 +16,7 @@
       </button>
     
       <nav
-        class="flex flex-1 flex-col bg-gray-300 h-full px-2.5 pt-05 mt-2"
+        class="flex flex-1 flex-col bg-gray-300  px-2.5 pt-05 mt-2"
         v-if="sidebarOpen"
       >
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
