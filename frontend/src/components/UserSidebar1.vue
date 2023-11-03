@@ -1,21 +1,20 @@
 <template>
-  <div class="h-full bg-gray-300 z-50">
+  <div class="bg-gray-300 z-40">
     <!-- Static sidebar for desktop -->
     <div
-      class="top-0 z-40 flex px-2.5 lg:z-0 bg-gray-300 w-[100%] py-4 shadow-sm"
+      :class="{ 'fixed': sidebarOpen }"
+      class="z-60 sticky top-16 px-2.5 lg:z-0 bg-gray-300 w-[100%] py-4 shadow-sm"
     >
       <button
         type="button"
-        class="p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold w-[100%]"
+        class="sticky top-0 p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold w-[100%]"
         v-on:click="sidebarops()"
       >
         Dashboard
       </button>
-    </div>
-    <!-- Sidebar component, swap this element with another sidebar if you like -->
-    <div class="h-full">
+    
       <nav
-        class="flex flex-1 flex-col bg-gray-300 h-full px-2.5 pt-05"
+        class="flex flex-1 flex-col bg-gray-300 h-full px-2.5 pt-05 mt-2"
         v-if="sidebarOpen"
       >
         <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -61,7 +60,11 @@
                       : 'text-gray-400 hover:text-amber-600 hover:bg-gray-50',
                     'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
                   ]"
-                  @mouseover="wantsToQuit[index].w1 ? showButton[index].button1 = false : showButton[index].button1 = true "
+                  @mouseover="
+                    wantsToQuit[index].w1
+                      ? (showButton[index].button1 = false)
+                      : (showButton[index].button1 = true)
+                  "
                   @mouseleave="showButton[index].button1 = false"
                 >
                   <span
@@ -78,27 +81,29 @@
                     <span class="flex">
                       <button
                         v-if="showButton[index].button1"
-                        @click="showButton[index].button1 = true, confirm(index)"
-                        class="  bg-red-600 text-white rounded-full px-1 -py-0.5 text-sm font-semibold"
+                        @click="
+                          (showButton[index].button1 = true), confirm(index)
+                        "
+                        class="bg-red-600 text-white rounded-full px-1 -py-0.5 text-sm font-semibold"
                       >
                         Cancel
                       </button>
                       <button
                         v-if="this.wantsToQuit[index].w1"
                         @click="leave(event.name, index)"
-                        class=" bg-red-600 text-white rounded-full px-1 text-sm leading-6 font-semibold"
+                        class="bg-red-600 text-white rounded-full px-1 text-sm leading-6 font-semibold"
                       >
                         Confirm cancel
                       </button>
                       <button
                         v-if="this.wantsToQuit[index].w1"
-                        @click="this.wantsToQuit[index].w1=false"
+                        @click="this.wantsToQuit[index].w1 = false"
                         class="ml-1 bg-green-600 text-white rounded-full px-1 text-sm leading-6 font-semibold"
                       >
                         Don't Cancel
                       </button>
                     </span>
-                    </span>
+                  </span>
                 </span>
               </li>
             </ul>
@@ -220,7 +225,8 @@ export default {
       console.log("index:", index);
       console.log(this.wantsToQuit[index]);
       return (
-        (this.wantsToQuit[index].w1 = true), (this.showButton[index].button1 = false)
+        (this.wantsToQuit[index].w1 = true),
+        (this.showButton[index].button1 = false)
       );
     },
 

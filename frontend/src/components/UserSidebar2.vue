@@ -1,19 +1,19 @@
 <template>
-  <div class="h-full bg-gray-300 z-50">
+  <div class="h-full bg-gray-300 z-30">
     <!-- Static sidebar for desktop -->
     <div
-      class="w-[100%] top-0 z-40 px-2.5 lg:z-0 flex flex-row items-center bg-gray-300 py-4 shadow-sm"
+      class="w-[100%] top-0 z-40 px-2.5 lg:z-0 flex flex-row items-center bg-gray-300 py-4 shadow-sm "
     >
       <button
         type="button"
-        class="w-[100%] p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold lg:text-xl"
+        class="top-0 w-[100%] p-3 text-gray-700 bg-amber-500 rounded-full text-base font-bold lg:text-xl"
         v-on:click="sidebarops()"
       >
-        Dashboard
+        Chats
       </button>
     </div>
     <!-- Sidebar component, swap this element with another sidebar if you like -->
-    <div class="h-full">
+    <div>
       <nav
         class="flex flex-1 flex-col bg-gray-300 h-full px-2.5 pt-05"
         v-if="sidebarOpen"
@@ -45,52 +45,6 @@
                   >
                   <span class="truncate text-black">{{ team.name }}</span>
                 </a>
-              </li>
-            </ul>
-          </li>
-          <li class="max-w-[260px]">
-            <div class="text-base font-bold leading-6 text-black">
-              Upcoming Events
-            </div>
-            <ul role="list" class="-mx-2 mt-2 space-y-1">
-              <li v-for="(event, index) in eventList" :key="event.name">
-                <span
-                  :class="[
-                    event.current
-                      ? 'bg-gray-50 text-black'
-                      : 'text-gray-400 hover:text-amber-600 hover:bg-gray-50',
-                    'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold',
-                  ]"
-                  @mouseover="showButton[index].button1 = true"
-                  @mouseleave="showButton[index].button1 = false"
-                >
-                  <span
-                    :class="[
-                      event.current
-                        ? 'text-black border-amber-600'
-                        : 'text-gray-600 border-gray-200 group-hover:border-amber-600 group-hover:text-black',
-                      'flex h-6 w-12 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-bold bg-white',
-                    ]"
-                    >{{ event.date.replace(" 2023", "") }}</span
-                  >
-                  <span class="truncate text-black">{{ event.name }} </span>
-                  <span class="flex flex-reverse-row">
-                    <button
-                      v-if="showButton[index].button1"
-                      @click="confirm(index)"
-                      class="bg-red-600 text-white rounded-full px-1 -py-0.5 text-sm font-semibold"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      v-if="this.wantsToQuit[index].w1"
-                      @click="leave(event.name, index)"
-                      class="bg-red-600 text-white rounded-sm p-1 text-sm leading-6 font-semibold"
-                    >
-                      Confirm?
-                    </button>
-                  </span></span
-                >
               </li>
             </ul>
           </li>
