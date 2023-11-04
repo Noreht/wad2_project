@@ -1,7 +1,7 @@
 <template>
   <a
     href="https://donate.stripe.com/test_7sIeVDeaU6FoaEo002"
-    class="button z-50 rounded-full fixed right-5 bottom-5 scroll-behavior: smooth text-xl"
+    class="button z-40 rounded-full fixed right-5 bottom-5 scroll-behavior: smooth text-xl"
     type="button" target="blank"
     @click="handleClick"
     >

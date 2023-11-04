@@ -55,7 +55,7 @@
         Open a Chat!
       </div>
       <div
-        id="chat-container"
+        id="chat-container z-60"
         class="w-auto mt-2 max-h-[310px]"
         :class="{ hidden: !isChatboxOpen || !sidebarOpen }"
       >
@@ -185,7 +185,7 @@ export default {
   },
   computed:{
     chatMessages() {
-      if(this.currentChat==""){return chatMessages=[]}
+      if(this.currentChat==""){return []}
       else{ return this.chats[this.currentChat].message;}
    
   }
