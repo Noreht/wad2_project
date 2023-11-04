@@ -1,6 +1,6 @@
 <template >
       <div v-if="pageWidth >= 904 && pageWidth <=1359">
-        <div class="grid grid-cols-12  min-w-[400px] h-screen">
+        <div class="grid grid-cols-12  min-w-[400px] h-full">
         <div class="col-span-2 px-4"></div>
         <div class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center">
           <h1
@@ -87,7 +87,7 @@
         </div>
 
         <div  v-else-if="pageWidth >= 1360 && pageWidth <= 1779">
-          <div class="grid grid-cols-12  min-w-[400px] h-screen">
+          <div class="grid grid-cols-12  min-w-[400px] h-full">
         <div class="col-span-2 px-4"></div>
         <div class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center">
           <h1
