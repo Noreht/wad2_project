@@ -56,13 +56,6 @@
           <p class="mt-2 text-xl font-bold">Condition</p>
           <p class="text-md">{{ itemcondition }}</p>
         </div>
-        
-        
-
-        
-
-        
-
         <div class="row-span-1 col-span-2 -mt-[15px]">
         <textarea cols='45' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner'></textarea>
           
@@ -85,8 +78,8 @@
     <div class=" rounded-xl modal h-[450px] w-[1200px]" v-if="pageWidth >= 1360 && pageWidth <= 1779">
       <div class="grid grid-cols-3 grid-rows-6 h-[100%] w-[100%] py-10 px-10 place-content-center">
         <img :src="imgSrc" class="row-span-6 rounded-xl w-[400px] h-auto">
-        <p class="px-4 col-span-2 w-[100%] relative text-3xl font-bold text-black">{{ itemname }}</p>
-        <div class=" row-span-3 w-[100%] h-auto px-4 relative">
+        <p class="px-6 col-span-2 w-[100%] relative text-3xl font-bold text-black">{{ itemname }}</p>
+        <div class=" row-span-3 w-[100%] h-auto px-6 relative">
           <h3 class="text-2xl font-bold text-black">{{ itemprice }}</h3>
           <p class="pb-2 mt-1 text-lg text-gray-500">{{ itemlocation }}</p>
           <p class="mt-2 text-2xl font-bold">Condition</p>
@@ -101,7 +94,44 @@
           <p class="text-lg">{{ itemdetails }}</p>
         </div>
 
-        <div class="row-span-2 col-span-2">
+        <div class=" px-2 row-span-2 col-span-2">
+        <textarea cols='80' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner'></textarea>
+          <div class="ml-4">
+            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4">
+              Send Message
+            </button>
+            <button
+              type="button"
+              class="bg-amber-600 px-4 py-2 rounded-lg"
+              @click="closeModal111"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=" rounded-xl modal h-[450px] w-[1200px]" v-if="pageWidth >= 1780">
+      <div class="grid grid-cols-3 grid-rows-6 h-[100%] w-[100%] py-10 px-10 place-content-center">
+        <img :src="imgSrc" class="row-span-6 rounded-xl w-[400px] h-auto">
+        <p class="px-6 col-span-2 w-[100%] relative text-3xl font-bold text-black">{{ itemname }}</p>
+        <div class=" row-span-3 w-[100%] h-auto px-6 relative">
+          <h3 class="text-2xl font-bold text-black">{{ itemprice }}</h3>
+          <p class="pb-2 mt-1 text-lg text-gray-500">{{ itemlocation }}</p>
+          <p class="mt-2 text-2xl font-bold">Condition</p>
+          <p class="text-lg">{{ itemcondition }}</p>
+        </div>
+
+        <div class="w-[100%] pl-6 row-span-2">
+          <p class=" text-2xl font-bold">Details</p>
+          <p class="text-xl text-gray-500">Listed by</p>
+          <p class="pb-2 text-lg text-blue-700">{{ itemowner }}</p>
+          <p class="text-xl text-gray-500">Description</p>
+          <p class="text-lg">{{ itemdetails }}</p>
+        </div>
+
+        <div class="px-2 row-span-2 col-span-2">
         <textarea cols='80' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner'></textarea>
           <div class="ml-4">
             <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4">
