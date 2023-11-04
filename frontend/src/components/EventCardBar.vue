@@ -2,33 +2,30 @@
    
     <TabGroup>
       <TabList>
-        <div class="flex justify-center space-x-5 flex-col sm:flex-row "> 
-        <Tab>
-            <button type="button" 
+        <div class=" justify-center gap-2 flex items-stretch space-between "> 
+        <Tab
             :class="{'bg-yellow-300': selectedTab === 1, 'bg-yellow-100': selectedTab !== 1}"
             @click="selectedTab = 1"
             class="inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-1.5 text-md font-bold text-black shadow-sm hover:underline ">
                 <!-- <CheckCircleIcon class="-ml-0.5 h-5 w-5" aria-hidden="true" /> -->
                 Ad-hoc Volunteering
-            </button>
         </Tab>
-        <Tab>
-            <button type="button" 
+        
+            <tab
             :class="{'bg-yellow-300': selectedTab === 2, 'bg-yellow-100': selectedTab !== 2}"
             @click="selectedTab = 2"
             class="inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-1.5 text-md font-bold text-black shadow-sm hover:underline  ">
                 <!-- <CheckCircleIcon class="-ml-0.5 h-5 w-5" aria-hidden="true" /> -->
                 Workshops
-            </button>
-        </Tab>
-        <Tab>
-            <button type="button" 
+    </tab>
+        
+        <Tab
             :class="{'bg-yellow-300': selectedTab === 3, 'bg-yellow-100': selectedTab !== 3}"
             @click="selectedTab = 3"
             class="inline-flex items-center gap-x-1.5 rounded-md py-1.5 text-md font-bold text-black hover:underline ">
                 <!-- <CheckCircleIcon class="-ml-0.5 h-5 w-5" aria-hidden="true" /> -->
                 Community Events
-            </button>
+            
         </Tab>
         </div>
       </TabList>
