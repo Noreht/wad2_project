@@ -8,16 +8,18 @@
           >
             Media
           </h2>
-          <p class="mt-3 text-lg leading-8 text-gray-600">Our Memories!</p>
+          <p class="mt-3 text-lg leading-8 text-gray-600">
+            Our Sweet Memories!
+          </p>
         </div>
         <ul
           role="list"
-          class="mx-auto mt-10 grid max-w-2xl grid-cols-2 gap-x-2 gap-y-2 text-center sm:grid-cols-3 md:grid-cols-3 lg:mx-0 lg:max-w-none lg:grid-cols-4 xl:grid-cols-5"
+          class="mx-auto mt-5 grid max-w-2xl grid-cols-2 gap-x-2 gap-y-2 text-center sm:grid-cols-2 md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4"
         >
           <li
             v-for="person in media"
             :key="person.name"
-            class="border-2 rounded border-gray-300 p-2 h-64"
+            class="border-2 rounded bg-white border-gray-300 p-2 h-64 hover:-translate-y-10 hover:scale-150"
           >
             <div
               :style="{
@@ -26,17 +28,17 @@
                 backgroundSize: 'cover',
                 backgroundPosition: 'center center',
               }"
-              class="h-full w-full"
+              class="h-full w-full flex"
             >
-              <div class="bg-white/50">
+              <div class="bg-white/80 w-full self-end">
                 <h3
-                  class="text-base font-semibold leading-7 tracking-tight text-black self-align-bottom"
+                  class="text-base font-semibold leading-7 tracking-tight text-black self-align-bottom px-1"
                 >
-                  {{ person.name }}
+                  {{ person.name
+                  }}<span class="text-base font-bold leading-6 text-amber-700">
+                    ({{ person.role }})
+                  </span>
                 </h3>
-                <p class="text-sm font-semibold leading-6 text-amber-600">
-                  {{ person.role }}
-                </p>
               </div>
             </div>
           </li>
@@ -49,210 +51,61 @@
 <script setup>
 const media = [
   {
-    name: "Bryan T (You)",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Our friendly Minister Dasmond Lee loves dropping by!",
+    role: "16 July 2023",
+    imageUrl: "/COM-11.jpg",
   },
   {
-    name: "Shanmugan.K",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Minsister Teo came by today for seedling transfer!",
+    role: "15 May 2023",
+    imageUrl: "/COM-10.jpg",
   },
   {
-    name: "Tharmen.S",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Minister Masagos and Amy Khor came by today! ",
+    role: "14 Mar 2023",
+    imageUrl: "/COM-9.jpg",
   },
   {
-    name: "Dasmond Lee",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "NEA came by to see how well we are doing! (Audit just say la)",
+    role: "2 Feb 2023",
+    imageUrl: "/COM-8.jpg",
   },
   {
-    name: "Kuan Yeew Li ",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Our volunteer brought a friend visting for an exchange!",
+    role: "10 Jan 2023",
+    imageUrl: "/COM-7.jpg",
   },
   {
-    name: "Lo Thar Kiang",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "What a way to end the year! New compost set up!",
+    role: "31 Dec 2022",
+    imageUrl: "/COM-6.jpg",
   },
   {
-    name: "Li Xien Loong",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Friendly Ministers Gan KY and Dasmond Lee",
+    role: "28 Dec 2022",
+    imageUrl: "/COM-5.jpg",
   },
   {
-    name: "Li Xien Yang",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Harvest day with Senior Minister Goh!",
+    role: "13 Dec 2022",
+    imageUrl: "/COM-4.jpg",
   },
   {
-    name: "Tan Keen Lien",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "What a great pleaseure to host DPM Heng SK!",
+    role: "18 Nov 2022",
+    imageUrl: "/COM-3.jpg",
   },
+
   {
-    name: "Ng Kock Soong",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "PM Lee HL visited us for a fun day tour!",
+    role: "15 Oct 2022",
+    imageUrl: "/COM-2.jpg",
   },
+
   {
-    name: "Gam Kin Yong",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Lee Bi Wa",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Josephin Teow",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Pritnam Singh",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Nikko Siah",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "V. Balakrishman",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Murally Pilai",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Chong Man Whye",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Halima Yakult",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "S. Miswaran",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Yusof Isak",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Lily Keong",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Priyash Guptu",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Tan Cheong Bock",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Jamuus Leem",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Tan Chuen Jing",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Raisah Kan",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Ho Cha Ching",
-    role: "Volunteer",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-];
-const members_new = [
-  {
-    name: "Ong Ye Kang",
-    role: "Joined 3 days ago",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Lowrance Wong",
-    role: "Joined 4 days ago",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Heng Swi Kiat",
-    role: "Joined 4 days ago",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Silva Lim",
-    role: "Joined 4 days ago",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Indranee Rajee",
-    role: "Joined 4 days ago",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  },
-  {
-    name: "Li Xien Loong",
-    role: "Joined 4 days ago",
-    imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    name: "Wonderful day with Minister Kaw Boon Wan! ",
+    role: "20 Sept 2022",
+    imageUrl: "/COM-1.jpg",
   },
 ];
 </script>

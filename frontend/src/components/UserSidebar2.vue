@@ -29,7 +29,7 @@
               <span
                 class="border border-gray-200 hover:border-amber-600 w-8 h-8 rounded-full flex items-center justify-center"
                 :style="{
-                  backgroundImage: `url('public/Impactcards/Community.jpg')`,
+                  backgroundImage: `url('Impactcards/Community.jpg')`,
                   backgroundRepeat: 'no-repeat',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center center',
