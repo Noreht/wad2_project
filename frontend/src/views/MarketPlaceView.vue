@@ -1,10 +1,23 @@
 <template>
+  
     <div class="grid grid-cols-12  min-w-[400px] h-full">
         <div class="col-span-2 p-4"></div>
         <div class="h-full bg-green-100 col-span-8 p-4 place-content-center"> <div>
         
 
       <div v-if="pageWidth >= 904 && pageWidth <=1359">
+        <h1
+        class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-7xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
+      >
+        <span
+          v-for="(char, index) in typewriterText"
+          :key="index"
+          :class="{
+            'text-amber-400': index >= typewriterText.length - 5 && index<=typewriterText.length - 1,
+            }"
+          >{{ char }}</span
+        >
+      </h1>
         <form class="mt-4">
         <label
           for="default-search"
@@ -45,7 +58,7 @@
       </form>
         <div class='flex justify-center'>
           <div class="mt-8 grid grid-cols-2 gap-y-12 max-w-[700px] gap-x-12">
-            <marketplacecard v-for="product in products"
+            <marketplacecard v-if="searchText==''" v-for="product in products"
             :name="product.name"
             :color="product.color"
             :imgSrc="product.imageSrc"
@@ -56,11 +69,34 @@
             :owner="product.owner"
             >
             </marketplacecard>
+
+            <marketplacecard v-else-if="filteredProductList.length > 0" v-for="product in filteredProductList"
+            :name="product.name"
+            :color="product.color"
+            :imgSrc="product.imageSrc"
+            :price="product.price"
+            :location="product.location"
+            :condition="product.condition"
+            :details="product.details"
+            :owner="product.owner">
+            </marketplacecard>
         </div>
       </div>
         </div>
 
         <div  v-else-if="pageWidth >= 1360 && pageWidth <= 1779">
+          <h1
+        class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-7xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
+      >
+        <span
+          v-for="(char, index) in typewriterText"
+          :key="index"
+          :class="{
+            'text-amber-400': index >= typewriterText.length - 5 && index<=typewriterText.length - 1,
+            }"
+          >{{ char }}</span
+        >
+      </h1>
           <form class="mt-4">
         <label
           for="default-search"
@@ -101,7 +137,7 @@
       </form>
           <div class='flex justify-center'>
           <div class="mt-8 grid grid-cols-3 gap-y-12 gap-x-12 ">
-            <marketplacecard v-for="product in products"
+            <marketplacecard v-if="searchText==''" v-for="product in products"
             :name="product.name"
             :color="product.color"
             :imgSrc="product.imageSrc"
@@ -112,11 +148,34 @@
             :owner="product.owner"
             >
             </marketplacecard>
+
+            <marketplacecard v-else-if="filteredProductList.length > 0" v-for="product in filteredProductList"
+            :name="product.name"
+            :color="product.color"
+            :imgSrc="product.imageSrc"
+            :price="product.price"
+            :location="product.location"
+            :condition="product.condition"
+            :details="product.details"
+            :owner="product.owner">
+            </marketplacecard>
           </div>
         </div>
         </div>
 
         <div  v-else-if="pageWidth >= 1780">
+          <h1
+        class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-7xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
+      >
+        <span
+          v-for="(char, index) in typewriterText"
+          :key="index"
+          :class="{
+            'text-amber-400': index >= typewriterText.length - 5 && index<=typewriterText.length - 1,
+            }"
+          >{{ char }}</span
+        >
+      </h1>
           <form class="mt-4">
         <label
           for="default-search"
@@ -157,7 +216,7 @@
       </form>
           <div class='flex justify-center'>
           <div class="mt-8 grid grid-cols-4 gap-y-12 gap-x-12">
-            <marketplacecard v-for="product in products"
+            <marketplacecard v-if="searchText==''" v-for="product in products"
             :name="product.name"
             :color="product.color"
             :imgSrc="product.imageSrc"
@@ -168,11 +227,34 @@
             :owner="product.owner"
             >
             </marketplacecard>
+
+            <marketplacecard v-else-if="filteredProductList.length > 0" v-for="product in filteredProductList"
+            :name="product.name"
+            :color="product.color"
+            :imgSrc="product.imageSrc"
+            :price="product.price"
+            :location="product.location"
+            :condition="product.condition"
+            :details="product.details"
+            :owner="product.owner">
+            </marketplacecard>
           </div>
         </div>
         </div>
 
         <div v-else>
+          <h1
+        class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-6xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
+      >
+        <span
+          v-for="(char, index) in typewriterText"
+          :key="index"
+          :class="{
+            'text-amber-400': index >= typewriterText.length - 5 && index<=typewriterText.length - 1,
+            }"
+          >{{ char }}</span
+        >
+      </h1>
           <form class="mt-4">
         <label
           for="default-search"
@@ -212,7 +294,7 @@
         </div>
       </form>
           <div class="mt-8 gap-y-12 sm:gap-x-6 xl:gap-x-8 flex flex-col items-center justify-center">
-            <marketplacecard v-for="product in products"
+            <marketplacecard v-if="searchText==''" v-for="product in products"
             :name="product.name"
             :color="product.color"
             :imgSrc="product.imageSrc"
@@ -222,6 +304,17 @@
             :details="product.details"
             :owner="product.owner"
             >
+            </marketplacecard>
+
+            <marketplacecard v-else-if="filteredProductList.length > 0" v-for="product in filteredProductList"
+            :name="product.name"
+            :color="product.color"
+            :imgSrc="product.imageSrc"
+            :price="product.price"
+            :location="product.location"
+            :condition="product.condition"
+            :details="product.details"
+            :owner="product.owner">
             </marketplacecard>
         </div>
         </div>
@@ -240,14 +333,22 @@
   
   <script>
   import marketplacecard from "@/components/MarketPlaceCard.vue";
+  import Foot from "@/components/Footer.vue";
+
+  const words = ["Marketplace"];
+const typeSpeed = 100; // Adjust the speed as needed (in milliseconds)
 
 export default {
     name: "MarketPlace",
-    components:{marketplacecard},
+    components:{marketplacecard, Foot},
     data(){
       return{
+        typewriterText: "",
+        isGoldVisible: false,
+        loopTyping: true,
         pageWidth: window.innerWidth,
         isModalVisible: false,
+        searchText: "",
         products:[
             {
               id: 1,
@@ -319,19 +420,102 @@ export default {
               details: 'Contact me for bulk purchase.',
               price: 'S$5',
             },
+            {
+              id: 8,
+              name: 'Dried Mulch',
+              condition: 'New',
+              location: 'Potong Pasir',
+              owner:'@mangoesgirlfriend',
+              imageSrc: '/Marketplace/mulch.png',
+              details: 'Mulch effective for composting',
+              price: 'S$5',
+            },
           ]}
     },
     mounted() {
             window.addEventListener('resize', this.handleResize);
+            this.type();
         },
         beforeDestroy() {
             window.removeEventListener('resize', this.handleResize);
+            this.loopTyping = false;
         },
+        
         methods: {
             handleResize() {
                 this.pageWidth = window.innerWidth;
             },
+            async type() {
+      try {
+        while (this.loopTyping) {
+          for (const word of words) {
+            let isDeleting = false;
+            let j = 0;
+
+            while (j >= 0 && j < word.length) {
+              this.typewriterText = word.substring(0, j + 1);
+              if (word[j] === "R") {
+                this.isGoldVisible = true;
+              } else {
+                this.isGoldVisible = false;
+              }
+              if (isDeleting) {
+                await this.delay(typeSpeed / 2);
+              } else {
+                await this.delay(typeSpeed);
+              }
+              j = isDeleting ? j - 1 : j + 1;
+            }
+
+            // Add a pause after typing the full word
+            if (j === word.length) {
+              await this.delay(typeSpeed * 2);
+            }
+
+            // Clear the word with a delay
+            while (j >= 0) {
+              this.typewriterText = word.substring(0, j);
+              if (word[j] === "R") {
+                this.isGoldVisible = true;
+              } else {
+                this.isGoldVisible = false;
+              }
+              await this.delay(typeSpeed / 2);
+              j--;
+            }
+          }
+        }
+      } catch (error) {
+        console.error("Typing error:", error);
+      }
+    },
+    delay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    },
+            
     
+  },
+  computed:{
+    filteredProductList() {
+              const searchLowerCase = this.searchText.toLowerCase();
+              var ret;
+              if (searchLowerCase == "") {
+                ret = [];
+              } else {
+                let newarray = []
+                for (let product of this.products){
+
+                  if (product.name.toLowerCase().includes(searchLowerCase)){
+                    newarray.push(product)
+                  }
+                }
+                ret = newarray;
+              }
+
+              console.log(ret);
+              console.log('OTLR')
+              return ret;
+    }
   }
   }
 
