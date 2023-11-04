@@ -88,6 +88,7 @@
 
       <div class="lg:flex lg:content-stretch gap-5 justify-center">
         <ImpactCard
+        class="w-1/3"
           :feature="'Individual'"
           :content="'I’m just looking to try out composting within my household and learning more about the movement!'"
 
@@ -95,6 +96,7 @@
           :hoverImage="'ImpactCards/Individual.jpg'"
         />
         <ImpactCard
+        class="w-1/3"
           :feature="'Community'"
           :content="'I want to join the larger composting community to promote the movement!'"
 
@@ -102,6 +104,7 @@
           :hoverImage="'ImpactCards/Community.jpg'"
         />
         <ImpactCard
+        class="w-1/3"
           :feature="'Contributor'"
           :content="'I don’t have the time to contribute actively, but I have food waste to donate to the movement!'"
 
