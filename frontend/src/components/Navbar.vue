@@ -291,7 +291,7 @@
         v-if="checkPageLoggedIn"
           as="a"
           href="/marketplace"
-          :class="getClassResponsive('/contact')"
+          :class="getClassResponsive('/marketplace')"
           >Marketplace</DisclosureButton
         >
       </div>

@@ -55,11 +55,11 @@
         Open a Chat!
       </div>
       <div
-        id="chat-container z-60"
+        id="chat-container z-60 "
         class="w-auto mt-2 max-h-[310px]"
         :class="{ hidden: !isChatboxOpen || !sidebarOpen }"
       >
-        <div class="bg-white shadow-md rounded-lg max-w-lg w-full h-full">
+        <div class="bg-white shadow-md rounded-lg max-w-lg w-full h-full overflow-y-scroll">
           <div
             class="p-3 border-b bg-blue-500 text-white rounded-t-lg flex justify-between items-center"
           >
@@ -84,7 +84,7 @@
               </svg>
             </button>
           </div>
-          <div id="chatbox" class="p-2 h-[300px] overflow-y-scroll">
+          <div id="chatbox" class="p-2 h-[150px] overflow-y-scroll">
             <!-- Chat messages will be displayed here -->
             <div
               class="mb-2"
