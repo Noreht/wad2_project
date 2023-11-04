@@ -22,23 +22,23 @@
           role="list"
           class="-mx-2 mt-2 space-y-1 overflow-y-scroll h-[250px] border border-1 rounded-lg"
         >
-          <li v-for="chat in chats" :key="chat">
+          <li v-for="(value, key) of chats">
             <div
               class="bg-gray-50 text-black hover-text-amber-600 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold items-center"
             >
               <span
                 class="border border-gray-200 hover:border-amber-600 w-8 h-8 rounded-full flex items-center justify-center"
                 :style="{
-                  backgroundImage: `url('Impactcards/Community.jpg')`,
+                  backgroundImage: `url(${value.imageurl})`,
                   backgroundRepeat: 'no-repeat',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center center',
                 }"
               ></span>
-              <span class="truncate">{{ chat }}</span>
+              <span class="truncate">{{ key }}</span>
               <button
                 class="ml-auto mr-0 bg-blue-500 text-white py-1 px-4 rounded-md hover:bg-blue-600 transition duration-300"
-                @click="openChat(chat)"
+                @click="openChat(key)"
               >
                 Chat
               </button>
@@ -66,7 +66,7 @@
             <p class="text-lg font-semibold">{{ currentChat }}</p>
             <button
               class="text-gray-300 hover:text-gray-400 focus:outline-none focus:text-gray-400"
-              @click="closeChat"
+              @click="closeChat('{{currentChat}}')"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -130,90 +130,108 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, setTransitionHooks } from "vue";
 
 export default {
-  setup() {
-    const chats = ref([
-      "David",
-      "Caleb",
-      "Andrea",
-      "Austin",
-      "Bryan",
-      "Kyong",
-      "Chein",
-      "Tharman",
-    ]);
-    const sidebarOpen = ref(false);
-    const isChatboxOpen = ref(false);
-    const currentChat = ref("");
-    const userMessage = ref("");
-    const chatMessages = ref([]);
-
-    const sidebarops = () => {
-      sidebarOpen.value = !sidebarOpen.value;
-    };
-    const openChat = (chat) => {
-      isChatboxOpen.value = true;
-      currentChat.value = chat;
-    };
-
-    const closeChat = () => {
-      isChatboxOpen.value = false;
-      currentChat.value = "";
-    };
-
-    const handleSendMessage = () => {
-      const message = userMessage.value.trim();
-      if (message) {
-        addUserMessage(message);
-        respondToUser(message);
-        userMessage.value = "";
-      }
-    };
-
-    const addUserMessage = (message) => {
-      chatMessages.value.push({
-        id: Date.now(),
-        text: message,
-        isResponse: false,
-      });
-      scrollToBottom();
-    };
-
-    const respondToUser = (userMessage) => {
-      // Replace this with your chatbot logic
-      setTimeout(() => {
-        const response =
-          "lorem ipsum sefecjnarejnb snrh s4onregsrno orng[o4srnbrnfd w4nrymgbrfd .";
-        chatMessages.value.push({
-          id: Date.now(),
-          text: response,
-          isResponse: true,
-        });
-        scrollToBottom();
-      }, 500);
-    };
-
-    const scrollToBottom = () => {
-      const chatbox = document.getElementById("chatbox");
-      if (chatbox) {
-        chatbox.scrollTop = chatbox.scrollHeight;
-      }
-    };
-
+  data() {
     return {
-      chats,
-      sidebarOpen,
-      isChatboxOpen,
-      currentChat,
-      userMessage,
-      openChat,
-      closeChat,
-      handleSendMessage,
-      sidebarops,
-      chatMessages,
+      chats: {
+        David: {
+          imageurl: "https://picsum.photos/200/300?random=1",
+          message: [],
+          selected: false,
+        },
+        Caleb: {
+          imageurl: "https://picsum.photos/200/300?random=2",
+          message: [],
+          selected: false,
+        },
+        Andrea: {
+          imageurl: "https://picsum.photos/200/300?random=3",
+          message: [],
+          selected: false,
+        },
+        Austin: {
+          imageurl: "https://picsum.photos/200/300?random=4",
+          message: [],
+          selected: false,
+        },
+        Bryan: {
+          imageurl: "https://picsum.photos/200/300?random=5",
+          message: [],
+          selected: false,
+        },
+        Kyong: {
+          imageurl: "https://picsum.photos/200/300?random=6",
+          message: [],
+          selected: false,
+        },
+        Chein: {
+          imageurl: "https://picsum.photos/200/300?random=7",
+          message: [],
+          selected: false,
+        },
+        Tharman: {
+          imageurl: "https://picsum.photos/200/300?random=8",
+          message: [],
+          selected: false,
+        },
+      },
+      sidebarOpen: false,
+      isChatboxOpen: false,
+      currentChat: "",
+      userMessage: "",
     };
+  },
+  computed:{
+    chatMessages() {
+      if(this.currentChat==""){return chatMessages=[]}
+      else{ return this.chats[this.currentChat].message;}
+   
+  }
+  },
+  methods: {
+    sidebarops() {
+      this.sidebarOpen = !this.sidebarOpen;
+    },
+    openChat(key) {
+      this.isChatboxOpen = true;
+      this.currentChat = key;
+    },
+
+    closeChat() {
+      this.isChatboxOpen = false;
+      this.currentChat = "";
+    },
+
+    handleSendMessage() {
+      const message = this.userMessage.trim();
+      if (message) {
+        this.chatMessages.push({
+          id: Date.now(),
+          text: message,
+          isResponse: false,
+        });
+        const chatbox = document.getElementById("chatbox");
+        if (chatbox) {
+          chatbox.scrollTop = chatbox.scrollHeight;
+        }
+        setTimeout(() => {
+          const response =
+            "lorem ipsum sefecjnarejnb snrh s4onregsrno orng[o4srnbrnfd w4nrymgbrfd .";
+          this.chatMessages.push({
+            id: Date.now(),
+            text: response,
+            isResponse: true,
+          });
+          const chatbox = document.getElementById("chatbox");
+          if (chatbox) {
+            chatbox.scrollTop = chatbox.scrollHeight;
+          }
+        }, 500);
+        this.userMessage = "";
+      }
+    },
   },
 };
 </script>
