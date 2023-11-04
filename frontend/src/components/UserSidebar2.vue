@@ -20,7 +20,7 @@
         <div class="text-base font-bold leading-6 text-black">Your Friends</div>
         <ul
           role="list"
-          class="-mx-2 mt-2 space-y-1 overflow-y-scroll h-[300px] border border-1 rounded-lg"
+          class="-mx-2 mt-2 space-y-1 overflow-y-scroll h-[250px] border border-1 rounded-lg"
         >
           <li v-for="chat in chats" :key="chat">
             <div

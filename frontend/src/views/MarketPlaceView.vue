@@ -1,12 +1,9 @@
-<template>
-  
-    <div class="grid grid-cols-12  min-w-[400px] h-full">
-        <div class="col-span-2 p-4"></div>
-        <div class="h-full bg-green-100 col-span-8 p-4 place-content-center"> <div>
-        
-
+<template >
       <div v-if="pageWidth >= 904 && pageWidth <=1359">
-        <h1
+        <div class="grid grid-cols-12  min-w-[400px] h-screen">
+        <div class="col-span-2 px-4"></div>
+        <div class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center">
+          <h1
         class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-7xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
       >
         <span
@@ -83,8 +80,16 @@
         </div>
       </div>
         </div>
+    <div class="col-span-2 px-4"></div>
+    </div>
+    <Foot class=""/>
+        
+        </div>
 
         <div  v-else-if="pageWidth >= 1360 && pageWidth <= 1779">
+          <div class="grid grid-cols-12  min-w-[400px] h-screen">
+        <div class="col-span-2 px-4"></div>
+        <div class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center">
           <h1
         class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-7xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
       >
@@ -160,10 +165,20 @@
             :owner="product.owner">
             </marketplacecard>
           </div>
+          </div>
+          
+          </div>
+          <div class="col-span-2 px-4"></div>
+  
+          
         </div>
+        <Foot class=""/>
         </div>
 
         <div  v-else-if="pageWidth >= 1780">
+          <div class="grid grid-cols-12  min-w-[400px] h-screen">
+        <div class="col-span-2 px-4"></div>
+        <div class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center">
           <h1
         class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-7xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
       >
@@ -241,8 +256,17 @@
           </div>
         </div>
         </div>
+        <div class="col-span-2 px-4"></div>
+  
+          
+        </div>
+        <Foot class=""/>
+        </div>
 
         <div v-else>
+          <div class="grid grid-cols-12  min-w-[400px] h-auto">
+        <div class="col-span-2 px-4"></div>
+        <div class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center">
           <h1
         class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-6xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
       >
@@ -318,17 +342,21 @@
             </marketplacecard>
         </div>
         </div>
+        <div class="col-span-2 px-4"></div>
+  
+          
+        </div>
+        <Foot class=""/>
+        </div>
 
-      <!-- <div >
+        <!-- <div >
         <marketplacecard></marketplacecard>
       </div> -->
 
-     </div>
-        <div class="col-span-2 px-4"></div>
-    </div>
+      
+      
     
-    </div>
-    <Foot />
+    
   </template>
   
   <script>
