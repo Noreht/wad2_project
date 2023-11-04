@@ -169,6 +169,10 @@
       <!-- Community User content -->
       <CommunityMembers />
     </div>
+    <div v-if="activeTab === 'Media'" class="volunteers-container">
+      <!-- Community User content -->
+      <CommunityMedia />
+    </div>
   </div>
   
 </template>
@@ -178,6 +182,7 @@ import CommunityInformationBar from "./CommunityInformationBar.vue";
 import CommunityFeedItem from "./CommunityFeedItem.vue";
 import CommunityEvents from "./CommunityEvents.vue";
 import CommunityMembers from "./CommunityMembers.vue";
+import CommunityMedia from "./CommunityMedia.vue";
 //import firebase from "@/utils/firebase";
 import { db } from "@/utils/firebase/firebaseInit.js";
 import {
@@ -221,6 +226,7 @@ export default {
     CommunityFeedItem,
     CommunityEvents,
     CommunityMembers,
+    CommunityMedia,
   },
   data() {
     return {
