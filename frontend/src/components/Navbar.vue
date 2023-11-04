@@ -132,6 +132,9 @@
 
               <a href="/events" :class="getClass('/events')">Public Events</a>
               <a href="/contact" :class="getClass('/contact')">Contact</a>
+              <a v-if="checkPageLoggedIn" href="/marketplace" :class="getClass('/marketplace')"
+                >Marketplace</a
+              >
             </div>
           </div>
         </div>
@@ -254,7 +257,7 @@
           >Community Page</DisclosureButton
         >
         <DisclosureButton
-        v-else
+          v-else
           as="a"
           href="/home"
           :class="getClassResponsive('/home')"
@@ -276,13 +279,20 @@
           as="a"
           href="/events"
           :class="getClassResponsive('/events')"
-          >Events</DisclosureButton
+          >Public Events</DisclosureButton
         >
         <DisclosureButton
           as="a"
           href="/contact"
           :class="getClassResponsive('/contact')"
           >Contact</DisclosureButton
+        >
+        <DisclosureButton
+        v-if="checkPageLoggedIn"
+          as="a"
+          href="/marketplace"
+          :class="getClassResponsive('/contact')"
+          >Marketplace</DisclosureButton
         >
       </div>
 
@@ -372,8 +382,7 @@ const checkPageLoggedIn = ref(null);
 const signOut = async () => {
   await store.dispatch("logOut");
   window.location.reload();
-  window.location.href = '/home';
-  
+  window.location.href = "/home";
 };
 
 onMounted(async () => {
