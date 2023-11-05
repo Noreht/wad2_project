@@ -135,6 +135,7 @@ import { ref, setTransitionHooks } from "vue";
 export default {
   data() {
     return {
+      pageWidth:window.innerWdith,
       chats: {
         David: {
           imageurl: "https://picsum.photos/200/300?random=1",
@@ -183,6 +184,7 @@ export default {
       userMessage: "",
     };
   },
+  
   computed:{
     chatMessages() {
       if(this.currentChat==""){return []}
@@ -190,7 +192,21 @@ export default {
    
   }
   },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize)},
   methods: {
+    handleResize() {
+      this.pageWidth = window.innerWidth;
+      if (this.pageWidth >= 1440) {
+        this.sidebarOpen = true;
+        console.log("booyah12345");
+      } else if (this.pageWidth < 1440) {
+        this.sidebarOpen = false;
+      }
+    },
     sidebarops() {
       this.sidebarOpen = !this.sidebarOpen;
     },

@@ -1,14 +1,14 @@
 <!-- After login-->
 
 <template>
-  <div class="grid grid-cols-12 gap-4 z-20">
+  <div class="grid grid-cols-12 gap-4 z-20 min-w-[600px]">
     <div class="col-span-2 pt-50 lg:block flex ">
       <suspense >
         <UserSidebarLeft />
       </suspense>
     </div>
 
-    <div class="col-span-8 z-10">
+    <div class="col-span-8 z-10 min-w-[400px]">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
       <suspense>
         <UserCommunity />

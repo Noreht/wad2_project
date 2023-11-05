@@ -8,7 +8,7 @@
       </div>
     </slot>
     <h1
-      class="drop-shadow-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl md:text-7xl xl:text-8xl lg:min-w-[300px] max-h-[50px] min-h-[90px] typewriter mb-2"
+      class="drop-shadow-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl xl:text-8xl lg:min-w-[300px] max-h-[50px] min-h-[90px] typewriter mb-2"
     >
       <span
         v-for="(char, index) in typewriterText"
@@ -17,8 +17,8 @@
         >{{ char }}</span
       >
     </h1>
-    <div class="grid grid-cols-2 w-full gap-x-2">
-      <div class="bg-gray-300 rounded-3xl px-2">
+    <div class="grid grid-cols-2 w-full gap-x-2 ">
+      <div class="bg-gray-300 rounded-3xl px-2 min-w-[200px]">
         <h1 class="text-2xl pl-2 pt-2 flex items-center font-bold">
           Community Events
           <div
@@ -84,7 +84,7 @@
         </div>
       </div>
 
-      <div class="bg-amber-300 rounded-3xl px-2">
+      <div class="bg-amber-300 rounded-3xl px-2 min-w-[200px]">
         <h1 class="text-2xl pl-2 pt-2 flex items-center font-bold">
           BlackGold Public Events
           <div

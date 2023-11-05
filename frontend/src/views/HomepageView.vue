@@ -70,7 +70,7 @@
           </p>
           <br />
           <a
-            href="/login"
+            href="/registration"
             class="xs:text-base rounded-md bg-amber-400 px-3.5 py-2.5 text-3xl font-semibold transition duration-300 ease-in-out text-black drop-shadow-lg hover:bg-amber-500 "
           >
             Join now!

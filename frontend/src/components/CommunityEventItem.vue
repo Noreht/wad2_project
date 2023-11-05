@@ -8,20 +8,20 @@
       >
         {{ name }}
       </span>
-      <span class="text-sm px-2.5">{{ eventDate }} </span>
+      <span class="text-sm px-2.5 -ml-[10px]">{{ eventDate }} </span>
     </div>
 
     <p class="mb-1 font-light text-gray-500 dark:text-gray-400 px-2.5">
       {{ eventDesc }}
     </p>
-    <div class="flex justify-between items-center">
-      <div class="flex items-center space-x-4">
-        <span class="font-medium dark:text-white px-2.5">
+    <div class="flex justify-between items-center" >
+      <div class="lg:flex lg:justify-between lg:items-center lg:space-x-4 grid grid-rows-2 w-full">
+        <span class="font-medium dark:text-white px-2.5 text-base">
           Event Signups: {{ eventSignups }}
         </span>
         <button v-if="checkRegistered(name)"
           id="{{ eventID }}"
-          class="border-2 hover-3 bg-amber-400 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg disabled:bg-gray-300 disabled:text-white"
+          class="lg:text-end border-2 hover-3 bg-amber-400 text-black px-4 py-2 text-sm uppercase tracking-wide font-bold rounded-lg disabled:bg-gray-300 disabled:text-white"
           @click="this.Signup(name, eventDate)"
         >
           Sign Up

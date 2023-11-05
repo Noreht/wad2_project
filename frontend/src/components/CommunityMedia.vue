@@ -14,7 +14,7 @@
         </div>
         <ul
           role="list"
-          class="mx-auto mt-5 grid max-w-2xl grid-cols-2 gap-x-2 gap-y-2 text-center sm:grid-cols-2 md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4"
+          class="mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-x-2 gap-y-2 text-center sm:grid-cols-2 md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:grid-cols-4"
         >
           <li
             v-for="person in media"

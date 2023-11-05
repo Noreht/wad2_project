@@ -14,7 +14,7 @@
         </div>
         <ul
           role="list"
-          class="grid gap-x-5 gap-y-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-y-1"
+          class="grid gap-x-5 gap-y-5 xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 sm:gap-y-5"
         >
           <li v-for="person in admins" :key="person.name">
             <div class="flex items-center gap-x-6">
