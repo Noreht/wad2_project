@@ -91,7 +91,7 @@ export default {
 
     async leave() {
       //console.log("Leaving community...")
-      const q = Query(Collection(db, 'UserCommunities'), Where('name', '==', "Punggol Warriors Community"))
+      const q = Query(Collection(db, 'UserCommunities'), Where('name', '==', "Champions of the East"))
       const querySnap = await getdocs(q);
       
       querySnap.forEach((doc) => {
