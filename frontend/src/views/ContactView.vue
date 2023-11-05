@@ -1,6 +1,6 @@
 <template>
   <div
-    class="grid grid-cols-12 bg-gradient-to-t from-amber-100 to-orange-50 pb-[100px] h-[100%]"
+    class="grid grid-cols-12 bg-gradient-to-t from-amber-100 to-orange-50 pb-[100px] h-[100%] min-w-[600px]"
   >
     <div class="col-span-2"></div>
     <div class="col-span-8">

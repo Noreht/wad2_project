@@ -1,4 +1,4 @@
-<template class="min-w-[350px] ">
+<template class="min-w-[600px] ">
   <!-- <div>
     <div class="rounded-lg pl-20 mr-20 border-4 border-slate-500 px-6 py-24 sm:py-32 lg:px-8 mt-5">
 

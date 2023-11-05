@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-12 bg-gradient-to-t from-amber-300 to-orange-50 min-w-[400px]">
+  <div class="grid grid-cols-12 bg-gradient-to-t from-amber-300 to-orange-50 min-w-[600px]">
     <div class="col-span-2 p-4"></div>
     <div class="col-span-8 p-4 place-content-center">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->

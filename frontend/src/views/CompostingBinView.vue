@@ -1,4 +1,5 @@
 <template>
+  <div class="min-w-[600px]">
     <Guides
         :title="guidetitle"
         :description="guidedescription"
@@ -6,7 +7,7 @@
         :requiredimage="imageurl"
         :thesteps = "steps"
         :tips = "tip"
-    />
+    /></div>
     <Foot />
     </template>
     

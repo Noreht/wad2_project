@@ -1,6 +1,6 @@
 <template>
 
-<div class="grid min-h-full grid-cols-1 xl:grid-cols-1 items-center">
+<div class="grid min-h-full grid-cols-1 xl:grid-cols-1 items-center min-w-[600px]">
     
   
   <div class="flex flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">

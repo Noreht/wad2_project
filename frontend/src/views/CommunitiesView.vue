@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-12 gap-4">
+  <div class="grid grid-cols-12 gap-4 min-w-[600px]">
     <div class="col-span-2"></div>
     <div class="col-span-8">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->

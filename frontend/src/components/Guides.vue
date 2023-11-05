@@ -43,7 +43,7 @@
                       aria-describedby="comments-description"
                       name="comments"
                       type="checkbox"
-                      class="min-[1280px]:h-6 min-[1280px]:w-6 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      class="min-[1280px]:h-6 min-[1280px]:w-6 h-4 w-4 rounded border-gray-300 text-green-600 "
                     />
                   </div>
                   <div class=" md:my-2 ml-3 sm:text-xl leading-6">
@@ -57,8 +57,8 @@
               </div>
             </div>
           </div>
-          <div class="row-span-2 place-self-center">
-            <img class="w-[100%]" :src="requiredimage" />
+          <div class="row-span-2 place-self-center item-center justify-center align-middle">
+            <img class=" col-span-2 w-[100%] max-w-[300px] max-h-[250px] m-auto" :src="requiredimage" />
           </div>
         </div>
         <div v-for="step in thesteps" class="my-8 mx-5 mb-4">
