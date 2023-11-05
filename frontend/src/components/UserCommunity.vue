@@ -78,6 +78,7 @@
           <div>
             <div class="mt-2">
               <input
+                v-model="searchText"
                 type="text"
                 name="search"
                 id="search"
@@ -87,7 +88,7 @@
             </div>
             <!-- Feed 1-->
 
-            <CommunityFeedItem
+            <CommunityFeedItem v-if="searchText==''"
               v-for="(item, index) in postList"
               @click="handleItemClicked(item.PostTitle)"
               :key="index"
@@ -98,6 +99,17 @@
               @item-clicked="handleItemClicked"
               @update:selected="updateSelected"
             />
+            <CommunityFeedItem v-else-if="filteredPostList.length > 0" v-for="(item, index) in filteredPostList"
+              @click="handleItemClicked(item.PostTitle)"
+            
+              :topic="item.PostTitle"
+              :postAge="item.PostAge"
+              :postDesc="item.PostDesc"
+              :postAuthor="item.PostAuthor"
+              @item-clicked="handleItemClicked"
+              @update:selected="updateSelected"
+            />
+
           </div>
         </div>
       </div>
@@ -156,6 +168,9 @@
               </ul>
             </CommunityFeedItem>
           </div>
+
+            
+ 
         </div>
       </div>
     </div>
@@ -230,6 +245,7 @@ export default {
   },
   data() {
     return {
+      searchText: "",
       activeTab: "updates",
       postList: [
         {
@@ -388,6 +404,7 @@ export default {
     };
   },
   methods: {
+    
     handleItemClicked(clickedItem) {
       //console.log("handleItemClicked start")
       // //console.log("Clicked Item: " + clickedItem)
@@ -447,5 +464,25 @@ export default {
       });
     },
   },
+  computed:{
+    filteredPostList() {
+      const searchLowerCase = this.searchText.toLowerCase();
+      var ret;
+      if (searchLowerCase == "") {
+        ret = [];
+      } else {
+        let newarray = [];
+        for (let post of this.postList){
+          if (post.PostTitle.toLowerCase().includes(searchLowerCase)) {
+            newarray.push(post);
+        }
+        ret = newarray
+      }
+
+      console.log(ret);
+      return ret;
+    }
+  },
+  }
 };
 </script>
