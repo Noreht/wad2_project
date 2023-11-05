@@ -27,7 +27,7 @@
             <ul role="list" class="-mx-2 mt-2 space-y-1">
               <li v-for="team in communities" :key="team.name">
                 <a
-                  href="/communitypage2"
+                  href="/communitypage"
                   :class="[
                     team.current
                       ? 'bg-gray-50 text-black'

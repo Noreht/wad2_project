@@ -331,7 +331,7 @@ export default {
           password: this.password,
           fullname: this.fullname,
         });
-        this.router.push("/login");
+        this.router.push("/select");
         this.$toast.success("Account created successfully!");
       } catch (err) {
         this.registerError = getFirebaseErrorMessage(err);

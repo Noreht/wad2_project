@@ -8,8 +8,10 @@ import EventsView from "@/views/EventsView.vue";
 import ContactView from "@/views/ContactView.vue";
 import BasicCompost from "@/views/BasicCompostView.vue";
 import CommunityPage from "@/views/CommunityPageView.vue";
+import CommunityPage2 from "@/views/CommunityPageView2.vue";
 import CompostingBin from "@/views/CompostingBinView.vue";
 import MarketPlace from "@/views/MarketPlaceView.vue";
+import Select from "@/views/Select.vue"
 
 import store from "@/store";
 import { inject } from "vue";
@@ -76,6 +78,10 @@ const routes = [
         path: "/communitypage",
         name: "CommunityPage",
         component: CommunityPage,
+      },{ 
+        path: "/communitypage2",
+        name: "CommunityPage2",
+        component: CommunityPage2,
       },
       { 
         path: "/CompostingBin",
@@ -87,6 +93,11 @@ const routes = [
         path: "/marketplace",
         name: "MarketPlace",
         component: MarketPlace
+      },
+      {
+        path: "/select",
+        name: "Select",
+        component: Select
       }
 ];
 
