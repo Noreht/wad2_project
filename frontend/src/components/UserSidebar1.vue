@@ -80,7 +80,7 @@
                   >
                   <span class="truncate text-black"
                     >{{ event.name }}
-                    <span class="flex">
+                    <div class="grid grid-rows-1 gap-y-1 max-w-[50%] text-center" :class="{'grid-rows-2':this.wantsToQuit[index].w1}">
                       <button
                         v-if="showButton[index].button1"
                         @click="
@@ -100,11 +100,11 @@
                       <button
                         v-if="this.wantsToQuit[index].w1"
                         @click="this.wantsToQuit[index].w1 = false"
-                        class="ml-1 bg-green-600 text-white rounded-full px-1 text-sm leading-6 font-semibold"
+                        class="bg-green-600 text-white rounded-full px-1 text-sm leading-6 font-semibold"
                       >
                         Don't Cancel
                       </button>
-                    </span>
+                    </div>
                   </span>
                 </span>
               </li>

@@ -22,7 +22,7 @@
         <div class="mt-2 flex items-center text-sm text-gray-500 font-semibold">
           <BriefcaseIcon
             class="mr-3 h-5 w-5 flex-shrink-0 text-gray-400"
-            aria-hidden="true"
+            aria-hidden="false"
           />
           50 Full-time volunteers
         </div>

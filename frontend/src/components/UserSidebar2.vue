@@ -20,7 +20,7 @@
         <div class="text-base font-bold leading-6 text-black">Your Friends</div>
         <ul
           role="list"
-          class="-mx-2 mt-2 space-y-1 overflow-y-scroll h-[250px] border border-1 rounded-lg"
+          class="-mx-2 mt-2 space-y-1 overflow-y-scroll h-[250px] border-2 border-black rounded-lg"
         >
           <li v-for="(value, key) of chats">
             <div
@@ -55,7 +55,7 @@
         Open a Chat!
       </div>
       <div
-        id="chat-container z-60 "
+        id="chat-container z-50 "
         class="w-auto mt-2 max-h-[310px]"
         :class="{ hidden: !isChatboxOpen || !sidebarOpen }"
       >
@@ -84,7 +84,7 @@
               </svg>
             </button>
           </div>
-          <div id="chatbox" class="p-2 h-[150px] overflow-y-scroll">
+          <div id="chatbox" class="p-2 h-[200px] overflow-y-scroll">
             <!-- Chat messages will be displayed here -->
             <div
               class="mb-2"
@@ -138,42 +138,42 @@ export default {
       pageWidth:window.innerWdith,
       chats: {
         David: {
-          imageurl: "https://picsum.photos/200/300?random=1",
+          imageurl: "https://picsum.photos/200/300?random=100",
           message: [],
           selected: false,
         },
         Caleb: {
-          imageurl: "https://picsum.photos/200/300?random=2",
+          imageurl: "https://picsum.photos/200/300?random=101",
           message: [],
           selected: false,
         },
         Andrea: {
-          imageurl: "https://picsum.photos/200/300?random=3",
+          imageurl: "https://picsum.photos/200/300?random=102",
           message: [],
           selected: false,
         },
         Austin: {
-          imageurl: "https://picsum.photos/200/300?random=4",
+          imageurl: "https://picsum.photos/200/300?random=103",
           message: [],
           selected: false,
         },
         Bryan: {
-          imageurl: "https://picsum.photos/200/300?random=5",
+          imageurl: "https://picsum.photos/200/300?random=104",
           message: [],
           selected: false,
         },
         Kyong: {
-          imageurl: "https://picsum.photos/200/300?random=6",
+          imageurl: "https://picsum.photos/200/300?random=105",
           message: [],
           selected: false,
         },
         Chein: {
-          imageurl: "https://picsum.photos/200/300?random=7",
+          imageurl: "https://picsum.photos/200/300?random=106",
           message: [],
           selected: false,
         },
         Tharman: {
-          imageurl: "https://picsum.photos/200/300?random=8",
+          imageurl: "https://picsum.photos/200/300?random=107",
           message: [],
           selected: false,
         },

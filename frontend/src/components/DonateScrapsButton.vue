@@ -3,11 +3,10 @@
     href="https://donate.stripe.com/test_7sIeVDeaU6FoaEo002"
     class="button z-40 rounded-full fixed right-5 bottom-5 scroll-behavior: smooth text-xl"
     type="button" target="blank"
-    @click="handleClick"
     >
-      <span class="icon">☕</span>
-      <!-- <img src="DonateFoodScrapIcon.svg" class="w-9 h-8 mr-2 icon" alt="Image" /> -->
-      <span class="text">Buy us a coffee</span>
+      
+      
+      <span class="text flex items-center"> <img class="icon" src="DonateFoodScrapIcon.png" alt="Image"/> Buy us a coffee</span>
     </a>
   </template>
   <style scoped>
@@ -32,12 +31,14 @@
   }
 
   .icon {
-    font-family: "Font Awesome 5 Free";
-    font-size: 43px;
-    margin-right: 5px;
-    margin-left: -9px;
+    height:50px;
+    width:50px;
+    margin-right: 10px;
+    margin-left: -6px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
+    
   }
 
   .text {

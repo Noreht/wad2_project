@@ -88,7 +88,7 @@
         >
         <template v-for="(event, index) in eventList" class="content-stretch">
               <ImpactCard
-              class=" w-3/4 content-stretch"
+              class=" w-3/4 content-stretch min-w-[350px] max-w-[400px]"
               v-if="event.EventType == 'Workshops'"
                 :feature="event.EventName"
                 :content="event.EventDescription"
@@ -129,7 +129,7 @@
         >
           <template v-for="(event, index) in eventList">
             <div
-              class="w-1/2 items-stretch"
+              class="w-4/6 items-stretch min-w-[350px] max-w-[400px]"
               v-if="event.EventType == 'Community Events'"
             >
               <ImpactCard
