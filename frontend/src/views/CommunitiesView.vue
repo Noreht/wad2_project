@@ -106,7 +106,6 @@ export default {
       const querySnap = await getdocs(q);
       
       querySnap.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
         if (title == doc.data().name) {
           console.log("community is already joined")
           this.disable = true;

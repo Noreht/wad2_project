@@ -166,7 +166,7 @@
                   </div>
                 </li>
               </ul>
-            </CommunityFeedItem>
+            </CommunityFeedItem> 
           </div>
 
             

@@ -19,8 +19,8 @@
           
           <hr>
           <div class="pt-4">
-            <textarea cols='28'  class="mb-4" :placeholder='"Send a message to " + itemowner'></textarea>
-            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4">
+            <textarea cols='28'  class="mb-4" :placeholder='"Send a message to " + itemowner' v-model="newMessage" ></textarea>
+            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4"  @click="onSubmit">
               Send Message
             </button>
             <button
@@ -57,11 +57,11 @@
           <p class="text-md">{{ itemcondition }}</p>
         </div>
         <div class="row-span-1 col-span-2 -mt-[15px]">
-        <textarea cols='45' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner'></textarea>
+        <textarea v-model="newMessage" cols='45' rows='2' class="mt-2 ml-4 mb-2" :placeholder="'Send a message to ' + itemowner"> {{ errorText }}</textarea>
           
         </div>
         <div class="col-span-1 flex">
-            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4">
+            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4" @click="onSubmit">
               Send Message
             </button>
             <button
@@ -95,9 +95,9 @@
         </div>
 
         <div class=" px-2 row-span-2 col-span-2">
-        <textarea cols='80' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner'></textarea>
+        <textarea cols='80' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner' v-model="newMessage" ></textarea>
           <div class="ml-4">
-            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4">
+            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4" @click="onSubmit">
               Send Message
             </button>
             <button
@@ -132,9 +132,9 @@
         </div>
 
         <div class="px-2 row-span-2 col-span-2">
-        <textarea cols='80' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner'></textarea>
+        <textarea cols='80' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner' v-model="newMessage"></textarea>
           <div class="ml-4">
-            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4">
+            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4" @click="onSubmit">
               Send Message
             </button>
             <button
@@ -148,45 +148,14 @@
         </div>
       </div>
     </div>
-    <!-- <div class="">
-      <div class="grid "></div>
 
-      <header class="modal-header">
-        <slot name="header">
-          This is the default title!
-        </slot>
-        <button
-          type="button"
-          class="btn-close"
-          @click="closeModal"
-        >
-          x
-        </button>
-      </header>
-
-      <section class="modal-body">
-        <slot name="body">
-          This is the default body!
-        </slot>
-       </section>
-
-      <footer class="modal-footer">
-        <slot name="footer">
-          This is the default footer!
-        </slot>
-        <button
-          type="button"
-          class="btn-green"
-          @click="closeModal"
-        >
-          Close Modal
-        </button>
-      </footer>
-    </div> -->
   </div>
 </template>
 
 <script>
+
+import { db,updatedoc, document, setdoc } from "@/utils/firebase/firebaseInit.js";
+
 export default {
   props:{
     imgSrc:String,
@@ -200,27 +169,61 @@ export default {
   },
   data(){
     return{
-      pageWidth: window.innerWidth,
+      pageWidth: window.innerWidth, newMessage:""
       
     }
   },
-  
-  mounted() {
-            window.addEventListener('resize', this.handleResize);
-        },
-        beforeDestroy() {
-            window.removeEventListener('resize', this.handleResize);
-        },
-        methods: {
-            handleResize() {
-                this.pageWidth = window.innerWidth;
-            },
-            closeModal111() {
+
+  methods: {
+    async onSubmit() {
+      let id = Math.random()
+      const currentMessages = document(db, `MarketplaceMessages`, id.toString());
+      console.log(this.newMessage)
+                  
+      if (this.newMessage != "") {
+        console.log("Adding to doc")
+        await setdoc(currentMessages, {
+          text: this.newMessage,
+          author: "Bryan",
+        }
+
+        )
+        console.log("success!")
+      }
+      
+      else {
+        this.newMessage = null;
+        this.errorText = null;
+        console.log("MessageNotFound")
+        this.errorText = "A message must be entered first!";
+        }
+      },
+
+    
+    handleResize() {
+        this.pageWidth = window.innerWidth;
+    },
+    closeModal111() {
       console.log('booya');
       this.$emit('close');
-    }
-    
-  }
+    },
+    },
+  mounted() {
+        window.addEventListener('resize', this.handleResize);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.handleResize);
+    },
+    // methods: {
+    //     handleResize() {
+    //         this.pageWidth = window.innerWidth;
+    //     },
+    //     closeModal111() {
+    //       console.log('booya');
+    //       this.$emit('close');
+    //     },
+        
+  // }
 }
 </script>
 

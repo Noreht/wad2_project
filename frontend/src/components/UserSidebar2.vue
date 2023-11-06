@@ -131,8 +131,19 @@
 
 <script>
 import { ref, setTransitionHooks } from "vue";
+import { getAllMarketplaceMessages } from "../utils/firebase";
 
 export default {
+
+  async setup() {
+            //console.log("Setup Initiated for Event Map")
+            const marketMsgList = await getAllMarketplaceMessages();
+            //console.log(eventList[0].EventType)
+            return {
+                marketMsgList
+            };
+            
+        },
   data() {
     return {
       pageWidth:window.innerWdith,
@@ -213,6 +224,12 @@ export default {
     openChat(key) {
       this.isChatboxOpen = true;
       this.currentChat = key;
+
+      console.log(key)
+
+      if (key == "David") {
+        this.chats[key].message = this.marketMsgList
+      }
     },
 
     closeChat() {

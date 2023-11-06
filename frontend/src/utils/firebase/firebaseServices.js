@@ -8,8 +8,6 @@ import {
     getDoc,
 } from "firebase/firestore";
 
-// MODULE COLLECTION
-
 // Get All Events
 export async function getAllEvents() {
     const eventsColRef = collection(db, "Events");
@@ -29,6 +27,27 @@ export async function getAllEvents() {
         console.log("No data or query error");
     }
     return events;
+}
+
+// Get All Marketplace Messages
+export async function getAllMarketplaceMessages() {
+    const marketColRef = collection(db, "MarketplaceMessages");
+    const querySnapshot = await getDocs(marketColRef);
+    let markets = [];
+    querySnapshot.forEach((doc) => {
+        const marketData = doc.data();
+        const market = {
+            id: doc.id,
+            ...marketData,
+        };
+        markets.push(market);
+    });
+    if (markets.length > 0) {
+        console.log(markets);
+    } else {
+        console.log("No data or query error");
+    }
+    return markets;
 }
 
 
