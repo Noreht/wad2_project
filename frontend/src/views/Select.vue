@@ -60,7 +60,7 @@ export default {
     startConfettiAnimation() {
       const canvas = document.getElementById("confetti");
       const context = canvas.getContext("2d");
-      const maxConfettis = 300;
+      const maxConfettis = 100;
       const particles = [];
 
       const possibleColors = [
