@@ -136,12 +136,12 @@ import { getAllMarketplaceMessages } from "../utils/firebase";
 export default {
 
   async setup() {
-            //console.log("Setup Initiated for Event Map")
-            const marketMsgList = await getAllMarketplaceMessages();
-            //console.log(eventList[0].EventType)
-            return {
-                marketMsgList
-            };
+    //console.log("Setup Initiated for Event Map")
+    const marketMsgList = await getAllMarketplaceMessages();
+    //console.log(eventList[0].EventType)
+    return {
+        marketMsgList
+    };
             
         },
   data() {
@@ -198,6 +198,7 @@ export default {
   
   computed:{
     chatMessages() {
+      
       if(this.currentChat==""){return []}
       else{ return this.chats[this.currentChat].message;}
    
@@ -218,7 +219,7 @@ export default {
         this.sidebarOpen = false;
       }
     },
-    sidebarops() {
+    async sidebarops() {
       this.sidebarOpen = !this.sidebarOpen;
     },
     openChat(key) {
@@ -227,10 +228,13 @@ export default {
 
       console.log(key)
 
-      if (key == "David") {
-        this.chats[key].message = this.marketMsgList
-      }
-    },
+      for (let i = 0; i < this.marketMsgList.length; i++) {
+        if (this.marketMsgList[i].owner == key && !this.chats[key].message.includes(this.marketMsgList[i])) {
+          //console.log("Market Msg List ", this.marketMsgList[i])
+          this.chats[key].message.push(this.marketMsgList[i])
+        }
+    }
+  },
 
     closeChat() {
       this.isChatboxOpen = false;
@@ -250,13 +254,42 @@ export default {
           chatbox.scrollTop = chatbox.scrollHeight;
         }
         setTimeout(() => {
-          const response =
-            "lorem ipsum sefecjnarejnb snrh s4onregsrno orng[o4srnbrnfd w4nrymgbrfd .";
-          this.chatMessages.push({
-            id: Date.now(),
-            text: response,
-            isResponse: true,
-          });
+          const response1 =
+            "Hi there! Sorry I've been really busy, I'll contact you soon! ";
+          const response2 =
+            "Hi! Nice to meet you too! What's up? ";
+          const response3 =
+            "hello! ";
+          const response4 =
+            "How about next Monday? ";
+
+          if (message.includes("??")) {
+            this.chatMessages.push({
+              id: Date.now(),
+              text: response1,
+              isResponse: true,
+            })}
+          else if (message.includes("!")) {
+            this.chatMessages.push({
+              id: Date.now(),
+              text: response2,
+              isResponse: true,
+            })
+          } 
+          else if (message.includes("When are you free to deal?")) {
+            this.chatMessages.push({
+              id: Date.now(),
+              text: response4,
+              isResponse: true,
+            })
+          }
+          else {
+            this.chatMessages.push({
+              id: Date.now(),
+              text: response3,
+              isResponse: true,
+            })
+          };
           const chatbox = document.getElementById("chatbox");
           if (chatbox) {
             chatbox.scrollTop = chatbox.scrollHeight;

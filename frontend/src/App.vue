@@ -1,6 +1,7 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import DonateScrapsButton from "@/components/DonateScrapsButton.vue";
+
 import { useStore } from "vuex";
 
 export default {
@@ -9,6 +10,7 @@ export default {
   components: {
     Navbar,
     DonateScrapsButton,
+
   },
 
   computed: {
@@ -26,7 +28,9 @@ export default {
 <template>
   <div>
       <Navbar v-if="!isLoginPage && !isRegistrationPage"/>
+      
       <DonateScrapsButton v-if="!isLoginPage && !isRegistrationPage"/>
     <router-view />
+
   </div>
 </template>

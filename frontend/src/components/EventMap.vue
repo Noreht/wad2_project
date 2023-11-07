@@ -5,9 +5,68 @@
                     <h1 class="font-bold text-lg text-black">Events Near You: {{  this.currentEventsInArea }}</h1>
                     
                 </div>
+                <div>
+                    <form class="mt-2">
+                    <label
+                        for="default-search"
+                        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
+                        >Search</label
+                    >
+                    <div class="flex justify-center">
+                        <div class="w-[535px] relative">
+                        <div
+                            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                        >
+                            <svg
+                            class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 20 20"
+                            >
+                            <path
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                            />
+                            </svg>
+                        </div>
+                        <input
+                            v-model="searchText"
+                            type="search"
+                            id="default-search"
+                            class="block w-[100%] p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-3xl bg-gray-50 focus:ring-orange-400 focus:border-orange-400"
+                            placeholder="Search Items"
+                            required
+                        />
+                        </div>
+                    </div>
+                    </form>
+                </div>
                 <div id='listings' class='listings pb-4 flex-1 flex-col overflow-y-auto overflow-hidden overscroll-none  w-full h-full'>
-                    <ul class="last:pb-50">
+                    <ul class="last:pb-50" v-if="searchText==''">
                         <template v-for="(event, index) in eventList">
+                        <li v-if="event.isVisible== true" :key="index" @click="centerMap(event)" class="overflow-auto  bg-amber-200 px-2 py-2 shadow sm:rounded-md sm:px-6 my-2" >
+
+                            <h1 class="font-bold">{{ event.EventName }}, {{ event.EventDate }} </h1>
+                            <p class="italic text-sm"> Organiser: {{ event.EventOrganiser }} </p>
+                            <button z-20 class="bg-black text-white rounded-lg p-1 disabled:bg-gray-400" :disabled = "this.joinedEvent.includes(event.EventName)" v-if="userAuthentication" @click="Signup(event.EventName,event.EventDate)"> {{this.joinedEvent.includes(event.EventName) ? "Registered" : "Sign Up" }} </button>
+                            
+                            
+                        </li>
+                        <li v-if="event.isVisible== false" :key="index" @click="centerMap(event)" class="overflow-auto bg-white hover:bg-gray-200 px-2 py-2 shadow sm:rounded-md sm:px-6 my-2" >
+                           
+                           <h1 class="font-bold">{{ event.EventName }}, {{ event.EventDate }} </h1>
+                           <p class="italic text-sm"> Organiser: {{ event.EventOrganiser }} </p>
+                           <button z-20 class="bg-black text-white rounded-lg p-1 disabled:bg-gray-400" :disabled = "this.joinedEvent.includes(event.EventName)" v-if="userAuthentication" @click="Signup(event.EventName,event.EventDate)"> {{this.joinedEvent.includes(event.EventName) ? "Registered" : "Sign Up" }} </button>
+
+                       </li>
+                        </template>
+                    </ul>
+                    <ul class="last:pb-50" v-else>
+                        <template v-for="(event, index) in filteredEventList">
                         <li v-if="event.isVisible== true" :key="index" @click="centerMap(event)" class="overflow-auto  bg-amber-200 px-2 py-2 shadow sm:rounded-md sm:px-6 my-2" >
 
                             <h1 class="font-bold">{{ event.EventName }}, {{ event.EventDate }} </h1>
@@ -103,7 +162,7 @@
 
         data() {
         return {
-            currentEventsInArea: 0, joinedEvent: [],
+            currentEventsInArea: 0, joinedEvent: [], searchText: '',
         };
         },
         mounted() {
@@ -176,13 +235,13 @@
                 .setLngLat([long, lat])
                 .setPopup(new mapboxgl.Popup().setHTML(`
                     <div class="content-center w-30 h-30">
-                        <h1 class='font-bold py-2'>${event.EventName}</h1>
-                        <p> ${event.EventDescription}</p>
+                        <h1 class='font-bold p-1'>${event.EventName}</h1>
+                        <p class='p-1'> ${event.EventDescription}</p>
                         ${checkPageLoggedIn.value ? 
                             // '<a href="#" class="bg-amber-400 rounded-sm px-2 py-2" > Sign up for the event now! </a>' 
                             ''
                             : 
-                            '<a href="/login" class="bg-amber-400 rounded-sm px-2 py-2" > Login to sign up! </a>'}
+                            '<a href="/login" class="bg-amber-400 rounded-sm p-2" > Login to sign up! </a>'}
                     </div>`))
                 .addTo(this.map);
             });
@@ -247,6 +306,27 @@
            
 
         }
+    },
+    computed: {
+        filteredEventList() {
+        const searchLowerCase = this.searchText.toLowerCase();
+        var ret;
+        if (searchLowerCase == "") {
+            ret = [];
+        } else {
+            let newarray = [];
+            for (let event of this.eventList) {
+            if (event.EventName.toLowerCase().includes(searchLowerCase)) {
+                newarray.push(event);
+            }
+            }
+            ret = newarray;
+        }
+
+        //console.log(ret);
+        //console.log("OTLR");
+        return ret;
+        },
     },
 
 };

@@ -17,7 +17,7 @@
     <div class="flex justify-between items-center" >
       <div class="lg:flex lg:justify-between lg:items-center lg:space-x-4 grid grid-rows-2 w-full">
         <span class="font-medium dark:text-white px-2.5 text-base">
-          Event Signups: {{ eventSignups }}
+           
         </span>
         <button v-if="checkRegistered(name)"
           id="{{ eventID }}"

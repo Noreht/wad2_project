@@ -44,8 +44,8 @@
     <!-- Community Volunteers -->
 
     <div class="bg-white mt-6 pb-6 rounded-b-3xl">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:mx-0">
+      <div class="mx-auto  px-6 lg:px-8">
+        <div class=" mx-auto  lg:mx-0">
           <h2
             class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >
@@ -81,8 +81,8 @@
     <hr class="border-2 max-w-[97%] m-auto mt-7 border-green-800" />
 
     <div class="bg-white mt-6 pb-6 rounded-b-3xl">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:mx-0">
+      <div class="mx-auto px-6 lg:px-8">
+        <div class="mx-auto lg:mx-0">
           <h2
             class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >

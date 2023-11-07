@@ -13,7 +13,7 @@
       >
         Back
       </a>
-      <div class="mx-auto max-w-7xl px-6 lg:px-8 rounded-3xl border-4 border-orange-800 mt-8 min-w-[200px] shadow-2xl">
+      <div class="mx-auto  px-6 lg:px-8 rounded-3xl border-4 border-orange-800 mt-8 min-w-[200px] shadow-2xl">
         <h1 class="mt-8 mb-6 text-4xl  sm:text-5xl font-semibold">{{ description['title'] }}</h1>
         <h3 class="pb-5 mb-3 sm:text-xl leading-10 font-semibold text-black">{{ description['body'] }}</h3>
       </div>
@@ -58,7 +58,7 @@
             </div>
           </div>
           <div class="row-span-2 place-self-center item-center justify-center align-middle">
-            <img class=" col-span-2 w-[100%] max-w-[300px] max-h-[250px] m-auto" :src="requiredimage" />
+            <img class=" col-span-2 w-[100%] max-w-[500px] max-h-[250px] m-auto" :src="requiredimage" />
           </div>
         </div>
         <div v-for="step in thesteps" class="my-8 mx-5 mb-4">

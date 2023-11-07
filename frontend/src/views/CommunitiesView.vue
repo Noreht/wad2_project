@@ -1,10 +1,14 @@
 <template>
+
   <div class="grid grid-cols-12 gap-4 min-w-[600px]">
     <div class="col-span-2"></div>
-    <div class="col-span-8">
+    <div class="col-span-8 ">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
       <div>
         <CommunityHeader />
+      </div>
+      <div>
+        
       </div>
       <div>
         <suspense>
@@ -34,14 +38,18 @@
       </div>
     </div>
     <div class="col-span-2"></div>
+
   </div>
+
   <Foot />
+
 </template>
 
 <script>
 import CommunityList from "@/components/CommunityList.vue";
 import CommunityHeader from "@/components/CommunityHeader.vue";
 import CommunityModal from "@/components/CommunityModal.vue";
+
 import Foot from "@/components/Footer.vue";
 import { document, updatedoc, arrayunion, setdoc, Query, Collection, Where, getdocs} from "@/utils/firebase/firebaseInit.js";
 import { db } from "@/utils/firebase/firebaseInit.js";
@@ -52,7 +60,7 @@ import { db } from "@/utils/firebase/firebaseInit.js";
 
 export default {
   name: "CommunitiesView",
-  components: { CommunityList, CommunityHeader, CommunityModal, Foot },
+  components: { CommunityList, CommunityHeader, CommunityModal, Foot},
   data() {
     return { showModal: false, disable: false, joinedCommunities: [] };
   },

@@ -20,7 +20,7 @@
           <hr>
           <div class="pt-4">
             <textarea cols='28'  class="mb-4" :placeholder='"Send a message to " + itemowner' v-model="newMessage" ></textarea>
-            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4"  @click="onSubmit">
+            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4"  @click="onSubmit(itemowner)">
               Send Message
             </button>
             <button
@@ -61,7 +61,7 @@
           
         </div>
         <div class="col-span-1 flex">
-            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4" @click="onSubmit">
+            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4" @click="onSubmit(itemowner)">
               Send Message
             </button>
             <button
@@ -97,7 +97,7 @@
         <div class=" px-2 row-span-2 col-span-2">
         <textarea cols='80' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner' v-model="newMessage" ></textarea>
           <div class="ml-4">
-            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4" @click="onSubmit">
+            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4" @click="onSubmit(itemowner)">
               Send Message
             </button>
             <button
@@ -134,7 +134,7 @@
         <div class="px-2 row-span-2 col-span-2">
         <textarea cols='80' rows='2' class="mt-2 ml-4 mb-2" :placeholder='"Send a message to " + itemowner' v-model="newMessage"></textarea>
           <div class="ml-4">
-            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4" @click="onSubmit">
+            <button type="button" class="bg-green-400 px-4 py-2 rounded-lg mr-4" @click="onSubmit(itemowner)">
               Send Message
             </button>
             <button
@@ -175,8 +175,8 @@ export default {
   },
 
   methods: {
-    async onSubmit() {
-      let id = Math.random()
+    async onSubmit(own) {
+      let id = Date.now()
       const currentMessages = document(db, `MarketplaceMessages`, id.toString());
       console.log(this.newMessage)
                   
@@ -185,10 +185,12 @@ export default {
         await setdoc(currentMessages, {
           text: this.newMessage,
           author: "Bryan",
+          owner: own,
         }
 
         )
         console.log("success!")
+        this.closeModal111()
       }
       
       else {

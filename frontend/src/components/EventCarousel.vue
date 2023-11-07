@@ -21,13 +21,13 @@
         :style="innerStyles"
       >
         <div
-          class="jumbo absolute w-11/12 pl-10"
+          class="jumbo absolute w-11/12 pl-16"
           v-for="(jumbo, index) in eventList"
           :key="index"
         >
           <div class="w-full pl-4 pb-1 h-72">
             <div
-              class="h-32 sm:h-64 sm:p-2  bg-gradient-to-r from-black to-amber-400  rounded-xl shadow-lg dark:bg-gray-800 grid grid-cols-2 relative p-2 "
+              class="h-32 sm:h-64 sm:p-2  bg-gradient-to-r from-yellow-800 to-amber-400  rounded-xl shadow-lg dark:bg-gray-800 grid grid-cols-2 relative p-2 "
             >
               <div class="overflow-y-auto">
                 <h1
@@ -76,8 +76,8 @@
                 </a> -->
               </div>
               <div class="overflow-y-auto grid justify-items-center align-middle">
-                <img :src="images[i]" class=" pl-2 bg-blend-lighten shadow rounded max-w-full h-full flex align-middle border-none" >
-              </div>
+                <img :src="images[i]" class=" pl-2 bg-blend-lighten shadow rounded w-full h-full flex align-middle border-none" >
+              <!-- </div> -->
               <button
                 class="absolute bottom-5 right-12 w-8 h-8 rounded-full bg-black hover:bg-gray-500 text-white"
                 @click="prev"
@@ -116,6 +116,7 @@
                   />
                 </svg>
               </button>
+              </div>
             </div>
           </div>
         </div>
@@ -258,15 +259,21 @@ export default {
     },
 
     moveLeft() {
+      // this.innerStyles = {
+      //   transform: `translateX(-${this.step})
+      //               translateX(-${this.step})`,
+      // };
       this.innerStyles = {
-        transform: `translateX(-${this.step})
-                    translateX(-${this.step})`,
+        transform: `translateX(${this.step})
+                    translateX(${this.step})
+                   `,
+        
       };
     },
 
     moveRight() {
       this.innerStyles = {
-        transform: `translateX(${this.step})
+        transform: `translateX(-${this.step})
                     translateX(-${this.step})`,
       };
     },
@@ -281,8 +288,9 @@ export default {
 
     resetTranslate() {
       this.innerStyles = {
-        transition: "none",
-        transform: `translateX(0)`,
+        transition: "transform2 transform1 ",
+        transform1: `translateX(0) `,
+        transform2: `translateX(${this.step}) `
       };
     },
   },
@@ -299,14 +307,13 @@ export default {
 }
 
 .inner {
-  transition: transform 0.2s;
+  transition: transform 0.000000001s;
   white-space: nowrap;
   display: flex;
 }
 
 .jumbo {
   /* width: 100%; */
-  /* margin-right: 30px; */
   display: flex;
   height: 300px;
   color: white;
@@ -318,6 +325,7 @@ export default {
   margin-right: 5px;
   margin-top: 10px;
 }
+
 
 /* @media screen and (min-width:992px) {
     .jumbo {

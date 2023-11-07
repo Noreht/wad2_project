@@ -24,7 +24,7 @@
           class="text-lg lg:text-2xl md:text-xl leading-8 text-gray-600 text-justify mt-4 items-center max-w-[400px]"
         >
           From ad-hoc events to regular volunteering sessions, there's something
-          for everyone here!
+          for everyone here! 
         </p>
       </div>
     </div>

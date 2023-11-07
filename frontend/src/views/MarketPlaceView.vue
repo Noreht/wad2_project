@@ -5,7 +5,7 @@
         class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100"
       ></div>
       <div
-        class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center"
+        class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center h-full"
       >
         <h1
           class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-7xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
@@ -91,8 +91,10 @@
           </div>
         </div>
       </div>
-      <div
-        class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100"
+      <div v-if="filteredProductList.length > 0  || searchText != ''" class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100 h-screen">  
+        </div>
+      <div v-else
+        class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100 "
       ></div> 
     </div>
     <Foot />
@@ -190,9 +192,12 @@
           </div>
         </div>
       </div>
-      <div
-        class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100"
-      ></div>
+      <div v-if="filteredProductList.length > 0  || searchText != ''" class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100 h-screen">  
+        
+      </div>
+      <div v-else
+        class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100 "
+      > </div> 
     </div>
     <Foot class="" />
   </div>
@@ -203,7 +208,7 @@
         class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100"
       ></div>
       <div
-        class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center"
+        class="pb-8 bg-gradient-to-b from-orange-50 to-red-100 col-span-8 px-4 place-content-center h-screen"
       >
         <h1
           class="text-center drop-shadow-xl font-bold tracking-tight text-gray-900 text-7xl lg:min-w-[400px] xs:min-h-[95px] sm: -mb-[20px] typewriter"
@@ -289,15 +294,18 @@
           </div>
         </div>
       </div>
-      <div
-        class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100"
-      ></div>
+      <div v-if="filteredProductList.length > 0  || searchText != ''" class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100 h-screen">  
+        
+      </div>
+      <div v-else
+        class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100 "
+      > </div> 
     </div>
     <Foot class="" />
   </div>
 
-  <div v-else class="h-screen">
-    <div class="grid grid-cols-12 min-w-[400px] h-auto">
+  <div v-else >
+    <div class="grid grid-cols-12 min-w-[400px] h-full">
       <div
         class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100"
       ></div>
@@ -388,13 +396,17 @@
           </marketplacecard>
         </div>
       </div>
-      <div
-        class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100"
-      ></div>
+      <div v-if="filteredProductList.length > 0  || searchText != ''" class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100 h-screen">  
+       
+      </div>
+      <div v-else
+        class="col-span-2 px-4 bg-gradient-to-b from-orange-50 to-red-100 "
+      >
+     </div>
     </div>
     <Foot class="" />
   </div>
-
+  
   <!-- <div >
         <marketplacecard></marketplacecard>
       </div> -->
@@ -402,6 +414,7 @@
 
 <script>
 import marketplacecard from "@/components/MarketPlaceCard.vue";
+
 import Foot from "@/components/Footer.vue";
 
 const words = ["Marketplace"];
@@ -409,7 +422,7 @@ const typeSpeed = 100; // Adjust the speed as needed (in milliseconds)
 
 export default {
   name: "MarketPlace",
-  components: { marketplacecard, Foot },
+  components: { marketplacecard, Foot,  },
   data() {
     return {
       typewriterText: "",
@@ -424,7 +437,7 @@ export default {
           name: "Hammer and Spanner",
           condition: "Like new",
           location: "Chinatown",
-          owner: "@batman6969",
+          owner: "David",
           imageSrc: "/Marketplace/hammer.png",
           details: "Heavily used hammer. Selling because I have a new one.",
           price: "Free",
@@ -434,7 +447,7 @@ export default {
           name: "Compost Bin",
           condition: "Heavily used",
           location: "Ang Mo Kio",
-          owner: "@farmlandsmuth",
+          owner: "Caleb",
           imageSrc: "/Marketplace/compostbin.png",
           details: "Old compost bin.",
           price: "S$5",
@@ -444,7 +457,7 @@ export default {
           name: "Pails",
           condition: "Used",
           location: "Pasir Ris",
-          owner: "@seefarmer",
+          owner: "Andrea",
           imageSrc: "/Marketplace/pails.png",
           details: "Extra pails for sale",
           price: "S$5",
@@ -454,7 +467,7 @@ export default {
           name: "Composted Chicken Manure",
           condition: "New",
           location: "Geylang",
-          owner: "@chimpanzeecheep",
+          owner: "Austin",
           imageSrc: "/Marketplace/compost.png",
           details: "Fresh homemade compost",
           price: "S$10",
@@ -464,7 +477,7 @@ export default {
           name: "Composting Worms",
           condition: "New",
           location: "Changi",
-          owner: "@windingchampion",
+          owner: "Bryan",
           imageSrc: "/Marketplace/compostingworms.png",
           details: "Lively warms. Best for composting",
           price: "S$12",
@@ -474,7 +487,7 @@ export default {
           name: "Ikea Watering Can",
           condition: "New",
           location: "Jurong",
-          owner: "@userphony",
+          owner: "Kyong",
           imageSrc: "/Marketplace/wateringcan.png",
           details: "Ikea Watering Can. Willing to Nego.",
           price: "S$6",
@@ -484,7 +497,7 @@ export default {
           name: "12 Plant Pots",
           condition: "Lightly Used",
           location: "Yew Tee",
-          owner: "@unrighteoussaddle",
+          owner: "Chien",
           imageSrc: "/Marketplace/pots.png",
           details: "Contact me for bulk purchase.",
           price: "S$5",
@@ -494,7 +507,7 @@ export default {
           name: "Dried Mulch",
           condition: "New",
           location: "Potong Pasir",
-          owner: "@mangoesgirlfriend",
+          owner: "Tharman",
           imageSrc: "/Marketplace/mulch.png",
           details: "Mulch effective for composting",
           price: "S$5",
