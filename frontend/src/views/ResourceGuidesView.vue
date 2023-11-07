@@ -64,11 +64,11 @@
       </form>
 
       <div v-if="searchText == ''">
-        <div id="beginner" class="fixed-container">
+        
           <h3 class="text-2xl font-semibold mt-8">Starter's Haven</h3>
           <h3 class="text-lg font-normal mb-3">For precious beginners</h3>
           <div
-            class="border-4 border-black rounded-3xl p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6"
+            class="border-4 border-black rounded-3xl my-4 p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6"
           >
 
             <ResourceGuidesCard
@@ -79,13 +79,13 @@
             >
             </ResourceGuidesCard>
           </div>
-        </div>
+        
 
-        <div id="intermediate" class="fixed-container mb-8">
+        
           <h3 class="text-2xl font-semibold mt-8">Next-Level Navigators</h3>
           <h3 class="text-lg font-normal mb-3">For experienced composters</h3>
           <div
-            class="border-4 p-4 rounded-3xl border-black bg-green-300 overflow-x-auto overflow-hidden flex"
+            class="border-4 p-4 my-4 rounded-3xl border-black bg-green-300 overflow-x-auto overflow-hidden flex"
           >
             <ResourceGuidesCard
               v-for="guide in ResourceGuideList2"
@@ -96,23 +96,47 @@
             </ResourceGuidesCard>
 
           </div>
-        </div>
+        
       </div>
 
-      <div
-        class="border-4 border-black rounded-3xl my-4 p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6 "
-        v-else-if="filteredResourceGuideList.length > 0"
-      >
-        <ResourceGuidesCard
-          v-for="guide in filteredResourceGuideList"
+    <div v-else>
+      
+        <h3 class="text-2xl font-semibold mt-8">Starter's Haven</h3>
+        <h3 class="text-lg font-normal mb-3">For precious beginners</h3>
+        <div v-if="filteredResourceGuideList[0].length==0" class="border-4 border-black rounded-3xl my-4 p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6 min-h-[290px] text-center items-center">
+          <div class="w-full text-4xl"> No results for {{ searchText }}</div>
+        </div>
+
+        <div v-else class="border-4 border-black rounded-3xl my-4 p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6">
+          <ResourceGuidesCard
+            v-for="guide in filteredResourceGuideList[0]"
+            :title="guide.comp.title"
+            :image="guide.comp.image"
+            :url1="guide.comp.url"
+          >
+          </ResourceGuidesCard>
+        </div>
+     
+
+      
+        <h3 class="text-2xl font-semibold mt-8">Next-Level Navigators</h3>
+        <h3 class="text-lg font-normal mb-3">For experienced composters</h3>
+        <div v-if="filteredResourceGuideList[1].length==0" class="border-4 border-black rounded-3xl my-4 p-4  bg-green-300 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6 min-h-[290px] text-center items-center">
+          <p class="w-full text-4xl"> No results for {{ searchText }}</p>
+        </div>
+        <div v-else class="border-4 border-black rounded-3xl my-4 p-4  bg-green-300 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6 ">
+          <ResourceGuidesCard
+          v-for="guide in filteredResourceGuideList[1]"
           :title="guide.comp.title"
           :image="guide.comp.image"
           :url1="guide.comp.url"
-        >
-        </ResourceGuidesCard>
-      </div>
+          >
+          </ResourceGuidesCard>
+        </div>
+      
+    </div>
 
-      <div v-else class="min-h-[202px]"></div>
+
     </div>
   </div>
   <div class="col-span-2 px-4"></div>
@@ -302,14 +326,19 @@ export default {
     // Manipulate the local copy of the list
     filteredResourceGuideList() {
       const searchLowerCase = this.searchText.toLowerCase();
-      var ret;
+      let ret;
       if (searchLowerCase == "") {
         ret = [];
       } else {
+
         let newarray = this.ResourceGuideList1.concat(this.ResourceGuideList2);
-        ret = newarray.filter((resource) => {
+        let ret1 = this.ResourceGuideList1.filter((resource) => {
           return resource.search.toLowerCase().includes(searchLowerCase);
         });
+        let ret2 = this.ResourceGuideList2.filter((resource) => {
+          return resource.search.toLowerCase().includes(searchLowerCase);
+        });
+        ret=[ret1,ret2]
       }
 
       console.log(ret);
