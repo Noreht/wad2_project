@@ -300,7 +300,7 @@ export default {
         },
         {
           PostTitle: "Assistance Required Again",
-          PostAge: "3 ",
+          PostAge: "15 ",
           PostDesc:
             "As stated above. We are requiring volunteers to help fix our farm roof or water risks flooding everything! Sign up on Events or leave comments for more info.",
           PostAuthor: "Jese Leos",
@@ -317,7 +317,7 @@ export default {
         },
         {
           PostTitle: "Dying Over Here people",
-          PostAge: "5 ",
+          PostAge: "17 ",
           PostDesc:
             "Volunteers, please be more active! Our community is not a one man show!",
           PostAuthor: "Jese Leos",
@@ -334,7 +334,7 @@ export default {
         },
         {
           PostTitle: "Milestone reached! Hooray!",
-          PostAge: "13 ",
+          PostAge: "19 ",
           PostDesc:
             "Hi everyone, we have reached 100 people as of today! That's actually insane! Congrats on a job well done!",
           PostAuthor: "Jese Leos",
@@ -350,7 +350,7 @@ export default {
         },
         {
           PostTitle: "Assistance Required AGAINNNN",
-          PostAge: "3 ",
+          PostAge: "31 ",
           PostDesc:
             "As stated above. We are requiring volunteers to help fix our farm roof or water risks flooding everything! Sign up on Events or leave comments for more info.",
           PostAuthor: "Jese Leos",
@@ -367,7 +367,7 @@ export default {
         },
         {
           PostTitle: "Dying Over Here, send SOS",
-          PostAge: "5 ",
+          PostAge: "52 ",
           PostDesc:
             "Volunteers, please be more active! Our community is not a one man show!",
           PostAuthor: "Jese Leos",
@@ -384,7 +384,7 @@ export default {
         },
         {
           PostTitle: "Milestone reached! Booyah!",
-          PostAge: "13 ",
+          PostAge: "131 ",
           PostDesc:
             "Hi everyone, we have reached 100 people as of today! That's actually insane! Congrats on a job well done!",
           PostAuthor: "Jese Leos",
