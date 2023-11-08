@@ -104,7 +104,7 @@
         <h3 class="text-2xl font-semibold mt-8">Starter's Haven</h3>
         <h3 class="text-lg font-normal mb-3">For precious beginners</h3>
         <div v-if="filteredResourceGuideList[0].length==0" class="border-4 border-black rounded-3xl my-4 p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6 min-h-[290px] text-center items-center">
-          <div class="w-full text-4xl"> No results for {{ searchText }}</div>
+          <div class="w-full text-4xl"> No results for "{{ searchText }}"</div>
         </div>
 
         <div v-else class="border-4 border-black rounded-3xl my-4 p-4 bg-green-200 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6">
@@ -122,7 +122,7 @@
         <h3 class="text-2xl font-semibold mt-8">Next-Level Navigators</h3>
         <h3 class="text-lg font-normal mb-3">For experienced composters</h3>
         <div v-if="filteredResourceGuideList[1].length==0" class="border-4 border-black rounded-3xl my-4 p-4  bg-green-300 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6 min-h-[290px] text-center items-center">
-          <p class="w-full text-4xl"> No results for {{ searchText }}</p>
+          <p class="w-full text-4xl"> No results for "{{ searchText }}"</p>
         </div>
         <div v-else class="border-4 border-black rounded-3xl my-4 p-4  bg-green-300 overflow-x-auto overflow-hidden flex first:pl-6 last:pr-6 ">
           <ResourceGuidesCard
