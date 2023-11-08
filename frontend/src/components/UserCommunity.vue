@@ -1,6 +1,6 @@
 <template>
   <div >
-    <div class="mt-5 border-b-4 border-b-yellow-800 pt-5 px-5 bg-gradient-to-b from-orange-50 to-amber-50">
+    <div class="mt-5 border-b-4 border-b-yellow-800 pt-5 px-5">
       <div>
         <CommunityInformationBar />
       </div>
