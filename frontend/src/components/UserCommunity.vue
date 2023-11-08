@@ -95,7 +95,7 @@
               :topic="item.PostTitle"
               :postAge="item.PostAge"
               :postDesc="item.PostDesc"
-              :postAuthor="item.PostAuthor"
+              :postAuthor="'Ng Cai Jun'"
               @item-clicked="handleItemClicked"
               @update:selected="updateSelected"
             />
@@ -105,7 +105,7 @@
               :topic="item.PostTitle"
               :postAge="item.PostAge"
               :postDesc="item.PostDesc"
-              :postAuthor="item.PostAuthor"
+              :postAuthor="'Ng Cai Jun'"
               @item-clicked="handleItemClicked"
               @update:selected="updateSelected"
             />
@@ -122,7 +122,7 @@
               :topic="item.PostTitle"
               :postAge="item.PostAge"
               :postDesc="item.PostDesc"
-              :postAuthor="item.PostAuthor"
+              :postAuthor="'Ng Cai Jun'"
               class="justify-left bg-yellow-900/30 rounded-xl"
             >
               <div class="mt-3">

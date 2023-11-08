@@ -260,13 +260,6 @@ export default {
       });
     },
   },
-  // watch: {
-  //   list: {
-  //     handler(newList) {
-  //       EventBus.$emit('list-updated', newList);
-  //     },
-  //     deep: true,
-  //   },
-  // }
+
 };
 </script>

@@ -94,7 +94,7 @@
               :topic="item.PostTitle"
               :postAge="item.PostAge"
               :postDesc="item.PostDesc"
-              :postAuthor="item.PostAuthor"
+              :postAuthor="'Ng Cai Png'"
               @item-clicked="handleItemClicked"
               @update:selected="updateSelected"
             />
@@ -110,7 +110,7 @@
               :topic="item.PostTitle"
               :postAge="item.PostAge"
               :postDesc="item.PostDesc"
-              :postAuthor="item.PostAuthor"
+              :postAuthor="'Ng Cai Png'"
               class="justify-left bg-yellow-900/30 rounded-xl"
             >
               <div class="mt-3">
