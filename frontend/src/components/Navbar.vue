@@ -25,7 +25,7 @@
                 >My Feed
               </a>
 
-              <a v-else="" href="/home" :class="getClass('/home')"> Home </a>
+              <a v-else="" href="/index.html" :class="getClass('/home')"> Home </a>
 
               <a href="/resourceguides" :class="getClass('/resourceguides')"
                 >Resources & Guides</a
@@ -259,7 +259,7 @@
         <DisclosureButton
           v-else
           as="a"
-          href="/home"
+          href="/index.html"
           :class="getClassResponsive('/home')"
           >Home</DisclosureButton
         >
@@ -326,7 +326,7 @@
           >
           <DisclosureButton
             as="a"
-            href="/home"
+            href="/index.html"
             class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
             >Sign out</DisclosureButton
           >
@@ -382,7 +382,7 @@ const checkPageLoggedIn = ref(null);
 const signOut = async () => {
   await store.dispatch("logOut");
   window.location.reload();
-  window.location.href = "/home";
+  window.location.href = "/index.html";
 };
 
 onMounted(async () => {

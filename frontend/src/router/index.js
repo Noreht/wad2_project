@@ -21,7 +21,7 @@ const routes = [
 
       {
         path: "/",
-        redirect: "/home", // Redirect the root path to the /home route
+        redirect: "/index.html", // Redirect the root path to the /home route
       },
 
       {
@@ -37,7 +37,7 @@ const routes = [
       },
 
       { 
-        path: "/home",
+        path: "/index.html",
         name: "Homepage",
         component: HomepageView,
       },
