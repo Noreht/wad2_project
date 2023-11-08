@@ -62,7 +62,7 @@ export default {
   name: "CommunitiesView",
   components: { CommunityList, CommunityHeader, CommunityModal, Foot},
   data() {
-    return { showModal: false, disable: false, joinedCommunities: [] };
+    return { showModal: false, disable: false, joinedCommunities: [], };
   },
     
         
@@ -78,13 +78,6 @@ export default {
       this.showModal = true;
       this.disable = false;
 
-      // if (this.getJoinedCommunities(modalTitle) == true) {
-      //   console.log("Disable = true")
-      //   this.disable = true;
-      // } else {
-      //   console.log("Disable = false")
-      //   this.disable = false;
-      // }
       this.getJoinedCommunities(modalTitle)
       return (this.modalTitle = modalTitle), (this.modalDesc = modalDesc);
     },
