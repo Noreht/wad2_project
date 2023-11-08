@@ -1,7 +1,7 @@
 <!-- After login-->
 
 <template>
-  <div class="grid grid-cols-12 gap-4 z-20 min-w-[600px]">
+  <div class="grid grid-cols-12 gap-4 z-20 min-w-[600px]  bg-gradient-to-b from-orange-50 to-amber-50">
     <div class="col-span-2 pt-50 lg:block flex ">
       <suspense >
         <UserSidebarLeft />

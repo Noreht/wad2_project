@@ -1,8 +1,8 @@
 <template>
-  <div :class="{ 'bg-gray-300': sidebarOpen }" class="z-40 h-full">
+  <div :class="{ '': sidebarOpen }" class="z-40 h-full">
     <!-- Static sidebar for desktop -->
     <div
-      :class="{ fixed: sidebarOpen, 'bg-gray-300': sidebarOpen }"
+      :class="{ fixed: sidebarOpen, '': sidebarOpen }"
       class="h-auto z-60 sticky top-16 px-2.5 lg:z-0 w-[100%] py-4"
     >
       <button
@@ -14,7 +14,7 @@
       </button>
 
       <nav
-        class="flex flex-1 flex-col bg-gray-300 px-2.5 pt-05 mt-2"
+        class="flex flex-1 flex-col px-2.5 pt-05 mt-2"
         v-if="sidebarOpen"
       >
         <div class="text-base font-bold leading-6 text-black">Your Friends</div>
