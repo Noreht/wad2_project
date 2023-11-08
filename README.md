@@ -1,4 +1,4 @@
-# wad2_project<a id="readme-top"></a>
+# WAD2 Project Black Gold<a id="readme-top"></a>
 
 <!-- TABLE OF CONTENTS -->
 
