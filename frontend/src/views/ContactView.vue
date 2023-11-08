@@ -3,7 +3,7 @@
     class="grid grid-cols-12 bg-gradient-to-t from-amber-100 to-orange-50 pb-[100px] h-[100%] min-w-[600px]"
   >
     <div class="col-span-2"></div>
-    <div class="col-span-8">
+    <div class="col-span-8 h-screen">
       <!-- ADD THE COMPONENTS AND STYLING HERE -->
       <div class="relative isolate py-10">
         <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
